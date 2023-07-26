@@ -1,0 +1,7 @@
+node_modules/
+public/dist/
+.shadow-cljs/
+.lsp/
+.DS_Store
+.nrepl-port
+.clj-kondo

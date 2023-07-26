@@ -1,0 +1,2821 @@
+; This is the Calva evaluation results output window.
+; TIPS: The keyboard shortcut `ctrl+alt+o o` shows and focuses this window
+;   when connected to a REPL session.
+; Please see https://calva.io/output/ for more info.
+; Happy coding! ♥️
+
+; Jacking in...
+; Connecting using "shadow-cljs" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+; Starting Jack-in Terminal: pushd /Users/shantiram/code/js/meditation-timer ; npx shadow-cljs -d cider/cider-nrepl:0.28.5 watch :app ; popd
+; Using host:port localhost:58546 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉shadow.user꞉>  ; Use `alt+enter` to evaluate
+clj꞉shadow.user꞉> 
+; Creating cljs repl session...
+; Connecting cljs repl: shadow-cljs...
+;   The Calva Connection Log might have more connection progress information.
+; Please start your ClojureScript app so that Calva can connect to its REPL...
+; Waiting for Shadow CLJS runtimes, start your CLJS app...
+; Waiting for Shadow CLJS runtimes, start your CLJS app...
+; Waiting for Shadow CLJS runtimes, start your CLJS app...
+; Waiting for Shadow CLJS runtimes, start your CLJS app...
+; Waiting for Shadow CLJS runtimes, start your CLJS app...
+; Waiting for Shadow CLJS runtimes, start your CLJS app...
+; Waiting for Shadow CLJS runtimes, start your CLJS app...
+; Connected session: cljs, repl: :app
+; TIPS: You can choose which REPL to use (clj or cljs):
+;    *Calva: Toggle REPL connection*
+;    (There is a button in the status bar for this)
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.cljs'
+nil
+clj꞉cljs.user꞉> 
+; Jack-in done.
+clj꞉cljs.user꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉>  ; Use `alt+enter` to evaluate
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+{:page :index,
+ :current-timer #uuid "621e56d4-adf4-4c9c-8835-2a04a92427f0",
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "4ebd6676-3d90-4e73-9c8e-ee49da439026",
+   :name "Timer 7",
+   :steps
+   [{:id #uuid "dc31ab18-c1bf-45ef-85ce-478618b2a2f2", :duration 18, :timeout nil}
+    {:id #uuid "5aa231e3-d07c-4a38-ac8c-642cbd219e09", :duration 5, :timeout nil}]}
+  {:id #uuid "d6a5f802-0274-4415-a86f-da7d32ed29bc",
+   :name "Timer 6",
+   :steps
+   [{:id #uuid "fc49ae3e-35c9-4efa-ace0-f999d50f3e73", :duration 18, :timeout nil}
+    {:id #uuid "13746dfb-6f7e-47ed-8064-2b671321a7d4", :duration 5, :timeout nil}]}
+  {:id #uuid "297cd5c2-30ec-431d-b7d5-20a96ddee747",
+   :name "Timer 5",
+   :steps
+   [{:id #uuid "389fac63-c318-4824-81fe-542ab1b0d271", :duration 18, :timeout nil}
+    {:id #uuid "2ca193d8-f79d-4108-b4a0-1fbf4abdf974", :duration 5, :timeout nil}]}
+  {:id #uuid "13633f90-1a26-40c4-832c-1b5459285b04",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "8dec3da6-4696-4866-8065-86cb529095cb", :duration 18, :timeout nil}
+    {:id #uuid "4bda258c-ec80-4d17-a8aa-ddaaa7e649df", :duration 5, :timeout nil}]}
+  {:id #uuid "63076374-9a2b-4995-9a96-d9b264c3c0d5",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "aa65e06f-2bef-4b62-98b3-48ca0d77c4bf", :duration 18, :timeout nil}
+    {:id #uuid "ddddb3f8-e11e-4dde-b170-ff1702b2d640", :duration 5, :timeout nil}]}
+  {:id #uuid "621e56d4-adf4-4c9c-8835-2a04a92427f0",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "7ac3a794-719b-43e6-9fdd-4c7d7f03d23d", :duration 18, :timeout nil}
+    {:id #uuid "98520d83-6da2-4ee4-a10a-4fca9b2e3ab7", :duration 5, :timeout nil}]}
+  {:id #uuid "4ad8bd0e-8484-457c-857a-59219fbd6be3",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "0b54110a-4841-43b8-aa3d-2023c34dfe32", :duration 18, :timeout nil}
+    {:id #uuid "3bea5882-2760-4072-b341-1a7f39ae183d", :duration 5, :timeout nil}]})}
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+{:page :edit,
+ :current-timer #uuid "621e56d4-adf4-4c9c-8835-2a04a92427f0",
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "71526066-a829-43bb-a0a4-4fbb1f821be6",
+   :name "Timer 9",
+   :steps
+   [{:id #uuid "7d49739f-6f72-4cd6-a17b-e9e286a15000", :duration 18, :timeout nil}
+    {:id #uuid "0b25a203-3b5a-457e-8e27-77f2405d3bf6", :duration 5, :timeout nil}]}
+  {:id #uuid "87cda706-0265-4427-8c31-9480112f7c16",
+   :name "Timer 8",
+   :steps
+   [{:id #uuid "037800b4-2d7e-496e-a8a9-77b442aaf785", :duration 18, :timeout nil}
+    {:id #uuid "27f1d958-756a-435d-830e-1e7acf4514d3", :duration 5, :timeout nil}]}
+  {:id #uuid "4ebd6676-3d90-4e73-9c8e-ee49da439026",
+   :name "Timer 7",
+   :steps
+   [{:id #uuid "dc31ab18-c1bf-45ef-85ce-478618b2a2f2", :duration 18, :timeout nil}
+    {:id #uuid "5aa231e3-d07c-4a38-ac8c-642cbd219e09", :duration 5, :timeout nil}]}
+  {:id #uuid "d6a5f802-0274-4415-a86f-da7d32ed29bc",
+   :name "Timer 6",
+   :steps
+   [{:id #uuid "fc49ae3e-35c9-4efa-ace0-f999d50f3e73", :duration 18, :timeout nil}
+    {:id #uuid "13746dfb-6f7e-47ed-8064-2b671321a7d4", :duration 5, :timeout nil}]}
+  {:id #uuid "297cd5c2-30ec-431d-b7d5-20a96ddee747",
+   :name "Timer 5",
+   :steps
+   [{:id #uuid "389fac63-c318-4824-81fe-542ab1b0d271", :duration 18, :timeout nil}
+    {:id #uuid "2ca193d8-f79d-4108-b4a0-1fbf4abdf974", :duration 5, :timeout nil}]}
+  {:id #uuid "13633f90-1a26-40c4-832c-1b5459285b04",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "8dec3da6-4696-4866-8065-86cb529095cb", :duration 18, :timeout nil}
+    {:id #uuid "4bda258c-ec80-4d17-a8aa-ddaaa7e649df", :duration 5, :timeout nil}]}
+  {:id #uuid "63076374-9a2b-4995-9a96-d9b264c3c0d5",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "aa65e06f-2bef-4b62-98b3-48ca0d77c4bf", :duration 18, :timeout nil}
+    {:id #uuid "ddddb3f8-e11e-4dde-b170-ff1702b2d640", :duration 5, :timeout nil}]}
+  {:id #uuid "621e56d4-adf4-4c9c-8835-2a04a92427f0",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "7ac3a794-719b-43e6-9fdd-4c7d7f03d23d", :duration 18, :timeout nil}
+    {:id #uuid "98520d83-6da2-4ee4-a10a-4fca9b2e3ab7", :duration 5, :timeout nil}]}
+  {:id #uuid "4ad8bd0e-8484-457c-857a-59219fbd6be3",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "0b54110a-4841-43b8-aa3d-2023c34dfe32", :duration 18, :timeout nil}
+    {:id #uuid "3bea5882-2760-4072-b341-1a7f39ae183d", :duration 5, :timeout nil}]})}
+cljs꞉app.ui꞉> 
+{:page :edit,
+ :current-timer #uuid "621e56d4-adf4-4c9c-8835-2a04a92427f0",
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "19ad65ce-9f6f-4dc4-8cb8-002e5ff7d409",
+   :name "Timer 10",
+   :steps
+   [{:id #uuid "b4bf9e4a-53b6-441d-8445-84f77729b319", :duration 18, :timeout nil}
+    {:id #uuid "1d5b19f3-3705-4e31-9321-e20deef9d81f", :duration 5, :timeout nil}]}
+  {:id #uuid "71526066-a829-43bb-a0a4-4fbb1f821be6",
+   :name "Timer 9",
+   :steps
+   [{:id #uuid "7d49739f-6f72-4cd6-a17b-e9e286a15000", :duration 18, :timeout nil}
+    {:id #uuid "0b25a203-3b5a-457e-8e27-77f2405d3bf6", :duration 5, :timeout nil}]}
+  {:id #uuid "87cda706-0265-4427-8c31-9480112f7c16",
+   :name "Timer 8",
+   :steps
+   [{:id #uuid "037800b4-2d7e-496e-a8a9-77b442aaf785", :duration 18, :timeout nil}
+    {:id #uuid "27f1d958-756a-435d-830e-1e7acf4514d3", :duration 5, :timeout nil}]}
+  {:id #uuid "4ebd6676-3d90-4e73-9c8e-ee49da439026",
+   :name "Timer 7",
+   :steps
+   [{:id #uuid "dc31ab18-c1bf-45ef-85ce-478618b2a2f2", :duration 18, :timeout nil}
+    {:id #uuid "5aa231e3-d07c-4a38-ac8c-642cbd219e09", :duration 5, :timeout nil}]}
+  {:id #uuid "d6a5f802-0274-4415-a86f-da7d32ed29bc",
+   :name "Timer 6",
+   :steps
+   [{:id #uuid "fc49ae3e-35c9-4efa-ace0-f999d50f3e73", :duration 18, :timeout nil}
+    {:id #uuid "13746dfb-6f7e-47ed-8064-2b671321a7d4", :duration 5, :timeout nil}]}
+  {:id #uuid "297cd5c2-30ec-431d-b7d5-20a96ddee747",
+   :name "Timer 5",
+   :steps
+   [{:id #uuid "389fac63-c318-4824-81fe-542ab1b0d271", :duration 18, :timeout nil}
+    {:id #uuid "2ca193d8-f79d-4108-b4a0-1fbf4abdf974", :duration 5, :timeout nil}]}
+  {:id #uuid "13633f90-1a26-40c4-832c-1b5459285b04",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "8dec3da6-4696-4866-8065-86cb529095cb", :duration 18, :timeout nil}
+    {:id #uuid "4bda258c-ec80-4d17-a8aa-ddaaa7e649df", :duration 5, :timeout nil}]}
+  {:id #uuid "63076374-9a2b-4995-9a96-d9b264c3c0d5",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "aa65e06f-2bef-4b62-98b3-48ca0d77c4bf", :duration 18, :timeout nil}
+    {:id #uuid "ddddb3f8-e11e-4dde-b170-ff1702b2d640", :duration 5, :timeout nil}]}
+  {:id #uuid "621e56d4-adf4-4c9c-8835-2a04a92427f0",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "7ac3a794-719b-43e6-9fdd-4c7d7f03d23d", :duration 18, :timeout nil}
+    {:id #uuid "98520d83-6da2-4ee4-a10a-4fca9b2e3ab7", :duration 5, :timeout nil}]}
+  {:id #uuid "4ad8bd0e-8484-457c-857a-59219fbd6be3",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "0b54110a-4841-43b8-aa3d-2023c34dfe32", :duration 18, :timeout nil}
+    {:id #uuid "3bea5882-2760-4072-b341-1a7f39ae183d", :duration 5, :timeout nil}]})}
+cljs꞉app.ui꞉> 
+{:page :index,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "e704b11d-063c-459d-b049-70f5bc6fbf5b",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "a3f72a3d-401e-4909-8f1a-a4f6233972d2", :duration 18, :timeout nil}
+    {:id #uuid "2f012986-f1c4-46ec-9cca-54251b607c18", :duration 5, :timeout nil}]}
+  {:id #uuid "110a7e19-91ba-47c1-b35e-bd527833f2be",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "d9f1d0ac-d10e-4249-ae81-1ede7d92bce9", :duration 18, :timeout nil}
+    {:id #uuid "d116dd2f-8d0d-4ba2-8f82-1dca9da6442d", :duration 5, :timeout nil}]}
+  {:id #uuid "0af94f5a-36ab-4751-89c1-0f2eeb72c6fe",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "6864ac72-d1a0-4647-8f26-84c7dd058162", :duration 18, :timeout nil}
+    {:id #uuid "90409926-97c9-4738-8f27-38190c4f8665", :duration 5, :timeout nil}]})}
+cljs꞉app.ui꞉> 
+{:page :index,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "e704b11d-063c-459d-b049-70f5bc6fbf5b",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "a3f72a3d-401e-4909-8f1a-a4f6233972d2", :duration 18, :timeout nil}
+    {:id #uuid "2f012986-f1c4-46ec-9cca-54251b607c18", :duration 5, :timeout nil}]}
+  {:id #uuid "110a7e19-91ba-47c1-b35e-bd527833f2be",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "d9f1d0ac-d10e-4249-ae81-1ede7d92bce9", :duration 18, :timeout nil}
+    {:id #uuid "d116dd2f-8d0d-4ba2-8f82-1dca9da6442d", :duration 5, :timeout nil}]}
+  {:id #uuid "0af94f5a-36ab-4751-89c1-0f2eeb72c6fe",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "6864ac72-d1a0-4647-8f26-84c7dd058162", :duration 18, :timeout nil}
+    {:id #uuid "90409926-97c9-4738-8f27-38190c4f8665", :duration 5, :timeout nil}]}),
+ :debug true}
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+; ------ WARNING - :undeclared-var -----------------------------------------------
+;  Resource: <eval>:202:36
+;  Use of undeclared Var app.ui/render-seq
+; --------------------------------------------------------------------------------
+; 
+nil
+cljs꞉app.ui꞉> 
+{:page :index,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "e704b11d-063c-459d-b049-70f5bc6fbf5b",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "a3f72a3d-401e-4909-8f1a-a4f6233972d2", :duration 18, :timeout nil}
+    {:id #uuid "2f012986-f1c4-46ec-9cca-54251b607c18", :duration 5, :timeout nil}]}
+  {:id #uuid "110a7e19-91ba-47c1-b35e-bd527833f2be",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "d9f1d0ac-d10e-4249-ae81-1ede7d92bce9", :duration 18, :timeout nil}
+    {:id #uuid "d116dd2f-8d0d-4ba2-8f82-1dca9da6442d", :duration 5, :timeout nil}]}
+  {:id #uuid "0af94f5a-36ab-4751-89c1-0f2eeb72c6fe",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "6864ac72-d1a0-4647-8f26-84c7dd058162", :duration 18, :timeout nil}
+    {:id #uuid "90409926-97c9-4738-8f27-38190c4f8665", :duration 5, :timeout nil}]}),
+ :debug true}
+cljs꞉app.ui꞉> 
+{:page :index,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "e704b11d-063c-459d-b049-70f5bc6fbf5b",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "a3f72a3d-401e-4909-8f1a-a4f6233972d2", :duration 18, :timeout nil}
+    {:id #uuid "2f012986-f1c4-46ec-9cca-54251b607c18", :duration 5, :timeout nil}]}
+  {:id #uuid "110a7e19-91ba-47c1-b35e-bd527833f2be",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "d9f1d0ac-d10e-4249-ae81-1ede7d92bce9", :duration 18, :timeout nil}
+    {:id #uuid "d116dd2f-8d0d-4ba2-8f82-1dca9da6442d", :duration 5, :timeout nil}]}
+  {:id #uuid "0af94f5a-36ab-4751-89c1-0f2eeb72c6fe",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "6864ac72-d1a0-4647-8f26-84c7dd058162", :duration 18, :timeout nil}
+    {:id #uuid "90409926-97c9-4738-8f27-38190c4f8665", :duration 5, :timeout nil}]}),
+ :debug false}
+cljs꞉app.ui꞉> 
+{:page :index,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "e704b11d-063c-459d-b049-70f5bc6fbf5b",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "a3f72a3d-401e-4909-8f1a-a4f6233972d2", :duration 18, :timeout nil}
+    {:id #uuid "2f012986-f1c4-46ec-9cca-54251b607c18", :duration 5, :timeout nil}]}
+  {:id #uuid "110a7e19-91ba-47c1-b35e-bd527833f2be",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "d9f1d0ac-d10e-4249-ae81-1ede7d92bce9", :duration 18, :timeout nil}
+    {:id #uuid "d116dd2f-8d0d-4ba2-8f82-1dca9da6442d", :duration 5, :timeout nil}]}
+  {:id #uuid "0af94f5a-36ab-4751-89c1-0f2eeb72c6fe",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "6864ac72-d1a0-4647-8f26-84c7dd058162", :duration 18, :timeout nil}
+    {:id #uuid "90409926-97c9-4738-8f27-38190c4f8665", :duration 5, :timeout nil}]}),
+ :debug true}
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+{:page :index,
+ :current-timer #uuid "0af94f5a-36ab-4751-89c1-0f2eeb72c6fe",
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "e704b11d-063c-459d-b049-70f5bc6fbf5b",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "a3f72a3d-401e-4909-8f1a-a4f6233972d2", :duration 18, :timeout nil}
+    {:id #uuid "2f012986-f1c4-46ec-9cca-54251b607c18", :duration 5, :timeout nil}]}
+  {:id #uuid "110a7e19-91ba-47c1-b35e-bd527833f2be",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "d9f1d0ac-d10e-4249-ae81-1ede7d92bce9", :duration 18, :timeout nil}
+    {:id #uuid "d116dd2f-8d0d-4ba2-8f82-1dca9da6442d", :duration 5, :timeout nil}]}
+  {:id #uuid "0af94f5a-36ab-4751-89c1-0f2eeb72c6fe",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "6864ac72-d1a0-4647-8f26-84c7dd058162", :duration 18, :timeout nil}
+    {:id #uuid "90409926-97c9-4738-8f27-38190c4f8665", :duration 5, :timeout nil}]}),
+ :debug false}
+cljs꞉app.ui꞉> 
+{:page :index,
+ :current-timer #uuid "0af94f5a-36ab-4751-89c1-0f2eeb72c6fe",
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "e704b11d-063c-459d-b049-70f5bc6fbf5b",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "a3f72a3d-401e-4909-8f1a-a4f6233972d2", :duration 18, :timeout nil}
+    {:id #uuid "2f012986-f1c4-46ec-9cca-54251b607c18", :duration 5, :timeout nil}]}
+  {:id #uuid "110a7e19-91ba-47c1-b35e-bd527833f2be",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "d9f1d0ac-d10e-4249-ae81-1ede7d92bce9", :duration 18, :timeout nil}
+    {:id #uuid "d116dd2f-8d0d-4ba2-8f82-1dca9da6442d", :duration 5, :timeout nil}]}
+  {:id #uuid "0af94f5a-36ab-4751-89c1-0f2eeb72c6fe",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "6864ac72-d1a0-4647-8f26-84c7dd058162", :duration 18, :timeout nil}
+    {:id #uuid "90409926-97c9-4738-8f27-38190c4f8665", :duration 5, :timeout nil}]}),
+ :debug true}
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+; ------ REPL Error while processing ---------------------------------------------
+; (cljs.core/load-file "/Users/shantiram/code/js/meditation-timer/src/app/ui.cljs")
+; ------ REPL Error while processing ---------------------------------------------
+; (defn page []
+;   (let [header-height (r/atom nil)
+;         main-height (r/atom nil)
+;         footer-height (r/atom nil)
+;         overflow (r/atom {:top false :bottom false})
+;         on-scroll (fn [event]
+;                     (let [element (.-target event)]
+;                       (reset! overflow (detect-overflow element))))
+;         component-did-mount (fn [this]
+;                               (let [dom-node (dom/dom-node this)
+;                                     header (.-querySelector dom-node "#header")
+;                                     main-area (.-querySelector dom-node "#main-area")
+;                                     footer (.-querySelector dom-node "#footer")]
+;                                 (reset! header-height (.-offsetHeight header))
+;                                 (reset! main-height (.-offsetHeight main-area))
+;                                 (reset! footer-height (.-offsetHeight footer))))]
+;     (r/create-class
+;      {:component-did-mount component-did-mount
+;       :reagent-render (fn []
+;                         [:<>
+;                          [:div#header "Header"]
+;                          [:div#main-area {:on-scroll on-scroll} "Main Area"]
+;                          [:div#footer "Footer"]])})))
+; null
+; dot prop access with args
+; {:form (. dom-node -querySelector "#header")}
+; ExceptionInfo: dot prop access with args
+; 	shadow.build.cljs-hacks/shadow-analyze-dot (cljs_hacks.cljc:544)
+; 	shadow.build.cljs-hacks/shadow-analyze-dot (cljs_hacks.cljc:499)
+; 	shadow.build.cljs-hacks/install-hacks!/fn--10353 (cljs_hacks.cljc:1221)
+; 	clojure.lang.MultiFn.invoke (MultiFn.java:252)
+; 	cljs.analyzer/analyze-seq* (analyzer.cljc:4080)
+; 	cljs.analyzer/analyze-seq* (analyzer.cljc:4078)
+; 	cljs.analyzer/analyze-seq*-wrap (analyzer.cljc:4085)
+; 	cljs.analyzer/analyze-seq*-wrap (analyzer.cljc:4083)
+; 	cljs.analyzer/analyze-seq (analyzer.cljc:4109)
+; 	cljs.analyzer/analyze-seq (analyzer.cljc:4087)
+; 	cljs.analyzer/analyze-form (analyzer.cljc:4296)
+; 	cljs.analyzer/analyze-form (analyzer.cljc:4293)
+; 	cljs.analyzer/analyze* (analyzer.cljc:4349)
+; 	cljs.analyzer/analyze* (analyzer.cljc:4341)
+; 	cljs.analyzer/analyze (analyzer.cljc:4369)
+; 	cljs.analyzer/analyze (analyzer.cljc:4352)
+; 	cljs.analyzer/analyze-seq (analyzer.cljc:4110)
+; 	cljs.analyzer/analyze-seq (analyzer.cljc:4087)
+; 	cljs.analyzer/analyze-form (analyzer.cljc:4296)
+; 	cljs.analyzer/analyze-form (analyzer.cljc:4293)
+; 	cljs.analyzer/analyze* (analyzer.cljc:4349)
+; 	cljs.analyzer/analyze* (analyzer.cljc:4341)
+; 	cljs.analyzer/analyze (analyzer.cljc:4369)
+; 	cljs.analyzer/analyze (analyzer.cljc:4352)
+; 	cljs.analyzer/analyze (analyzer.cljc:4362)
+; 	cljs.analyzer/analyze (analyzer.cljc:4352)
+; 	cljs.analyzer/analyze (analyzer.cljc:4360)
+; 	cljs.analyzer/analyze (analyzer.cljc:4352)
+; 	cljs.analyzer/analyze-let-binding-init (analyzer.cljc:2379)
+; 	cljs.analyzer/analyze-let-binding-init (analyzer.cljc:2377)
+; 	cljs.analyzer/analyze-let-bindings* (analyzer.cljc:2399)
+; 	cljs.analyzer/analyze-let-bindings* (analyzer.cljc:2388)
+; 	cljs.analyzer/analyze-let-bindings (analyzer.cljc:2435)
+; 	cljs.analyzer/analyze-let-bindings (analyzer.cljc:2434)
+; 	cljs.analyzer/analyze-let (analyzer.cljc:2461)
+; 	cljs.analyzer/analyze-let (analyzer.cljc:2445)
+; 	cljs.analyzer/fn--3022 (analyzer.cljc:2499)
+; 	cljs.analyzer/fn--3022 (analyzer.cljc:2497)
+; 	clojure.lang.MultiFn.invoke (MultiFn.java:252)
+; 	cljs.analyzer/analyze-seq* (analyzer.cljc:4080)
+; 	cljs.analyzer/analyze-seq* (analyzer.cljc:4078)
+; 	cljs.analyzer/analyze-seq*-wrap (analyzer.cljc:4085)
+; 	cljs.analyzer/analyze-seq*-wrap (analyzer.cljc:4083)
+; 	cljs.analyzer/analyze-seq (analyzer.cljc:4109)
+; 	cljs.analyzer/analyze-seq (analyzer.cljc:4087)
+; 	cljs.analyzer/analyze-form (analyzer.cljc:4296)
+; 	cljs.analyzer/analyze-form (analyzer.cljc:4293)
+; 	cljs.analyzer/analyze* (analyzer.cljc:4349)
+; 	cljs.analyzer/analyze* (analyzer.cljc:4341)
+; 	cljs.analyzer/analyze (analyzer.cljc:4369)
+; 	cljs.analyzer/analyze (analyzer.cljc:4352)
+; 	cljs.analyzer/analyze-seq (analyzer.cljc:4110)
+; 	cljs.analyzer/analyze-seq (analyzer.cljc:4087)
+; 	cljs.analyzer/analyze-form (analyzer.cljc:4296)
+; 	cljs.analyzer/analyze-form (analyzer.cljc:4293)
+; 	cljs.analyzer/analyze* (analyzer.cljc:4349)
+; 	cljs.analyzer/analyze* (analyzer.cljc:4341)
+; 	cljs.analyzer/analyze (analyzer.cljc:4369)
+; 	cljs.analyzer/analyze (analyzer.cljc:4352)
+; 	cljs.analyzer/analyze (analyzer.cljc:4362)
+; 	cljs.analyzer/analyze (analyzer.cljc:4352)
+; 	cljs.analyzer/analyze (analyzer.cljc:4360)
+; 	cljs.analyzer/analyze (analyzer.cljc:4352)
+; 	cljs.analyzer/fn--2979 (analyzer.cljc:2358)
+; 	cljs.analyzer/fn--2979 (analyzer.cljc:2354)
+; 	clojure.lang.MultiFn.invoke (MultiFn.java:252)
+; 	cljs.analyzer/analyze-seq* (analyzer.cljc:4080)
+; 	cljs.analyzer/analyze-seq* (analyzer.cljc:4078)
+; 	cljs.analyzer/analyze-seq*-wrap (analyzer.cljc:4085)
+; 	cljs.analyzer/analyze-seq*-wrap (analyzer.cljc:4083)
+; 	cljs.analyzer/analyze-seq (analyzer.cljc:4109)
+; 	cljs.analyzer/analyze-seq (analyzer.cljc:4087)
+; 	cljs.analyzer/analyze-form (analyzer.cljc:4296)
+; 	cljs.analyzer/analyze-form (analyzer.cljc:4293)
+; 	cljs.analyzer/analyze* (analyzer.cljc:4349)
+; 	cljs.analyzer/analyze* (analyzer.cljc:4341)
+; 	cljs.analyzer/analyze (analyzer.cljc:4369)
+; 	cljs.analyzer/analyze (analyzer.cljc:4352)
+; 	cljs.analyzer/analyze (analyzer.cljc:4362)
+; 	cljs.analyzer/analyze (analyzer.cljc:4352)
+; 
+nil
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+; ------ REPL Error while processing ---------------------------------------------
+; (cljs.core/load-file "/Users/shantiram/code/js/meditation-timer/src/app/ui.cljs")
+; ------ REPL Error while processing ---------------------------------------------
+; (ns app.ui
+;   (:require
+;    [reagent.core :as r]
+;    [reagent.dom :as dom]
+;    [app.domain :as d]
+;    [cljs.spec.alpha :as s]
+;    [cljs.spec.test.alpha :as stest]
+;    [app.spec :as spec]
+;    ["@capacitor/preferences" :as prefs]
+;    ["@heroicons/react/20/solid" :as icon-sm-solid]))
+; no source by id: [:shadow.build.classpath/resource "app/ui.cljs"]
+; {:id [:shadow.build.classpath/resource "app/ui.cljs"]}
+; ExceptionInfo: no source by id: [:shadow.build.classpath/resource "app/ui.cljs"]
+; 	shadow.build.data/get-source-by-id (data.clj:175)
+; 	shadow.build.data/get-source-by-id (data.clj:172)
+; 	shadow.build.compiler/remove-dead-js-deps/remove-fn--13767/fn--13768 (compiler.clj:1251)
+; 	clojure.core/complement/fn--5737 (core.clj:1455)
+; 	clojure.core/filter/fn--5962 (core.clj:2834)
+; 	clojure.lang.LazySeq.sval (LazySeq.java:42)
+; 	clojure.lang.LazySeq.seq (LazySeq.java:51)
+; 	clojure.lang.ChunkedCons.chunkedNext (ChunkedCons.java:59)
+; 	clojure.core/chunk-next (core.clj:710)
+; 	clojure.core.protocols/fn--8244 (protocols.clj:137)
+; 	clojure.core.protocols/fn--8244 (protocols.clj:124)
+; 	clojure.core.protocols/fn--8204/G--8199--8213 (protocols.clj:19)
+; 	clojure.core.protocols/seq-reduce (protocols.clj:31)
+; 	clojure.core.protocols/fn--8236 (protocols.clj:75)
+; 	clojure.core.protocols/fn--8236 (protocols.clj:75)
+; 	clojure.core.protocols/fn--8178/G--8173--8191 (protocols.clj:13)
+; 	clojure.core/reduce (core.clj:6886)
+; 	clojure.core/into (core.clj:6958)
+; 	clojure.core/into (core.clj:6950)
+; 	shadow.build.compiler/remove-dead-js-deps/remove-fn--13767 (compiler.clj:1253)
+; 	clojure.core/update (core.clj:6231)
+; 	clojure.core/update (core.clj:6223)
+; 	shadow.build.compiler/remove-dead-js-deps/fn--13772/fn--13773 (compiler.clj:1259)
+; 	clojure.core/map/fn--5935 (core.clj:2770)
+; 	clojure.lang.LazySeq.sval (LazySeq.java:42)
+; 	clojure.lang.LazySeq.seq (LazySeq.java:51)
+; 	clojure.lang.RT.seq (RT.java:535)
+; 	clojure.core/seq--5467 (core.clj:139)
+; 	clojure.core.protocols/seq-reduce (protocols.clj:24)
+; 	clojure.core.protocols/fn--8236 (protocols.clj:75)
+; 	clojure.core.protocols/fn--8236 (protocols.clj:75)
+; 	clojure.core.protocols/fn--8178/G--8173--8191 (protocols.clj:13)
+; 	clojure.core/reduce (core.clj:6886)
+; 	clojure.core/into (core.clj:6958)
+; 	clojure.core/into (core.clj:6950)
+; 	shadow.build.compiler/remove-dead-js-deps/fn--13772 (compiler.clj:1260)
+; 	clojure.core/update (core.clj:6231)
+; 	clojure.core/update (core.clj:6223)
+; 	shadow.build.compiler/remove-dead-js-deps (compiler.clj:1257)
+; 	shadow.build.compiler/remove-dead-js-deps (compiler.clj:1246)
+; 	shadow.build.compiler/compile-all (compiler.clj:1504)
+; 	shadow.build.compiler/compile-all (compiler.clj:1356)
+; 	shadow.build.api/compile-sources (api.clj:261)
+; 	shadow.build.api/compile-sources (api.clj:253)
+; 	shadow.build.api/compile-sources (api.clj:265)
+; 	shadow.build.api/compile-sources (api.clj:253)
+; 	shadow.cljs.repl/repl-ns (repl.clj:403)
+; 	shadow.cljs.repl/repl-ns (repl.clj:383)
+; 	shadow.cljs.repl/process-read-result (repl.clj:568)
+; 	shadow.cljs.repl/process-read-result (repl.clj:548)
+; 	shadow.cljs.repl/process-input (repl.clj:711)
+; 	shadow.cljs.repl/process-input (repl.clj:689)
+; 	shadow.cljs.repl/repl-load-file* (repl.clj:195)
+; 	shadow.cljs.repl/repl-load-file* (repl.clj:173)
+; 	shadow.cljs.repl/repl-load-file (repl.clj:231)
+; 	shadow.cljs.repl/repl-load-file (repl.clj:229)
+; 	shadow.cljs.repl/process-read-result (repl.clj:568)
+; 	shadow.cljs.repl/process-read-result (repl.clj:548)
+; 	shadow.cljs.repl/process-input (repl.clj:711)
+; 	shadow.cljs.repl/process-input (repl.clj:689)
+; 	shadow.cljs.devtools.server.worker.impl/fn--15665 (impl.clj:698)
+; 	shadow.cljs.devtools.server.worker.impl/fn--15665 (impl.clj:688)
+; 	clojure.lang.MultiFn.invoke (MultiFn.java:234)
+; 	shadow.cljs.devtools.server.util/server-thread/fn--15339/fn--15340/fn--15348 (util.clj:283)
+; 	shadow.cljs.devtools.server.util/server-thread/fn--15339/fn--15340 (util.clj:282)
+; 	shadow.cljs.devtools.server.util/server-thread/fn--15339 (util.clj:255)
+; 	java.lang.Thread.run (Thread.java:1589)
+; 
+nil
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+; ------ REPL Error while processing ---------------------------------------------
+; (cljs.core/load-file "/Users/shantiram/code/js/meditation-timer/src/app/ui.cljs")
+; ------ REPL Error while processing ---------------------------------------------
+; (ns app.ui
+;   (:require
+;    [reagent.core :as r]
+;    [reagent.dom :as dom]
+;    [app.domain :as d]
+;    [cljs.spec.alpha :as s]
+;    [cljs.spec.test.alpha :as stest]
+;    [app.spec :as spec]
+;    ["@capacitor/preferences" :as prefs]
+;    ["@heroicons/react/20/solid" :as icon-sm-solid]))
+; no source by id: [:shadow.build.classpath/resource "app/ui.cljs"]
+; {:id [:shadow.build.classpath/resource "app/ui.cljs"]}
+; ExceptionInfo: no source by id: [:shadow.build.classpath/resource "app/ui.cljs"]
+; 	shadow.build.data/get-source-by-id (data.clj:175)
+; 	shadow.build.data/get-source-by-id (data.clj:172)
+; 	shadow.build.compiler/remove-dead-js-deps/remove-fn--13767/fn--13768 (compiler.clj:1251)
+; 	clojure.core/complement/fn--5737 (core.clj:1455)
+; 	clojure.core/filter/fn--5962 (core.clj:2834)
+; 	clojure.lang.LazySeq.sval (LazySeq.java:42)
+; 	clojure.lang.LazySeq.seq (LazySeq.java:51)
+; 	clojure.lang.ChunkedCons.chunkedNext (ChunkedCons.java:59)
+; 	clojure.core/chunk-next (core.clj:710)
+; 	clojure.core.protocols/fn--8244 (protocols.clj:137)
+; 	clojure.core.protocols/fn--8244 (protocols.clj:124)
+; 	clojure.core.protocols/fn--8204/G--8199--8213 (protocols.clj:19)
+; 	clojure.core.protocols/seq-reduce (protocols.clj:31)
+; 	clojure.core.protocols/fn--8236 (protocols.clj:75)
+; 	clojure.core.protocols/fn--8236 (protocols.clj:75)
+; 	clojure.core.protocols/fn--8178/G--8173--8191 (protocols.clj:13)
+; 	clojure.core/reduce (core.clj:6886)
+; 	clojure.core/into (core.clj:6958)
+; 	clojure.core/into (core.clj:6950)
+; 	shadow.build.compiler/remove-dead-js-deps/remove-fn--13767 (compiler.clj:1253)
+; 	clojure.core/update (core.clj:6231)
+; 	clojure.core/update (core.clj:6223)
+; 	shadow.build.compiler/remove-dead-js-deps/fn--13772/fn--13773 (compiler.clj:1259)
+; 	clojure.core/map/fn--5935 (core.clj:2770)
+; 	clojure.lang.LazySeq.sval (LazySeq.java:42)
+; 	clojure.lang.LazySeq.seq (LazySeq.java:51)
+; 	clojure.lang.RT.seq (RT.java:535)
+; 	clojure.core/seq--5467 (core.clj:139)
+; 	clojure.core.protocols/seq-reduce (protocols.clj:24)
+; 	clojure.core.protocols/fn--8236 (protocols.clj:75)
+; 	clojure.core.protocols/fn--8236 (protocols.clj:75)
+; 	clojure.core.protocols/fn--8178/G--8173--8191 (protocols.clj:13)
+; 	clojure.core/reduce (core.clj:6886)
+; 	clojure.core/into (core.clj:6958)
+; 	clojure.core/into (core.clj:6950)
+; 	shadow.build.compiler/remove-dead-js-deps/fn--13772 (compiler.clj:1260)
+; 	clojure.core/update (core.clj:6231)
+; 	clojure.core/update (core.clj:6223)
+; 	shadow.build.compiler/remove-dead-js-deps (compiler.clj:1257)
+; 	shadow.build.compiler/remove-dead-js-deps (compiler.clj:1246)
+; 	shadow.build.compiler/compile-all (compiler.clj:1504)
+; 	shadow.build.compiler/compile-all (compiler.clj:1356)
+; 	shadow.build.api/compile-sources (api.clj:261)
+; 	shadow.build.api/compile-sources (api.clj:253)
+; 	shadow.build.api/compile-sources (api.clj:265)
+; 	shadow.build.api/compile-sources (api.clj:253)
+; 	shadow.cljs.repl/repl-ns (repl.clj:403)
+; 	shadow.cljs.repl/repl-ns (repl.clj:383)
+; 	shadow.cljs.repl/process-read-result (repl.clj:568)
+; 	shadow.cljs.repl/process-read-result (repl.clj:548)
+; 	shadow.cljs.repl/process-input (repl.clj:711)
+; 	shadow.cljs.repl/process-input (repl.clj:689)
+; 	shadow.cljs.repl/repl-load-file* (repl.clj:195)
+; 	shadow.cljs.repl/repl-load-file* (repl.clj:173)
+; 	shadow.cljs.repl/repl-load-file (repl.clj:231)
+; 	shadow.cljs.repl/repl-load-file (repl.clj:229)
+; 	shadow.cljs.repl/process-read-result (repl.clj:568)
+; 	shadow.cljs.repl/process-read-result (repl.clj:548)
+; 	shadow.cljs.repl/process-input (repl.clj:711)
+; 	shadow.cljs.repl/process-input (repl.clj:689)
+; 	shadow.cljs.devtools.server.worker.impl/fn--15665 (impl.clj:698)
+; 	shadow.cljs.devtools.server.worker.impl/fn--15665 (impl.clj:688)
+; 	clojure.lang.MultiFn.invoke (MultiFn.java:234)
+; 	shadow.cljs.devtools.server.util/server-thread/fn--15339/fn--15340/fn--15348 (util.clj:283)
+; 	shadow.cljs.devtools.server.util/server-thread/fn--15339/fn--15340 (util.clj:282)
+; 	shadow.cljs.devtools.server.util/server-thread/fn--15339 (util.clj:255)
+; 	java.lang.Thread.run (Thread.java:1589)
+; 
+nil
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+reload!
+main!
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+; ------ WARNING - :undeclared-var -----------------------------------------------
+;  Resource: <eval>:123:36
+;  Use of undeclared Var app.ui/overflow
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING - :undeclared-var -----------------------------------------------
+;  Resource: <eval>:123:46
+;  Use of undeclared Var app.ui/!detect-overflow
+; --------------------------------------------------------------------------------
+; 
+nil
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+; ------ WARNING - :undeclared-var -----------------------------------------------
+;  Resource: <eval>:123:36
+;  Use of undeclared Var app.ui/overflow
+; --------------------------------------------------------------------------------
+; 
+nil
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+{:top false, :bottom true}
+cljs꞉app.ui꞉> 
+{:top true, :bottom false}
+cljs꞉app.ui꞉> 
+{:top false, :bottom true}
+cljs꞉app.ui꞉> 
+{:top true, :bottom false}
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+nil
+; ------ WARNING - :undeclared-var -----------------------------------------------
+;  Resource: <eval>:1:8
+;  Use of undeclared Var app.ui/!overflow
+; --------------------------------------------------------------------------------
+; 
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+nil
+; ------ WARNING - :undeclared-var -----------------------------------------------
+;  Resource: <eval>:1:15
+;  Use of undeclared Var app.ui/!overflow
+; --------------------------------------------------------------------------------
+; 
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+#object[reagent.ratom.RAtom {:val {:top false, :bottom false}}]
+cljs꞉app.ui꞉> 
+#object[reagent.ratom.RAtom {:val {:top false, :bottom false}}]
+cljs꞉app.ui꞉> 
+#object[reagent.ratom.RAtom {:val {:top false, :bottom false}}]
+cljs꞉app.ui꞉> 
+#object[reagent.ratom.RAtom {:val {:top false, :bottom false}}]
+cljs꞉app.ui꞉> 
+#object[reagent.ratom.RAtom {:val {:top false, :bottom false}}]
+cljs꞉app.ui꞉> 
+#object[reagent.ratom.RAtom {:val {:top false, :bottom false}}]
+cljs꞉app.ui꞉> 
+#object[reagent.ratom.RAtom {:val {:top false, :bottom false}}]
+cljs꞉app.ui꞉> 
+#object[reagent.ratom.RAtom {:val {:top false, :bottom false}}]
+cljs꞉app.ui꞉> 
+#object[reagent.ratom.RAtom {:val {:top false, :bottom false}}]
+cljs꞉app.ui꞉> 
+#object[reagent.ratom.RAtom {:val {:top false, :bottom false}}]
+cljs꞉app.ui꞉> 
+#object[reagent.ratom.RAtom {:val {:top false, :bottom false}}]
+cljs꞉app.ui꞉> 
+{:top true, :bottom true}
+cljs꞉app.ui꞉> 
+{:top true, :bottom true}
+cljs꞉app.ui꞉> 
+{:top true, :bottom true}
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+{:top true, :bottom true}
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+{:page :edit,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "3bf0ac3c-75a7-4528-8fd3-60e8b92b882a",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "9f7cef7a-c57d-4f90-aa71-9a527ef435f0", :duration 18, :timeout nil}
+    {:id #uuid "dc8677e9-f4e8-49dd-97a9-bab63c63e456", :duration 5, :timeout nil}]}
+  {:id #uuid "66c053aa-03ea-41e0-92ee-931f1f0914cf",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "ddc45d95-3392-4f94-a3b0-361145656a58", :duration 18, :timeout nil}
+    {:id #uuid "bbab6529-9c4d-439c-958b-01e7bf854396", :duration 5, :timeout nil}]}
+  {:id #uuid "65737cb3-6614-44b5-88fd-5adc0b5e36d7",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "c48ff05e-8a6b-48d8-81b5-4de4399da458", :duration 18, :timeout nil}
+    {:id #uuid "0ea8818e-19ae-41a3-bc43-38770facba27", :duration 5, :timeout nil}]}
+  {:id #uuid "ffab71c1-c583-4b68-8c27-08fceeebc23a",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "e97c9117-328a-4232-ac04-92395699a388", :duration 18, :timeout nil}
+    {:id #uuid "25aa231f-7529-4139-9482-949a8020675d", :duration 5, :timeout nil}]})}
+cljs꞉app.ui꞉> 
+{:page :edit,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "50947062-e68a-4d40-94e2-0ae5267f5ff9",
+   :name "Timer 5",
+   :steps
+   [{:id #uuid "a3e69a51-fc4a-4e2f-a0af-6b2e28b4bd47", :duration 18, :timeout nil}
+    {:id #uuid "938b8bfc-6262-4531-a810-761596432de4", :duration 5, :timeout nil}]}
+  {:id #uuid "3bf0ac3c-75a7-4528-8fd3-60e8b92b882a",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "9f7cef7a-c57d-4f90-aa71-9a527ef435f0", :duration 18, :timeout nil}
+    {:id #uuid "dc8677e9-f4e8-49dd-97a9-bab63c63e456", :duration 5, :timeout nil}]}
+  {:id #uuid "66c053aa-03ea-41e0-92ee-931f1f0914cf",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "ddc45d95-3392-4f94-a3b0-361145656a58", :duration 18, :timeout nil}
+    {:id #uuid "bbab6529-9c4d-439c-958b-01e7bf854396", :duration 5, :timeout nil}]}
+  {:id #uuid "65737cb3-6614-44b5-88fd-5adc0b5e36d7",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "c48ff05e-8a6b-48d8-81b5-4de4399da458", :duration 18, :timeout nil}
+    {:id #uuid "0ea8818e-19ae-41a3-bc43-38770facba27", :duration 5, :timeout nil}]}
+  {:id #uuid "ffab71c1-c583-4b68-8c27-08fceeebc23a",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "e97c9117-328a-4232-ac04-92395699a388", :duration 18, :timeout nil}
+    {:id #uuid "25aa231f-7529-4139-9482-949a8020675d", :duration 5, :timeout nil}]})}
+cljs꞉app.ui꞉> 
+{:page :edit,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "359241cd-ba5a-46b3-a804-c7b1d06c8648",
+   :name "Timer 6",
+   :steps
+   [{:id #uuid "5f4207f1-f618-4922-b651-6aac69857d9d", :duration 18, :timeout nil}
+    {:id #uuid "9af75aa9-e589-49f4-8373-71edc578ac7c", :duration 5, :timeout nil}]}
+  {:id #uuid "50947062-e68a-4d40-94e2-0ae5267f5ff9",
+   :name "Timer 5",
+   :steps
+   [{:id #uuid "a3e69a51-fc4a-4e2f-a0af-6b2e28b4bd47", :duration 18, :timeout nil}
+    {:id #uuid "938b8bfc-6262-4531-a810-761596432de4", :duration 5, :timeout nil}]}
+  {:id #uuid "3bf0ac3c-75a7-4528-8fd3-60e8b92b882a",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "9f7cef7a-c57d-4f90-aa71-9a527ef435f0", :duration 18, :timeout nil}
+    {:id #uuid "dc8677e9-f4e8-49dd-97a9-bab63c63e456", :duration 5, :timeout nil}]}
+  {:id #uuid "66c053aa-03ea-41e0-92ee-931f1f0914cf",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "ddc45d95-3392-4f94-a3b0-361145656a58", :duration 18, :timeout nil}
+    {:id #uuid "bbab6529-9c4d-439c-958b-01e7bf854396", :duration 5, :timeout nil}]}
+  {:id #uuid "65737cb3-6614-44b5-88fd-5adc0b5e36d7",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "c48ff05e-8a6b-48d8-81b5-4de4399da458", :duration 18, :timeout nil}
+    {:id #uuid "0ea8818e-19ae-41a3-bc43-38770facba27", :duration 5, :timeout nil}]}
+  {:id #uuid "ffab71c1-c583-4b68-8c27-08fceeebc23a",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "e97c9117-328a-4232-ac04-92395699a388", :duration 18, :timeout nil}
+    {:id #uuid "25aa231f-7529-4139-9482-949a8020675d", :duration 5, :timeout nil}]})}
+cljs꞉app.ui꞉> 
+{:page :edit,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "5f069052-5ec6-4eb3-b96c-ad74d6f7a220",
+   :name "Timer 7",
+   :steps
+   [{:id #uuid "cdbbb7ea-df7e-4ae8-831f-363d0eacb290", :duration 18, :timeout nil}
+    {:id #uuid "14a2e39b-7ecb-4c05-be54-730e81e9250f", :duration 5, :timeout nil}]}
+  {:id #uuid "359241cd-ba5a-46b3-a804-c7b1d06c8648",
+   :name "Timer 6",
+   :steps
+   [{:id #uuid "5f4207f1-f618-4922-b651-6aac69857d9d", :duration 18, :timeout nil}
+    {:id #uuid "9af75aa9-e589-49f4-8373-71edc578ac7c", :duration 5, :timeout nil}]}
+  {:id #uuid "50947062-e68a-4d40-94e2-0ae5267f5ff9",
+   :name "Timer 5",
+   :steps
+   [{:id #uuid "a3e69a51-fc4a-4e2f-a0af-6b2e28b4bd47", :duration 18, :timeout nil}
+    {:id #uuid "938b8bfc-6262-4531-a810-761596432de4", :duration 5, :timeout nil}]}
+  {:id #uuid "3bf0ac3c-75a7-4528-8fd3-60e8b92b882a",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "9f7cef7a-c57d-4f90-aa71-9a527ef435f0", :duration 18, :timeout nil}
+    {:id #uuid "dc8677e9-f4e8-49dd-97a9-bab63c63e456", :duration 5, :timeout nil}]}
+  {:id #uuid "66c053aa-03ea-41e0-92ee-931f1f0914cf",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "ddc45d95-3392-4f94-a3b0-361145656a58", :duration 18, :timeout nil}
+    {:id #uuid "bbab6529-9c4d-439c-958b-01e7bf854396", :duration 5, :timeout nil}]}
+  {:id #uuid "65737cb3-6614-44b5-88fd-5adc0b5e36d7",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "c48ff05e-8a6b-48d8-81b5-4de4399da458", :duration 18, :timeout nil}
+    {:id #uuid "0ea8818e-19ae-41a3-bc43-38770facba27", :duration 5, :timeout nil}]}
+  {:id #uuid "ffab71c1-c583-4b68-8c27-08fceeebc23a",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "e97c9117-328a-4232-ac04-92395699a388", :duration 18, :timeout nil}
+    {:id #uuid "25aa231f-7529-4139-9482-949a8020675d", :duration 5, :timeout nil}]})}
+cljs꞉app.ui꞉> 
+{:page :edit,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "a522c048-cf5a-425b-b016-5bbeeafa2a19",
+   :name "Timer 8",
+   :steps
+   [{:id #uuid "d7782074-eaee-439d-abcf-45cb5f7a7806", :duration 18, :timeout nil}
+    {:id #uuid "f80fb5a7-353d-4570-b40d-5d83a70a1e9a", :duration 5, :timeout nil}]}
+  {:id #uuid "5f069052-5ec6-4eb3-b96c-ad74d6f7a220",
+   :name "Timer 7",
+   :steps
+   [{:id #uuid "cdbbb7ea-df7e-4ae8-831f-363d0eacb290", :duration 18, :timeout nil}
+    {:id #uuid "14a2e39b-7ecb-4c05-be54-730e81e9250f", :duration 5, :timeout nil}]}
+  {:id #uuid "359241cd-ba5a-46b3-a804-c7b1d06c8648",
+   :name "Timer 6",
+   :steps
+   [{:id #uuid "5f4207f1-f618-4922-b651-6aac69857d9d", :duration 18, :timeout nil}
+    {:id #uuid "9af75aa9-e589-49f4-8373-71edc578ac7c", :duration 5, :timeout nil}]}
+  {:id #uuid "50947062-e68a-4d40-94e2-0ae5267f5ff9",
+   :name "Timer 5",
+   :steps
+   [{:id #uuid "a3e69a51-fc4a-4e2f-a0af-6b2e28b4bd47", :duration 18, :timeout nil}
+    {:id #uuid "938b8bfc-6262-4531-a810-761596432de4", :duration 5, :timeout nil}]}
+  {:id #uuid "3bf0ac3c-75a7-4528-8fd3-60e8b92b882a",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "9f7cef7a-c57d-4f90-aa71-9a527ef435f0", :duration 18, :timeout nil}
+    {:id #uuid "dc8677e9-f4e8-49dd-97a9-bab63c63e456", :duration 5, :timeout nil}]}
+  {:id #uuid "66c053aa-03ea-41e0-92ee-931f1f0914cf",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "ddc45d95-3392-4f94-a3b0-361145656a58", :duration 18, :timeout nil}
+    {:id #uuid "bbab6529-9c4d-439c-958b-01e7bf854396", :duration 5, :timeout nil}]}
+  {:id #uuid "65737cb3-6614-44b5-88fd-5adc0b5e36d7",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "c48ff05e-8a6b-48d8-81b5-4de4399da458", :duration 18, :timeout nil}
+    {:id #uuid "0ea8818e-19ae-41a3-bc43-38770facba27", :duration 5, :timeout nil}]}
+  {:id #uuid "ffab71c1-c583-4b68-8c27-08fceeebc23a",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "e97c9117-328a-4232-ac04-92395699a388", :duration 18, :timeout nil}
+    {:id #uuid "25aa231f-7529-4139-9482-949a8020675d", :duration 5, :timeout nil}]})}
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+; ------ WARNING - :undeclared-var -----------------------------------------------
+;  Resource: <eval>:263:4
+;  Use of undeclared Var app.ui/scrollabe
+; --------------------------------------------------------------------------------
+; 
+nil
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+reload!
+main!
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+reload!
+main!
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+reload!
+main!
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+reload!
+main!
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+reload!
+main!
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+reload!
+main!
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+reload!
+main!
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+reload!
+main!
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+reload!
+main!
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+reload!
+main!
+[]
+cljs꞉app.ui꞉> 
+#'app.ui/test-timer
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+{:page :edit,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "b3219453-2fff-4336-91aa-bb075af8405f",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "73b51cdb-1c01-441f-9338-b51f2f656b12", :duration 18, :timeout nil}
+    {:id #uuid "d0433da9-0eee-48a0-8072-ba58b39db449", :duration 5, :timeout nil}]}
+  {:id #uuid "ad680b1e-d6ea-4ab1-95d3-927713c7a5dc",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "a66ae798-e115-4109-92d1-86f1df8bcdd1", :duration 18, :timeout nil}
+    {:id #uuid "2282a389-d59a-41c8-9dce-a5c8b121f9d0", :duration 5, :timeout nil}]}
+  {:id #uuid "2215d65b-6e90-4600-a28e-d09704926a94",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "1c406825-7a85-4cc4-ac57-af7464280179", :duration 18, :timeout nil}
+    {:id #uuid "2af3028c-ad66-4b6e-81db-7d0059b84271", :duration 5, :timeout nil}]}
+  {:id #uuid "780f5da8-fdd6-4cea-a5a4-4810a6095cf9",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "ea3a37de-c88e-4e9a-9c48-0b39a3b9becf", :duration 18, :timeout nil}
+    {:id #uuid "7cc4fe79-d1ca-412a-b720-803350d6db33", :duration 5, :timeout nil}]})}
+cljs꞉app.ui꞉> 
+{:page :edit,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "d0f09a66-be8a-4b7a-b157-d30bc594c3bb",
+   :name "Timer 5",
+   :steps
+   [{:id #uuid "ac2705c7-abca-447b-b51e-65f28df53be8", :duration 18, :timeout nil}
+    {:id #uuid "3ac355de-d213-4c40-bc53-e3f3a4a3e24b", :duration 5, :timeout nil}]}
+  {:id #uuid "b3219453-2fff-4336-91aa-bb075af8405f",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "73b51cdb-1c01-441f-9338-b51f2f656b12", :duration 18, :timeout nil}
+    {:id #uuid "d0433da9-0eee-48a0-8072-ba58b39db449", :duration 5, :timeout nil}]}
+  {:id #uuid "ad680b1e-d6ea-4ab1-95d3-927713c7a5dc",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "a66ae798-e115-4109-92d1-86f1df8bcdd1", :duration 18, :timeout nil}
+    {:id #uuid "2282a389-d59a-41c8-9dce-a5c8b121f9d0", :duration 5, :timeout nil}]}
+  {:id #uuid "2215d65b-6e90-4600-a28e-d09704926a94",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "1c406825-7a85-4cc4-ac57-af7464280179", :duration 18, :timeout nil}
+    {:id #uuid "2af3028c-ad66-4b6e-81db-7d0059b84271", :duration 5, :timeout nil}]}
+  {:id #uuid "780f5da8-fdd6-4cea-a5a4-4810a6095cf9",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "ea3a37de-c88e-4e9a-9c48-0b39a3b9becf", :duration 18, :timeout nil}
+    {:id #uuid "7cc4fe79-d1ca-412a-b720-803350d6db33", :duration 5, :timeout nil}]})}
+cljs꞉app.ui꞉> 
+{:page :edit,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "f47198fa-5b79-47fc-83b5-a1f1654a5933",
+   :name "Timer 6",
+   :steps
+   [{:id #uuid "024e0209-5ae5-443e-9541-679a05314b8d", :duration 18, :timeout nil}
+    {:id #uuid "2617727a-9ac2-4f15-ba45-423687a5d12d", :duration 5, :timeout nil}]}
+  {:id #uuid "d0f09a66-be8a-4b7a-b157-d30bc594c3bb",
+   :name "Timer 5",
+   :steps
+   [{:id #uuid "ac2705c7-abca-447b-b51e-65f28df53be8", :duration 18, :timeout nil}
+    {:id #uuid "3ac355de-d213-4c40-bc53-e3f3a4a3e24b", :duration 5, :timeout nil}]}
+  {:id #uuid "b3219453-2fff-4336-91aa-bb075af8405f",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "73b51cdb-1c01-441f-9338-b51f2f656b12", :duration 18, :timeout nil}
+    {:id #uuid "d0433da9-0eee-48a0-8072-ba58b39db449", :duration 5, :timeout nil}]}
+  {:id #uuid "ad680b1e-d6ea-4ab1-95d3-927713c7a5dc",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "a66ae798-e115-4109-92d1-86f1df8bcdd1", :duration 18, :timeout nil}
+    {:id #uuid "2282a389-d59a-41c8-9dce-a5c8b121f9d0", :duration 5, :timeout nil}]}
+  {:id #uuid "2215d65b-6e90-4600-a28e-d09704926a94",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "1c406825-7a85-4cc4-ac57-af7464280179", :duration 18, :timeout nil}
+    {:id #uuid "2af3028c-ad66-4b6e-81db-7d0059b84271", :duration 5, :timeout nil}]}
+  {:id #uuid "780f5da8-fdd6-4cea-a5a4-4810a6095cf9",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "ea3a37de-c88e-4e9a-9c48-0b39a3b9becf", :duration 18, :timeout nil}
+    {:id #uuid "7cc4fe79-d1ca-412a-b720-803350d6db33", :duration 5, :timeout nil}]})}
+cljs꞉app.ui꞉> 
+{:page :edit,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "d80ceb78-96d5-4979-b269-4c2348197d21",
+   :name "Timer 7",
+   :steps
+   [{:id #uuid "4f0b57b7-1793-4859-84f6-b27d1e363547", :duration 18, :timeout nil}
+    {:id #uuid "72dc9ca2-e8ab-403d-a2c5-8584c69fa71d", :duration 5, :timeout nil}]}
+  {:id #uuid "f47198fa-5b79-47fc-83b5-a1f1654a5933",
+   :name "Timer 6",
+   :steps
+   [{:id #uuid "024e0209-5ae5-443e-9541-679a05314b8d", :duration 18, :timeout nil}
+    {:id #uuid "2617727a-9ac2-4f15-ba45-423687a5d12d", :duration 5, :timeout nil}]}
+  {:id #uuid "d0f09a66-be8a-4b7a-b157-d30bc594c3bb",
+   :name "Timer 5",
+   :steps
+   [{:id #uuid "ac2705c7-abca-447b-b51e-65f28df53be8", :duration 18, :timeout nil}
+    {:id #uuid "3ac355de-d213-4c40-bc53-e3f3a4a3e24b", :duration 5, :timeout nil}]}
+  {:id #uuid "b3219453-2fff-4336-91aa-bb075af8405f",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "73b51cdb-1c01-441f-9338-b51f2f656b12", :duration 18, :timeout nil}
+    {:id #uuid "d0433da9-0eee-48a0-8072-ba58b39db449", :duration 5, :timeout nil}]}
+  {:id #uuid "ad680b1e-d6ea-4ab1-95d3-927713c7a5dc",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "a66ae798-e115-4109-92d1-86f1df8bcdd1", :duration 18, :timeout nil}
+    {:id #uuid "2282a389-d59a-41c8-9dce-a5c8b121f9d0", :duration 5, :timeout nil}]}
+  {:id #uuid "2215d65b-6e90-4600-a28e-d09704926a94",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "1c406825-7a85-4cc4-ac57-af7464280179", :duration 18, :timeout nil}
+    {:id #uuid "2af3028c-ad66-4b6e-81db-7d0059b84271", :duration 5, :timeout nil}]}
+  {:id #uuid "780f5da8-fdd6-4cea-a5a4-4810a6095cf9",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "ea3a37de-c88e-4e9a-9c48-0b39a3b9becf", :duration 18, :timeout nil}
+    {:id #uuid "7cc4fe79-d1ca-412a-b720-803350d6db33", :duration 5, :timeout nil}]})}
+cljs꞉app.ui꞉> 
+{:page :edit,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "8cc679e2-c633-4ba1-9f48-892907706b25",
+   :name "Timer 8",
+   :steps
+   [{:id #uuid "599319a9-22ed-4979-af96-c7d3339bbb61", :duration 18, :timeout nil}
+    {:id #uuid "9406dda3-06f6-4e4e-be89-17d70e99ca0e", :duration 5, :timeout nil}]}
+  {:id #uuid "d80ceb78-96d5-4979-b269-4c2348197d21",
+   :name "Timer 7",
+   :steps
+   [{:id #uuid "4f0b57b7-1793-4859-84f6-b27d1e363547", :duration 18, :timeout nil}
+    {:id #uuid "72dc9ca2-e8ab-403d-a2c5-8584c69fa71d", :duration 5, :timeout nil}]}
+  {:id #uuid "f47198fa-5b79-47fc-83b5-a1f1654a5933",
+   :name "Timer 6",
+   :steps
+   [{:id #uuid "024e0209-5ae5-443e-9541-679a05314b8d", :duration 18, :timeout nil}
+    {:id #uuid "2617727a-9ac2-4f15-ba45-423687a5d12d", :duration 5, :timeout nil}]}
+  {:id #uuid "d0f09a66-be8a-4b7a-b157-d30bc594c3bb",
+   :name "Timer 5",
+   :steps
+   [{:id #uuid "ac2705c7-abca-447b-b51e-65f28df53be8", :duration 18, :timeout nil}
+    {:id #uuid "3ac355de-d213-4c40-bc53-e3f3a4a3e24b", :duration 5, :timeout nil}]}
+  {:id #uuid "b3219453-2fff-4336-91aa-bb075af8405f",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "73b51cdb-1c01-441f-9338-b51f2f656b12", :duration 18, :timeout nil}
+    {:id #uuid "d0433da9-0eee-48a0-8072-ba58b39db449", :duration 5, :timeout nil}]}
+  {:id #uuid "ad680b1e-d6ea-4ab1-95d3-927713c7a5dc",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "a66ae798-e115-4109-92d1-86f1df8bcdd1", :duration 18, :timeout nil}
+    {:id #uuid "2282a389-d59a-41c8-9dce-a5c8b121f9d0", :duration 5, :timeout nil}]}
+  {:id #uuid "2215d65b-6e90-4600-a28e-d09704926a94",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "1c406825-7a85-4cc4-ac57-af7464280179", :duration 18, :timeout nil}
+    {:id #uuid "2af3028c-ad66-4b6e-81db-7d0059b84271", :duration 5, :timeout nil}]}
+  {:id #uuid "780f5da8-fdd6-4cea-a5a4-4810a6095cf9",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "ea3a37de-c88e-4e9a-9c48-0b39a3b9becf", :duration 18, :timeout nil}
+    {:id #uuid "7cc4fe79-d1ca-412a-b720-803350d6db33", :duration 5, :timeout nil}]})}
+cljs꞉app.ui꞉> 
+{:page :edit,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "44e8f4d0-0d76-4221-81c1-076adc94628c",
+   :name "Timer 9",
+   :steps
+   [{:id #uuid "b2c9a0ab-4346-4dfd-8d92-0be7921fbe12", :duration 18, :timeout nil}
+    {:id #uuid "c6b25824-2ca7-4340-b8e1-3b1430822044", :duration 5, :timeout nil}]}
+  {:id #uuid "8cc679e2-c633-4ba1-9f48-892907706b25",
+   :name "Timer 8",
+   :steps
+   [{:id #uuid "599319a9-22ed-4979-af96-c7d3339bbb61", :duration 18, :timeout nil}
+    {:id #uuid "9406dda3-06f6-4e4e-be89-17d70e99ca0e", :duration 5, :timeout nil}]}
+  {:id #uuid "d80ceb78-96d5-4979-b269-4c2348197d21",
+   :name "Timer 7",
+   :steps
+   [{:id #uuid "4f0b57b7-1793-4859-84f6-b27d1e363547", :duration 18, :timeout nil}
+    {:id #uuid "72dc9ca2-e8ab-403d-a2c5-8584c69fa71d", :duration 5, :timeout nil}]}
+  {:id #uuid "f47198fa-5b79-47fc-83b5-a1f1654a5933",
+   :name "Timer 6",
+   :steps
+   [{:id #uuid "024e0209-5ae5-443e-9541-679a05314b8d", :duration 18, :timeout nil}
+    {:id #uuid "2617727a-9ac2-4f15-ba45-423687a5d12d", :duration 5, :timeout nil}]}
+  {:id #uuid "d0f09a66-be8a-4b7a-b157-d30bc594c3bb",
+   :name "Timer 5",
+   :steps
+   [{:id #uuid "ac2705c7-abca-447b-b51e-65f28df53be8", :duration 18, :timeout nil}
+    {:id #uuid "3ac355de-d213-4c40-bc53-e3f3a4a3e24b", :duration 5, :timeout nil}]}
+  {:id #uuid "b3219453-2fff-4336-91aa-bb075af8405f",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "73b51cdb-1c01-441f-9338-b51f2f656b12", :duration 18, :timeout nil}
+    {:id #uuid "d0433da9-0eee-48a0-8072-ba58b39db449", :duration 5, :timeout nil}]}
+  {:id #uuid "ad680b1e-d6ea-4ab1-95d3-927713c7a5dc",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "a66ae798-e115-4109-92d1-86f1df8bcdd1", :duration 18, :timeout nil}
+    {:id #uuid "2282a389-d59a-41c8-9dce-a5c8b121f9d0", :duration 5, :timeout nil}]}
+  {:id #uuid "2215d65b-6e90-4600-a28e-d09704926a94",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "1c406825-7a85-4cc4-ac57-af7464280179", :duration 18, :timeout nil}
+    {:id #uuid "2af3028c-ad66-4b6e-81db-7d0059b84271", :duration 5, :timeout nil}]}
+  {:id #uuid "780f5da8-fdd6-4cea-a5a4-4810a6095cf9",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "ea3a37de-c88e-4e9a-9c48-0b39a3b9becf", :duration 18, :timeout nil}
+    {:id #uuid "7cc4fe79-d1ca-412a-b720-803350d6db33", :duration 5, :timeout nil}]})}
+cljs꞉app.ui꞉> 
+{:page :edit,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "3616fde7-4926-45af-9948-7fecdf953c08",
+   :name "Timer 10",
+   :steps
+   [{:id #uuid "7ee02ecc-11f5-4e3a-87a5-0e3b9f299b76", :duration 18, :timeout nil}
+    {:id #uuid "4d70c4b2-170c-4bfe-b917-292c51ffb5fd", :duration 5, :timeout nil}]}
+  {:id #uuid "44e8f4d0-0d76-4221-81c1-076adc94628c",
+   :name "Timer 9",
+   :steps
+   [{:id #uuid "b2c9a0ab-4346-4dfd-8d92-0be7921fbe12", :duration 18, :timeout nil}
+    {:id #uuid "c6b25824-2ca7-4340-b8e1-3b1430822044", :duration 5, :timeout nil}]}
+  {:id #uuid "8cc679e2-c633-4ba1-9f48-892907706b25",
+   :name "Timer 8",
+   :steps
+   [{:id #uuid "599319a9-22ed-4979-af96-c7d3339bbb61", :duration 18, :timeout nil}
+    {:id #uuid "9406dda3-06f6-4e4e-be89-17d70e99ca0e", :duration 5, :timeout nil}]}
+  {:id #uuid "d80ceb78-96d5-4979-b269-4c2348197d21",
+   :name "Timer 7",
+   :steps
+   [{:id #uuid "4f0b57b7-1793-4859-84f6-b27d1e363547", :duration 18, :timeout nil}
+    {:id #uuid "72dc9ca2-e8ab-403d-a2c5-8584c69fa71d", :duration 5, :timeout nil}]}
+  {:id #uuid "f47198fa-5b79-47fc-83b5-a1f1654a5933",
+   :name "Timer 6",
+   :steps
+   [{:id #uuid "024e0209-5ae5-443e-9541-679a05314b8d", :duration 18, :timeout nil}
+    {:id #uuid "2617727a-9ac2-4f15-ba45-423687a5d12d", :duration 5, :timeout nil}]}
+  {:id #uuid "d0f09a66-be8a-4b7a-b157-d30bc594c3bb",
+   :name "Timer 5",
+   :steps
+   [{:id #uuid "ac2705c7-abca-447b-b51e-65f28df53be8", :duration 18, :timeout nil}
+    {:id #uuid "3ac355de-d213-4c40-bc53-e3f3a4a3e24b", :duration 5, :timeout nil}]}
+  {:id #uuid "b3219453-2fff-4336-91aa-bb075af8405f",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "73b51cdb-1c01-441f-9338-b51f2f656b12", :duration 18, :timeout nil}
+    {:id #uuid "d0433da9-0eee-48a0-8072-ba58b39db449", :duration 5, :timeout nil}]}
+  {:id #uuid "ad680b1e-d6ea-4ab1-95d3-927713c7a5dc",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "a66ae798-e115-4109-92d1-86f1df8bcdd1", :duration 18, :timeout nil}
+    {:id #uuid "2282a389-d59a-41c8-9dce-a5c8b121f9d0", :duration 5, :timeout nil}]}
+  {:id #uuid "2215d65b-6e90-4600-a28e-d09704926a94",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "1c406825-7a85-4cc4-ac57-af7464280179", :duration 18, :timeout nil}
+    {:id #uuid "2af3028c-ad66-4b6e-81db-7d0059b84271", :duration 5, :timeout nil}]}
+  {:id #uuid "780f5da8-fdd6-4cea-a5a4-4810a6095cf9",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "ea3a37de-c88e-4e9a-9c48-0b39a3b9becf", :duration 18, :timeout nil}
+    {:id #uuid "7cc4fe79-d1ca-412a-b720-803350d6db33", :duration 5, :timeout nil}]})}
+cljs꞉app.ui꞉> 
+{:page :edit,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "ce5dba77-1e72-4b08-b58b-d9af5e0eed25",
+   :name "Timer 11",
+   :steps
+   [{:id #uuid "60d11c0c-fddb-4503-8816-574fbe52aa96", :duration 18, :timeout nil}
+    {:id #uuid "28446b48-f404-4466-95bb-8a5c20d23662", :duration 5, :timeout nil}]}
+  {:id #uuid "3616fde7-4926-45af-9948-7fecdf953c08",
+   :name "Timer 10",
+   :steps
+   [{:id #uuid "7ee02ecc-11f5-4e3a-87a5-0e3b9f299b76", :duration 18, :timeout nil}
+    {:id #uuid "4d70c4b2-170c-4bfe-b917-292c51ffb5fd", :duration 5, :timeout nil}]}
+  {:id #uuid "44e8f4d0-0d76-4221-81c1-076adc94628c",
+   :name "Timer 9",
+   :steps
+   [{:id #uuid "b2c9a0ab-4346-4dfd-8d92-0be7921fbe12", :duration 18, :timeout nil}
+    {:id #uuid "c6b25824-2ca7-4340-b8e1-3b1430822044", :duration 5, :timeout nil}]}
+  {:id #uuid "8cc679e2-c633-4ba1-9f48-892907706b25",
+   :name "Timer 8",
+   :steps
+   [{:id #uuid "599319a9-22ed-4979-af96-c7d3339bbb61", :duration 18, :timeout nil}
+    {:id #uuid "9406dda3-06f6-4e4e-be89-17d70e99ca0e", :duration 5, :timeout nil}]}
+  {:id #uuid "d80ceb78-96d5-4979-b269-4c2348197d21",
+   :name "Timer 7",
+   :steps
+   [{:id #uuid "4f0b57b7-1793-4859-84f6-b27d1e363547", :duration 18, :timeout nil}
+    {:id #uuid "72dc9ca2-e8ab-403d-a2c5-8584c69fa71d", :duration 5, :timeout nil}]}
+  {:id #uuid "f47198fa-5b79-47fc-83b5-a1f1654a5933",
+   :name "Timer 6",
+   :steps
+   [{:id #uuid "024e0209-5ae5-443e-9541-679a05314b8d", :duration 18, :timeout nil}
+    {:id #uuid "2617727a-9ac2-4f15-ba45-423687a5d12d", :duration 5, :timeout nil}]}
+  {:id #uuid "d0f09a66-be8a-4b7a-b157-d30bc594c3bb",
+   :name "Timer 5",
+   :steps
+   [{:id #uuid "ac2705c7-abca-447b-b51e-65f28df53be8", :duration 18, :timeout nil}
+    {:id #uuid "3ac355de-d213-4c40-bc53-e3f3a4a3e24b", :duration 5, :timeout nil}]}
+  {:id #uuid "b3219453-2fff-4336-91aa-bb075af8405f",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "73b51cdb-1c01-441f-9338-b51f2f656b12", :duration 18, :timeout nil}
+    {:id #uuid "d0433da9-0eee-48a0-8072-ba58b39db449", :duration 5, :timeout nil}]}
+  {:id #uuid "ad680b1e-d6ea-4ab1-95d3-927713c7a5dc",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "a66ae798-e115-4109-92d1-86f1df8bcdd1", :duration 18, :timeout nil}
+    {:id #uuid "2282a389-d59a-41c8-9dce-a5c8b121f9d0", :duration 5, :timeout nil}]}
+  {:id #uuid "2215d65b-6e90-4600-a28e-d09704926a94",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "1c406825-7a85-4cc4-ac57-af7464280179", :duration 18, :timeout nil}
+    {:id #uuid "2af3028c-ad66-4b6e-81db-7d0059b84271", :duration 5, :timeout nil}]}
+  {:id #uuid "780f5da8-fdd6-4cea-a5a4-4810a6095cf9",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "ea3a37de-c88e-4e9a-9c48-0b39a3b9becf", :duration 18, :timeout nil}
+    {:id #uuid "7cc4fe79-d1ca-412a-b720-803350d6db33", :duration 5, :timeout nil}]})}
+cljs꞉app.ui꞉> 
+{:page :edit,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "ce5dba77-1e72-4b08-b58b-d9af5e0eed25",
+   :name "Timer 11",
+   :steps
+   [{:id #uuid "60d11c0c-fddb-4503-8816-574fbe52aa96", :duration 18, :timeout nil}
+    {:id #uuid "28446b48-f404-4466-95bb-8a5c20d23662", :duration 5, :timeout nil}]}
+  {:id #uuid "3616fde7-4926-45af-9948-7fecdf953c08",
+   :name "Timer 10",
+   :steps
+   [{:id #uuid "7ee02ecc-11f5-4e3a-87a5-0e3b9f299b76", :duration 18, :timeout nil}
+    {:id #uuid "4d70c4b2-170c-4bfe-b917-292c51ffb5fd", :duration 5, :timeout nil}]}
+  {:id #uuid "44e8f4d0-0d76-4221-81c1-076adc94628c",
+   :name "Timer 9",
+   :steps
+   [{:id #uuid "b2c9a0ab-4346-4dfd-8d92-0be7921fbe12", :duration 18, :timeout nil}
+    {:id #uuid "c6b25824-2ca7-4340-b8e1-3b1430822044", :duration 5, :timeout nil}]}
+  {:id #uuid "8cc679e2-c633-4ba1-9f48-892907706b25",
+   :name "Timer 8",
+   :steps
+   [{:id #uuid "599319a9-22ed-4979-af96-c7d3339bbb61", :duration 18, :timeout nil}
+    {:id #uuid "9406dda3-06f6-4e4e-be89-17d70e99ca0e", :duration 5, :timeout nil}]}
+  {:id #uuid "d80ceb78-96d5-4979-b269-4c2348197d21",
+   :name "Timer 7",
+   :steps
+   [{:id #uuid "4f0b57b7-1793-4859-84f6-b27d1e363547", :duration 18, :timeout nil}
+    {:id #uuid "72dc9ca2-e8ab-403d-a2c5-8584c69fa71d", :duration 5, :timeout nil}]}
+  {:id #uuid "f47198fa-5b79-47fc-83b5-a1f1654a5933",
+   :name "Timer 6",
+   :steps
+   [{:id #uuid "024e0209-5ae5-443e-9541-679a05314b8d", :duration 18, :timeout nil}
+    {:id #uuid "2617727a-9ac2-4f15-ba45-423687a5d12d", :duration 5, :timeout nil}]}
+  {:id #uuid "d0f09a66-be8a-4b7a-b157-d30bc594c3bb",
+   :name "Timer 5",
+   :steps
+   [{:id #uuid "ac2705c7-abca-447b-b51e-65f28df53be8", :duration 18, :timeout nil}
+    {:id #uuid "3ac355de-d213-4c40-bc53-e3f3a4a3e24b", :duration 5, :timeout nil}]}
+  {:id #uuid "b3219453-2fff-4336-91aa-bb075af8405f",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "73b51cdb-1c01-441f-9338-b51f2f656b12", :duration 18, :timeout nil}
+    {:id #uuid "d0433da9-0eee-48a0-8072-ba58b39db449", :duration 5, :timeout nil}]}
+  {:id #uuid "ad680b1e-d6ea-4ab1-95d3-927713c7a5dc",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "a66ae798-e115-4109-92d1-86f1df8bcdd1", :duration 18, :timeout nil}
+    {:id #uuid "2282a389-d59a-41c8-9dce-a5c8b121f9d0", :duration 5, :timeout nil}]}
+  {:id #uuid "2215d65b-6e90-4600-a28e-d09704926a94",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "1c406825-7a85-4cc4-ac57-af7464280179", :duration 18, :timeout nil}
+    {:id #uuid "2af3028c-ad66-4b6e-81db-7d0059b84271", :duration 5, :timeout nil}]}
+  {:id #uuid "780f5da8-fdd6-4cea-a5a4-4810a6095cf9",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "ea3a37de-c88e-4e9a-9c48-0b39a3b9becf", :duration 18, :timeout nil}
+    {:id #uuid "7cc4fe79-d1ca-412a-b720-803350d6db33", :duration 5, :timeout nil}]}),
+ :debug true}
+cljs꞉app.ui꞉> 
+{:page :edit,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "ce5dba77-1e72-4b08-b58b-d9af5e0eed25",
+   :name "Timer 11",
+   :steps
+   [{:id #uuid "60d11c0c-fddb-4503-8816-574fbe52aa96", :duration 18, :timeout nil}
+    {:id #uuid "28446b48-f404-4466-95bb-8a5c20d23662", :duration 5, :timeout nil}]}
+  {:id #uuid "3616fde7-4926-45af-9948-7fecdf953c08",
+   :name "Timer 10",
+   :steps
+   [{:id #uuid "7ee02ecc-11f5-4e3a-87a5-0e3b9f299b76", :duration 18, :timeout nil}
+    {:id #uuid "4d70c4b2-170c-4bfe-b917-292c51ffb5fd", :duration 5, :timeout nil}]}
+  {:id #uuid "44e8f4d0-0d76-4221-81c1-076adc94628c",
+   :name "Timer 9",
+   :steps
+   [{:id #uuid "b2c9a0ab-4346-4dfd-8d92-0be7921fbe12", :duration 18, :timeout nil}
+    {:id #uuid "c6b25824-2ca7-4340-b8e1-3b1430822044", :duration 5, :timeout nil}]}
+  {:id #uuid "8cc679e2-c633-4ba1-9f48-892907706b25",
+   :name "Timer 8",
+   :steps
+   [{:id #uuid "599319a9-22ed-4979-af96-c7d3339bbb61", :duration 18, :timeout nil}
+    {:id #uuid "9406dda3-06f6-4e4e-be89-17d70e99ca0e", :duration 5, :timeout nil}]}
+  {:id #uuid "d80ceb78-96d5-4979-b269-4c2348197d21",
+   :name "Timer 7",
+   :steps
+   [{:id #uuid "4f0b57b7-1793-4859-84f6-b27d1e363547", :duration 18, :timeout nil}
+    {:id #uuid "72dc9ca2-e8ab-403d-a2c5-8584c69fa71d", :duration 5, :timeout nil}]}
+  {:id #uuid "f47198fa-5b79-47fc-83b5-a1f1654a5933",
+   :name "Timer 6",
+   :steps
+   [{:id #uuid "024e0209-5ae5-443e-9541-679a05314b8d", :duration 18, :timeout nil}
+    {:id #uuid "2617727a-9ac2-4f15-ba45-423687a5d12d", :duration 5, :timeout nil}]}
+  {:id #uuid "d0f09a66-be8a-4b7a-b157-d30bc594c3bb",
+   :name "Timer 5",
+   :steps
+   [{:id #uuid "ac2705c7-abca-447b-b51e-65f28df53be8", :duration 18, :timeout nil}
+    {:id #uuid "3ac355de-d213-4c40-bc53-e3f3a4a3e24b", :duration 5, :timeout nil}]}
+  {:id #uuid "b3219453-2fff-4336-91aa-bb075af8405f",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "73b51cdb-1c01-441f-9338-b51f2f656b12", :duration 18, :timeout nil}
+    {:id #uuid "d0433da9-0eee-48a0-8072-ba58b39db449", :duration 5, :timeout nil}]}
+  {:id #uuid "ad680b1e-d6ea-4ab1-95d3-927713c7a5dc",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "a66ae798-e115-4109-92d1-86f1df8bcdd1", :duration 18, :timeout nil}
+    {:id #uuid "2282a389-d59a-41c8-9dce-a5c8b121f9d0", :duration 5, :timeout nil}]}
+  {:id #uuid "2215d65b-6e90-4600-a28e-d09704926a94",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "1c406825-7a85-4cc4-ac57-af7464280179", :duration 18, :timeout nil}
+    {:id #uuid "2af3028c-ad66-4b6e-81db-7d0059b84271", :duration 5, :timeout nil}]}
+  {:id #uuid "780f5da8-fdd6-4cea-a5a4-4810a6095cf9",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "ea3a37de-c88e-4e9a-9c48-0b39a3b9becf", :duration 18, :timeout nil}
+    {:id #uuid "7cc4fe79-d1ca-412a-b720-803350d6db33", :duration 5, :timeout nil}]}),
+ :debug true}
+cljs꞉app.ui꞉> 
+{:page :edit,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "ce5dba77-1e72-4b08-b58b-d9af5e0eed25",
+   :name "Timer 11",
+   :steps
+   [{:id #uuid "60d11c0c-fddb-4503-8816-574fbe52aa96", :duration 18, :timeout nil}
+    {:id #uuid "28446b48-f404-4466-95bb-8a5c20d23662", :duration 5, :timeout nil}]}
+  {:id #uuid "3616fde7-4926-45af-9948-7fecdf953c08",
+   :name "Timer 10",
+   :steps
+   [{:id #uuid "7ee02ecc-11f5-4e3a-87a5-0e3b9f299b76", :duration 18, :timeout nil}
+    {:id #uuid "4d70c4b2-170c-4bfe-b917-292c51ffb5fd", :duration 5, :timeout nil}]}
+  {:id #uuid "44e8f4d0-0d76-4221-81c1-076adc94628c",
+   :name "Timer 9",
+   :steps
+   [{:id #uuid "b2c9a0ab-4346-4dfd-8d92-0be7921fbe12", :duration 18, :timeout nil}
+    {:id #uuid "c6b25824-2ca7-4340-b8e1-3b1430822044", :duration 5, :timeout nil}]}
+  {:id #uuid "8cc679e2-c633-4ba1-9f48-892907706b25",
+   :name "Timer 8",
+   :steps
+   [{:id #uuid "599319a9-22ed-4979-af96-c7d3339bbb61", :duration 18, :timeout nil}
+    {:id #uuid "9406dda3-06f6-4e4e-be89-17d70e99ca0e", :duration 5, :timeout nil}]}
+  {:id #uuid "d80ceb78-96d5-4979-b269-4c2348197d21",
+   :name "Timer 7",
+   :steps
+   [{:id #uuid "4f0b57b7-1793-4859-84f6-b27d1e363547", :duration 18, :timeout nil}
+    {:id #uuid "72dc9ca2-e8ab-403d-a2c5-8584c69fa71d", :duration 5, :timeout nil}]}
+  {:id #uuid "f47198fa-5b79-47fc-83b5-a1f1654a5933",
+   :name "Timer 6",
+   :steps
+   [{:id #uuid "024e0209-5ae5-443e-9541-679a05314b8d", :duration 18, :timeout nil}
+    {:id #uuid "2617727a-9ac2-4f15-ba45-423687a5d12d", :duration 5, :timeout nil}]}
+  {:id #uuid "d0f09a66-be8a-4b7a-b157-d30bc594c3bb",
+   :name "Timer 5",
+   :steps
+   [{:id #uuid "ac2705c7-abca-447b-b51e-65f28df53be8", :duration 18, :timeout nil}
+    {:id #uuid "3ac355de-d213-4c40-bc53-e3f3a4a3e24b", :duration 5, :timeout nil}]}
+  {:id #uuid "b3219453-2fff-4336-91aa-bb075af8405f",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "73b51cdb-1c01-441f-9338-b51f2f656b12", :duration 18, :timeout nil}
+    {:id #uuid "d0433da9-0eee-48a0-8072-ba58b39db449", :duration 5, :timeout nil}]}
+  {:id #uuid "ad680b1e-d6ea-4ab1-95d3-927713c7a5dc",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "a66ae798-e115-4109-92d1-86f1df8bcdd1", :duration 18, :timeout nil}
+    {:id #uuid "2282a389-d59a-41c8-9dce-a5c8b121f9d0", :duration 5, :timeout nil}]}
+  {:id #uuid "2215d65b-6e90-4600-a28e-d09704926a94",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "1c406825-7a85-4cc4-ac57-af7464280179", :duration 18, :timeout nil}
+    {:id #uuid "2af3028c-ad66-4b6e-81db-7d0059b84271", :duration 5, :timeout nil}]}
+  {:id #uuid "780f5da8-fdd6-4cea-a5a4-4810a6095cf9",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "ea3a37de-c88e-4e9a-9c48-0b39a3b9becf", :duration 18, :timeout nil}
+    {:id #uuid "7cc4fe79-d1ca-412a-b720-803350d6db33", :duration 5, :timeout nil}]}),
+ :debug true}
+cljs꞉app.ui꞉> 
+{:page :edit,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "cb475da2-27b0-4d50-b611-fe63f363f6af",
+   :name "Timer 12",
+   :steps
+   [{:id #uuid "4f411eba-7d45-4987-bc70-789a739ed8a8", :duration 18, :timeout nil}
+    {:id #uuid "6e2c11ed-1ff0-4ec8-b0b2-49c16c528008", :duration 5, :timeout nil}]}
+  {:id #uuid "ce5dba77-1e72-4b08-b58b-d9af5e0eed25",
+   :name "Timer 11",
+   :steps
+   [{:id #uuid "60d11c0c-fddb-4503-8816-574fbe52aa96", :duration 18, :timeout nil}
+    {:id #uuid "28446b48-f404-4466-95bb-8a5c20d23662", :duration 5, :timeout nil}]}
+  {:id #uuid "3616fde7-4926-45af-9948-7fecdf953c08",
+   :name "Timer 10",
+   :steps
+   [{:id #uuid "7ee02ecc-11f5-4e3a-87a5-0e3b9f299b76", :duration 18, :timeout nil}
+    {:id #uuid "4d70c4b2-170c-4bfe-b917-292c51ffb5fd", :duration 5, :timeout nil}]}
+  {:id #uuid "44e8f4d0-0d76-4221-81c1-076adc94628c",
+   :name "Timer 9",
+   :steps
+   [{:id #uuid "b2c9a0ab-4346-4dfd-8d92-0be7921fbe12", :duration 18, :timeout nil}
+    {:id #uuid "c6b25824-2ca7-4340-b8e1-3b1430822044", :duration 5, :timeout nil}]}
+  {:id #uuid "8cc679e2-c633-4ba1-9f48-892907706b25",
+   :name "Timer 8",
+   :steps
+   [{:id #uuid "599319a9-22ed-4979-af96-c7d3339bbb61", :duration 18, :timeout nil}
+    {:id #uuid "9406dda3-06f6-4e4e-be89-17d70e99ca0e", :duration 5, :timeout nil}]}
+  {:id #uuid "d80ceb78-96d5-4979-b269-4c2348197d21",
+   :name "Timer 7",
+   :steps
+   [{:id #uuid "4f0b57b7-1793-4859-84f6-b27d1e363547", :duration 18, :timeout nil}
+    {:id #uuid "72dc9ca2-e8ab-403d-a2c5-8584c69fa71d", :duration 5, :timeout nil}]}
+  {:id #uuid "f47198fa-5b79-47fc-83b5-a1f1654a5933",
+   :name "Timer 6",
+   :steps
+   [{:id #uuid "024e0209-5ae5-443e-9541-679a05314b8d", :duration 18, :timeout nil}
+    {:id #uuid "2617727a-9ac2-4f15-ba45-423687a5d12d", :duration 5, :timeout nil}]}
+  {:id #uuid "d0f09a66-be8a-4b7a-b157-d30bc594c3bb",
+   :name "Timer 5",
+   :steps
+   [{:id #uuid "ac2705c7-abca-447b-b51e-65f28df53be8", :duration 18, :timeout nil}
+    {:id #uuid "3ac355de-d213-4c40-bc53-e3f3a4a3e24b", :duration 5, :timeout nil}]}
+  {:id #uuid "b3219453-2fff-4336-91aa-bb075af8405f",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "73b51cdb-1c01-441f-9338-b51f2f656b12", :duration 18, :timeout nil}
+    {:id #uuid "d0433da9-0eee-48a0-8072-ba58b39db449", :duration 5, :timeout nil}]}
+  {:id #uuid "ad680b1e-d6ea-4ab1-95d3-927713c7a5dc",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "a66ae798-e115-4109-92d1-86f1df8bcdd1", :duration 18, :timeout nil}
+    {:id #uuid "2282a389-d59a-41c8-9dce-a5c8b121f9d0", :duration 5, :timeout nil}]}
+  {:id #uuid "2215d65b-6e90-4600-a28e-d09704926a94",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "1c406825-7a85-4cc4-ac57-af7464280179", :duration 18, :timeout nil}
+    {:id #uuid "2af3028c-ad66-4b6e-81db-7d0059b84271", :duration 5, :timeout nil}]}
+  {:id #uuid "780f5da8-fdd6-4cea-a5a4-4810a6095cf9",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "ea3a37de-c88e-4e9a-9c48-0b39a3b9becf", :duration 18, :timeout nil}
+    {:id #uuid "7cc4fe79-d1ca-412a-b720-803350d6db33", :duration 5, :timeout nil}]}),
+ :debug true}
+cljs꞉app.ui꞉> 
+{:page :edit,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "cb475da2-27b0-4d50-b611-fe63f363f6af",
+   :name "Timer 12",
+   :steps
+   [{:id #uuid "4f411eba-7d45-4987-bc70-789a739ed8a8", :duration 18, :timeout nil}
+    {:id #uuid "6e2c11ed-1ff0-4ec8-b0b2-49c16c528008", :duration 5, :timeout nil}]}
+  {:id #uuid "ce5dba77-1e72-4b08-b58b-d9af5e0eed25",
+   :name "Timer 11",
+   :steps
+   [{:id #uuid "60d11c0c-fddb-4503-8816-574fbe52aa96", :duration 18, :timeout nil}
+    {:id #uuid "28446b48-f404-4466-95bb-8a5c20d23662", :duration 5, :timeout nil}]}
+  {:id #uuid "3616fde7-4926-45af-9948-7fecdf953c08",
+   :name "Timer 10",
+   :steps
+   [{:id #uuid "7ee02ecc-11f5-4e3a-87a5-0e3b9f299b76", :duration 18, :timeout nil}
+    {:id #uuid "4d70c4b2-170c-4bfe-b917-292c51ffb5fd", :duration 5, :timeout nil}]}
+  {:id #uuid "44e8f4d0-0d76-4221-81c1-076adc94628c",
+   :name "Timer 9",
+   :steps
+   [{:id #uuid "b2c9a0ab-4346-4dfd-8d92-0be7921fbe12", :duration 18, :timeout nil}
+    {:id #uuid "c6b25824-2ca7-4340-b8e1-3b1430822044", :duration 5, :timeout nil}]}
+  {:id #uuid "8cc679e2-c633-4ba1-9f48-892907706b25",
+   :name "Timer 8",
+   :steps
+   [{:id #uuid "599319a9-22ed-4979-af96-c7d3339bbb61", :duration 18, :timeout nil}
+    {:id #uuid "9406dda3-06f6-4e4e-be89-17d70e99ca0e", :duration 5, :timeout nil}]}
+  {:id #uuid "d80ceb78-96d5-4979-b269-4c2348197d21",
+   :name "Timer 7",
+   :steps
+   [{:id #uuid "4f0b57b7-1793-4859-84f6-b27d1e363547", :duration 18, :timeout nil}
+    {:id #uuid "72dc9ca2-e8ab-403d-a2c5-8584c69fa71d", :duration 5, :timeout nil}]}
+  {:id #uuid "f47198fa-5b79-47fc-83b5-a1f1654a5933",
+   :name "Timer 6",
+   :steps
+   [{:id #uuid "024e0209-5ae5-443e-9541-679a05314b8d", :duration 18, :timeout nil}
+    {:id #uuid "2617727a-9ac2-4f15-ba45-423687a5d12d", :duration 5, :timeout nil}]}
+  {:id #uuid "d0f09a66-be8a-4b7a-b157-d30bc594c3bb",
+   :name "Timer 5",
+   :steps
+   [{:id #uuid "ac2705c7-abca-447b-b51e-65f28df53be8", :duration 18, :timeout nil}
+    {:id #uuid "3ac355de-d213-4c40-bc53-e3f3a4a3e24b", :duration 5, :timeout nil}]}
+  {:id #uuid "b3219453-2fff-4336-91aa-bb075af8405f",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "73b51cdb-1c01-441f-9338-b51f2f656b12", :duration 18, :timeout nil}
+    {:id #uuid "d0433da9-0eee-48a0-8072-ba58b39db449", :duration 5, :timeout nil}]}
+  {:id #uuid "ad680b1e-d6ea-4ab1-95d3-927713c7a5dc",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "a66ae798-e115-4109-92d1-86f1df8bcdd1", :duration 18, :timeout nil}
+    {:id #uuid "2282a389-d59a-41c8-9dce-a5c8b121f9d0", :duration 5, :timeout nil}]}
+  {:id #uuid "2215d65b-6e90-4600-a28e-d09704926a94",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "1c406825-7a85-4cc4-ac57-af7464280179", :duration 18, :timeout nil}
+    {:id #uuid "2af3028c-ad66-4b6e-81db-7d0059b84271", :duration 5, :timeout nil}]}
+  {:id #uuid "780f5da8-fdd6-4cea-a5a4-4810a6095cf9",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "ea3a37de-c88e-4e9a-9c48-0b39a3b9becf", :duration 18, :timeout nil}
+    {:id #uuid "7cc4fe79-d1ca-412a-b720-803350d6db33", :duration 5, :timeout nil}]}),
+ :debug true}
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+{:page :edit,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "cb475da2-27b0-4d50-b611-fe63f363f6af",
+   :name "Timer 12",
+   :steps
+   [{:id #uuid "4f411eba-7d45-4987-bc70-789a739ed8a8", :duration 18, :timeout nil}
+    {:id #uuid "6e2c11ed-1ff0-4ec8-b0b2-49c16c528008", :duration 5, :timeout nil}]}
+  {:id #uuid "ce5dba77-1e72-4b08-b58b-d9af5e0eed25",
+   :name "Timer 11",
+   :steps
+   [{:id #uuid "60d11c0c-fddb-4503-8816-574fbe52aa96", :duration 18, :timeout nil}
+    {:id #uuid "28446b48-f404-4466-95bb-8a5c20d23662", :duration 5, :timeout nil}]}
+  {:id #uuid "3616fde7-4926-45af-9948-7fecdf953c08",
+   :name "Timer 10",
+   :steps
+   [{:id #uuid "7ee02ecc-11f5-4e3a-87a5-0e3b9f299b76", :duration 18, :timeout nil}
+    {:id #uuid "4d70c4b2-170c-4bfe-b917-292c51ffb5fd", :duration 5, :timeout nil}]}
+  {:id #uuid "44e8f4d0-0d76-4221-81c1-076adc94628c",
+   :name "Timer 9",
+   :steps
+   [{:id #uuid "b2c9a0ab-4346-4dfd-8d92-0be7921fbe12", :duration 18, :timeout nil}
+    {:id #uuid "c6b25824-2ca7-4340-b8e1-3b1430822044", :duration 5, :timeout nil}]}
+  {:id #uuid "8cc679e2-c633-4ba1-9f48-892907706b25",
+   :name "Timer 8",
+   :steps
+   [{:id #uuid "599319a9-22ed-4979-af96-c7d3339bbb61", :duration 18, :timeout nil}
+    {:id #uuid "9406dda3-06f6-4e4e-be89-17d70e99ca0e", :duration 5, :timeout nil}]}
+  {:id #uuid "d80ceb78-96d5-4979-b269-4c2348197d21",
+   :name "Timer 7",
+   :steps
+   [{:id #uuid "4f0b57b7-1793-4859-84f6-b27d1e363547", :duration 18, :timeout nil}
+    {:id #uuid "72dc9ca2-e8ab-403d-a2c5-8584c69fa71d", :duration 5, :timeout nil}]}
+  {:id #uuid "f47198fa-5b79-47fc-83b5-a1f1654a5933",
+   :name "Timer 6",
+   :steps
+   [{:id #uuid "024e0209-5ae5-443e-9541-679a05314b8d", :duration 18, :timeout nil}
+    {:id #uuid "2617727a-9ac2-4f15-ba45-423687a5d12d", :duration 5, :timeout nil}]}
+  {:id #uuid "d0f09a66-be8a-4b7a-b157-d30bc594c3bb",
+   :name "Timer 5",
+   :steps
+   [{:id #uuid "ac2705c7-abca-447b-b51e-65f28df53be8", :duration 18, :timeout nil}
+    {:id #uuid "3ac355de-d213-4c40-bc53-e3f3a4a3e24b", :duration 5, :timeout nil}]}
+  {:id #uuid "b3219453-2fff-4336-91aa-bb075af8405f",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "73b51cdb-1c01-441f-9338-b51f2f656b12", :duration 18, :timeout nil}
+    {:id #uuid "d0433da9-0eee-48a0-8072-ba58b39db449", :duration 5, :timeout nil}]}
+  {:id #uuid "ad680b1e-d6ea-4ab1-95d3-927713c7a5dc",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "a66ae798-e115-4109-92d1-86f1df8bcdd1", :duration 18, :timeout nil}
+    {:id #uuid "2282a389-d59a-41c8-9dce-a5c8b121f9d0", :duration 5, :timeout nil}]}
+  {:id #uuid "2215d65b-6e90-4600-a28e-d09704926a94",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "1c406825-7a85-4cc4-ac57-af7464280179", :duration 18, :timeout nil}
+    {:id #uuid "2af3028c-ad66-4b6e-81db-7d0059b84271", :duration 5, :timeout nil}]}
+  {:id #uuid "780f5da8-fdd6-4cea-a5a4-4810a6095cf9",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "ea3a37de-c88e-4e9a-9c48-0b39a3b9becf", :duration 18, :timeout nil}
+    {:id #uuid "7cc4fe79-d1ca-412a-b720-803350d6db33", :duration 5, :timeout nil}]}),
+ :debug true}
+cljs꞉app.ui꞉> 
+{:page :edit,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "cb475da2-27b0-4d50-b611-fe63f363f6af",
+   :name "Timer 12",
+   :steps
+   [{:id #uuid "4f411eba-7d45-4987-bc70-789a739ed8a8", :duration 18, :timeout nil}
+    {:id #uuid "6e2c11ed-1ff0-4ec8-b0b2-49c16c528008", :duration 5, :timeout nil}]}
+  {:id #uuid "ce5dba77-1e72-4b08-b58b-d9af5e0eed25",
+   :name "Timer 11",
+   :steps
+   [{:id #uuid "60d11c0c-fddb-4503-8816-574fbe52aa96", :duration 18, :timeout nil}
+    {:id #uuid "28446b48-f404-4466-95bb-8a5c20d23662", :duration 5, :timeout nil}]}
+  {:id #uuid "3616fde7-4926-45af-9948-7fecdf953c08",
+   :name "Timer 10",
+   :steps
+   [{:id #uuid "7ee02ecc-11f5-4e3a-87a5-0e3b9f299b76", :duration 18, :timeout nil}
+    {:id #uuid "4d70c4b2-170c-4bfe-b917-292c51ffb5fd", :duration 5, :timeout nil}]}
+  {:id #uuid "44e8f4d0-0d76-4221-81c1-076adc94628c",
+   :name "Timer 9",
+   :steps
+   [{:id #uuid "b2c9a0ab-4346-4dfd-8d92-0be7921fbe12", :duration 18, :timeout nil}
+    {:id #uuid "c6b25824-2ca7-4340-b8e1-3b1430822044", :duration 5, :timeout nil}]}
+  {:id #uuid "8cc679e2-c633-4ba1-9f48-892907706b25",
+   :name "Timer 8",
+   :steps
+   [{:id #uuid "599319a9-22ed-4979-af96-c7d3339bbb61", :duration 18, :timeout nil}
+    {:id #uuid "9406dda3-06f6-4e4e-be89-17d70e99ca0e", :duration 5, :timeout nil}]}
+  {:id #uuid "d80ceb78-96d5-4979-b269-4c2348197d21",
+   :name "Timer 7",
+   :steps
+   [{:id #uuid "4f0b57b7-1793-4859-84f6-b27d1e363547", :duration 18, :timeout nil}
+    {:id #uuid "72dc9ca2-e8ab-403d-a2c5-8584c69fa71d", :duration 5, :timeout nil}]}
+  {:id #uuid "f47198fa-5b79-47fc-83b5-a1f1654a5933",
+   :name "Timer 6",
+   :steps
+   [{:id #uuid "024e0209-5ae5-443e-9541-679a05314b8d", :duration 18, :timeout nil}
+    {:id #uuid "2617727a-9ac2-4f15-ba45-423687a5d12d", :duration 5, :timeout nil}]}
+  {:id #uuid "d0f09a66-be8a-4b7a-b157-d30bc594c3bb",
+   :name "Timer 5",
+   :steps
+   [{:id #uuid "ac2705c7-abca-447b-b51e-65f28df53be8", :duration 18, :timeout nil}
+    {:id #uuid "3ac355de-d213-4c40-bc53-e3f3a4a3e24b", :duration 5, :timeout nil}]}
+  {:id #uuid "b3219453-2fff-4336-91aa-bb075af8405f",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "73b51cdb-1c01-441f-9338-b51f2f656b12", :duration 18, :timeout nil}
+    {:id #uuid "d0433da9-0eee-48a0-8072-ba58b39db449", :duration 5, :timeout nil}]}
+  {:id #uuid "ad680b1e-d6ea-4ab1-95d3-927713c7a5dc",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "a66ae798-e115-4109-92d1-86f1df8bcdd1", :duration 18, :timeout nil}
+    {:id #uuid "2282a389-d59a-41c8-9dce-a5c8b121f9d0", :duration 5, :timeout nil}]}
+  {:id #uuid "2215d65b-6e90-4600-a28e-d09704926a94",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "1c406825-7a85-4cc4-ac57-af7464280179", :duration 18, :timeout nil}
+    {:id #uuid "2af3028c-ad66-4b6e-81db-7d0059b84271", :duration 5, :timeout nil}]}
+  {:id #uuid "780f5da8-fdd6-4cea-a5a4-4810a6095cf9",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "ea3a37de-c88e-4e9a-9c48-0b39a3b9becf", :duration 18, :timeout nil}
+    {:id #uuid "7cc4fe79-d1ca-412a-b720-803350d6db33", :duration 5, :timeout nil}]}),
+ :debug true}
+cljs꞉app.ui꞉> 
+{:page :edit,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "cb475da2-27b0-4d50-b611-fe63f363f6af",
+   :name "Timer 12",
+   :steps
+   [{:id #uuid "4f411eba-7d45-4987-bc70-789a739ed8a8", :duration 18, :timeout nil}
+    {:id #uuid "6e2c11ed-1ff0-4ec8-b0b2-49c16c528008", :duration 5, :timeout nil}]}
+  {:id #uuid "ce5dba77-1e72-4b08-b58b-d9af5e0eed25",
+   :name "Timer 11",
+   :steps
+   [{:id #uuid "60d11c0c-fddb-4503-8816-574fbe52aa96", :duration 18, :timeout nil}
+    {:id #uuid "28446b48-f404-4466-95bb-8a5c20d23662", :duration 5, :timeout nil}]}
+  {:id #uuid "3616fde7-4926-45af-9948-7fecdf953c08",
+   :name "Timer 10",
+   :steps
+   [{:id #uuid "7ee02ecc-11f5-4e3a-87a5-0e3b9f299b76", :duration 18, :timeout nil}
+    {:id #uuid "4d70c4b2-170c-4bfe-b917-292c51ffb5fd", :duration 5, :timeout nil}]}
+  {:id #uuid "44e8f4d0-0d76-4221-81c1-076adc94628c",
+   :name "Timer 9",
+   :steps
+   [{:id #uuid "b2c9a0ab-4346-4dfd-8d92-0be7921fbe12", :duration 18, :timeout nil}
+    {:id #uuid "c6b25824-2ca7-4340-b8e1-3b1430822044", :duration 5, :timeout nil}]}
+  {:id #uuid "8cc679e2-c633-4ba1-9f48-892907706b25",
+   :name "Timer 8",
+   :steps
+   [{:id #uuid "599319a9-22ed-4979-af96-c7d3339bbb61", :duration 18, :timeout nil}
+    {:id #uuid "9406dda3-06f6-4e4e-be89-17d70e99ca0e", :duration 5, :timeout nil}]}
+  {:id #uuid "d80ceb78-96d5-4979-b269-4c2348197d21",
+   :name "Timer 7",
+   :steps
+   [{:id #uuid "4f0b57b7-1793-4859-84f6-b27d1e363547", :duration 18, :timeout nil}
+    {:id #uuid "72dc9ca2-e8ab-403d-a2c5-8584c69fa71d", :duration 5, :timeout nil}]}
+  {:id #uuid "f47198fa-5b79-47fc-83b5-a1f1654a5933",
+   :name "Timer 6",
+   :steps
+   [{:id #uuid "024e0209-5ae5-443e-9541-679a05314b8d", :duration 18, :timeout nil}
+    {:id #uuid "2617727a-9ac2-4f15-ba45-423687a5d12d", :duration 5, :timeout nil}]}
+  {:id #uuid "d0f09a66-be8a-4b7a-b157-d30bc594c3bb",
+   :name "Timer 5",
+   :steps
+   [{:id #uuid "ac2705c7-abca-447b-b51e-65f28df53be8", :duration 18, :timeout nil}
+    {:id #uuid "3ac355de-d213-4c40-bc53-e3f3a4a3e24b", :duration 5, :timeout nil}]}
+  {:id #uuid "b3219453-2fff-4336-91aa-bb075af8405f",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "73b51cdb-1c01-441f-9338-b51f2f656b12", :duration 18, :timeout nil}
+    {:id #uuid "d0433da9-0eee-48a0-8072-ba58b39db449", :duration 5, :timeout nil}]}
+  {:id #uuid "ad680b1e-d6ea-4ab1-95d3-927713c7a5dc",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "a66ae798-e115-4109-92d1-86f1df8bcdd1", :duration 18, :timeout nil}
+    {:id #uuid "2282a389-d59a-41c8-9dce-a5c8b121f9d0", :duration 5, :timeout nil}]}
+  {:id #uuid "2215d65b-6e90-4600-a28e-d09704926a94",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "1c406825-7a85-4cc4-ac57-af7464280179", :duration 18, :timeout nil}
+    {:id #uuid "2af3028c-ad66-4b6e-81db-7d0059b84271", :duration 5, :timeout nil}]}
+  {:id #uuid "780f5da8-fdd6-4cea-a5a4-4810a6095cf9",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "ea3a37de-c88e-4e9a-9c48-0b39a3b9becf", :duration 18, :timeout nil}
+    {:id #uuid "7cc4fe79-d1ca-412a-b720-803350d6db33", :duration 5, :timeout nil}]}),
+ :debug true}
+cljs꞉app.ui꞉> 
+{:page :edit,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "772db71d-90ec-4fc7-8598-a58eda6c8ec8",
+   :name "Timer 13",
+   :steps
+   [{:id #uuid "4f65bf36-28b0-40eb-9e48-07cedc35fb2e", :duration 18, :timeout nil}
+    {:id #uuid "f2414491-6fee-42be-8d88-c8777e5ee243", :duration 5, :timeout nil}]}
+  {:id #uuid "cb475da2-27b0-4d50-b611-fe63f363f6af",
+   :name "Timer 12",
+   :steps
+   [{:id #uuid "4f411eba-7d45-4987-bc70-789a739ed8a8", :duration 18, :timeout nil}
+    {:id #uuid "6e2c11ed-1ff0-4ec8-b0b2-49c16c528008", :duration 5, :timeout nil}]}
+  {:id #uuid "ce5dba77-1e72-4b08-b58b-d9af5e0eed25",
+   :name "Timer 11",
+   :steps
+   [{:id #uuid "60d11c0c-fddb-4503-8816-574fbe52aa96", :duration 18, :timeout nil}
+    {:id #uuid "28446b48-f404-4466-95bb-8a5c20d23662", :duration 5, :timeout nil}]}
+  {:id #uuid "3616fde7-4926-45af-9948-7fecdf953c08",
+   :name "Timer 10",
+   :steps
+   [{:id #uuid "7ee02ecc-11f5-4e3a-87a5-0e3b9f299b76", :duration 18, :timeout nil}
+    {:id #uuid "4d70c4b2-170c-4bfe-b917-292c51ffb5fd", :duration 5, :timeout nil}]}
+  {:id #uuid "44e8f4d0-0d76-4221-81c1-076adc94628c",
+   :name "Timer 9",
+   :steps
+   [{:id #uuid "b2c9a0ab-4346-4dfd-8d92-0be7921fbe12", :duration 18, :timeout nil}
+    {:id #uuid "c6b25824-2ca7-4340-b8e1-3b1430822044", :duration 5, :timeout nil}]}
+  {:id #uuid "8cc679e2-c633-4ba1-9f48-892907706b25",
+   :name "Timer 8",
+   :steps
+   [{:id #uuid "599319a9-22ed-4979-af96-c7d3339bbb61", :duration 18, :timeout nil}
+    {:id #uuid "9406dda3-06f6-4e4e-be89-17d70e99ca0e", :duration 5, :timeout nil}]}
+  {:id #uuid "d80ceb78-96d5-4979-b269-4c2348197d21",
+   :name "Timer 7",
+   :steps
+   [{:id #uuid "4f0b57b7-1793-4859-84f6-b27d1e363547", :duration 18, :timeout nil}
+    {:id #uuid "72dc9ca2-e8ab-403d-a2c5-8584c69fa71d", :duration 5, :timeout nil}]}
+  {:id #uuid "f47198fa-5b79-47fc-83b5-a1f1654a5933",
+   :name "Timer 6",
+   :steps
+   [{:id #uuid "024e0209-5ae5-443e-9541-679a05314b8d", :duration 18, :timeout nil}
+    {:id #uuid "2617727a-9ac2-4f15-ba45-423687a5d12d", :duration 5, :timeout nil}]}
+  {:id #uuid "d0f09a66-be8a-4b7a-b157-d30bc594c3bb",
+   :name "Timer 5",
+   :steps
+   [{:id #uuid "ac2705c7-abca-447b-b51e-65f28df53be8", :duration 18, :timeout nil}
+    {:id #uuid "3ac355de-d213-4c40-bc53-e3f3a4a3e24b", :duration 5, :timeout nil}]}
+  {:id #uuid "b3219453-2fff-4336-91aa-bb075af8405f",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "73b51cdb-1c01-441f-9338-b51f2f656b12", :duration 18, :timeout nil}
+    {:id #uuid "d0433da9-0eee-48a0-8072-ba58b39db449", :duration 5, :timeout nil}]}
+  {:id #uuid "ad680b1e-d6ea-4ab1-95d3-927713c7a5dc",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "a66ae798-e115-4109-92d1-86f1df8bcdd1", :duration 18, :timeout nil}
+    {:id #uuid "2282a389-d59a-41c8-9dce-a5c8b121f9d0", :duration 5, :timeout nil}]}
+  {:id #uuid "2215d65b-6e90-4600-a28e-d09704926a94",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "1c406825-7a85-4cc4-ac57-af7464280179", :duration 18, :timeout nil}
+    {:id #uuid "2af3028c-ad66-4b6e-81db-7d0059b84271", :duration 5, :timeout nil}]}
+  {:id #uuid "780f5da8-fdd6-4cea-a5a4-4810a6095cf9",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "ea3a37de-c88e-4e9a-9c48-0b39a3b9becf", :duration 18, :timeout nil}
+    {:id #uuid "7cc4fe79-d1ca-412a-b720-803350d6db33", :duration 5, :timeout nil}]}),
+ :debug true}
+cljs꞉app.ui꞉> 
+{:page :edit,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "25501713-6e88-44ae-9b06-5a0b5d1d3f8d",
+   :name "Timer 14",
+   :steps
+   [{:id #uuid "00cf2cd3-b18b-402c-822c-752a02f45f7b", :duration 18, :timeout nil}
+    {:id #uuid "1eef6819-c281-4413-ab8c-6a0d4b46aef6", :duration 5, :timeout nil}]}
+  {:id #uuid "772db71d-90ec-4fc7-8598-a58eda6c8ec8",
+   :name "Timer 13",
+   :steps
+   [{:id #uuid "4f65bf36-28b0-40eb-9e48-07cedc35fb2e", :duration 18, :timeout nil}
+    {:id #uuid "f2414491-6fee-42be-8d88-c8777e5ee243", :duration 5, :timeout nil}]}
+  {:id #uuid "cb475da2-27b0-4d50-b611-fe63f363f6af",
+   :name "Timer 12",
+   :steps
+   [{:id #uuid "4f411eba-7d45-4987-bc70-789a739ed8a8", :duration 18, :timeout nil}
+    {:id #uuid "6e2c11ed-1ff0-4ec8-b0b2-49c16c528008", :duration 5, :timeout nil}]}
+  {:id #uuid "ce5dba77-1e72-4b08-b58b-d9af5e0eed25",
+   :name "Timer 11",
+   :steps
+   [{:id #uuid "60d11c0c-fddb-4503-8816-574fbe52aa96", :duration 18, :timeout nil}
+    {:id #uuid "28446b48-f404-4466-95bb-8a5c20d23662", :duration 5, :timeout nil}]}
+  {:id #uuid "3616fde7-4926-45af-9948-7fecdf953c08",
+   :name "Timer 10",
+   :steps
+   [{:id #uuid "7ee02ecc-11f5-4e3a-87a5-0e3b9f299b76", :duration 18, :timeout nil}
+    {:id #uuid "4d70c4b2-170c-4bfe-b917-292c51ffb5fd", :duration 5, :timeout nil}]}
+  {:id #uuid "44e8f4d0-0d76-4221-81c1-076adc94628c",
+   :name "Timer 9",
+   :steps
+   [{:id #uuid "b2c9a0ab-4346-4dfd-8d92-0be7921fbe12", :duration 18, :timeout nil}
+    {:id #uuid "c6b25824-2ca7-4340-b8e1-3b1430822044", :duration 5, :timeout nil}]}
+  {:id #uuid "8cc679e2-c633-4ba1-9f48-892907706b25",
+   :name "Timer 8",
+   :steps
+   [{:id #uuid "599319a9-22ed-4979-af96-c7d3339bbb61", :duration 18, :timeout nil}
+    {:id #uuid "9406dda3-06f6-4e4e-be89-17d70e99ca0e", :duration 5, :timeout nil}]}
+  {:id #uuid "d80ceb78-96d5-4979-b269-4c2348197d21",
+   :name "Timer 7",
+   :steps
+   [{:id #uuid "4f0b57b7-1793-4859-84f6-b27d1e363547", :duration 18, :timeout nil}
+    {:id #uuid "72dc9ca2-e8ab-403d-a2c5-8584c69fa71d", :duration 5, :timeout nil}]}
+  {:id #uuid "f47198fa-5b79-47fc-83b5-a1f1654a5933",
+   :name "Timer 6",
+   :steps
+   [{:id #uuid "024e0209-5ae5-443e-9541-679a05314b8d", :duration 18, :timeout nil}
+    {:id #uuid "2617727a-9ac2-4f15-ba45-423687a5d12d", :duration 5, :timeout nil}]}
+  {:id #uuid "d0f09a66-be8a-4b7a-b157-d30bc594c3bb",
+   :name "Timer 5",
+   :steps
+   [{:id #uuid "ac2705c7-abca-447b-b51e-65f28df53be8", :duration 18, :timeout nil}
+    {:id #uuid "3ac355de-d213-4c40-bc53-e3f3a4a3e24b", :duration 5, :timeout nil}]}
+  {:id #uuid "b3219453-2fff-4336-91aa-bb075af8405f",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "73b51cdb-1c01-441f-9338-b51f2f656b12", :duration 18, :timeout nil}
+    {:id #uuid "d0433da9-0eee-48a0-8072-ba58b39db449", :duration 5, :timeout nil}]}
+  {:id #uuid "ad680b1e-d6ea-4ab1-95d3-927713c7a5dc",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "a66ae798-e115-4109-92d1-86f1df8bcdd1", :duration 18, :timeout nil}
+    {:id #uuid "2282a389-d59a-41c8-9dce-a5c8b121f9d0", :duration 5, :timeout nil}]}
+  {:id #uuid "2215d65b-6e90-4600-a28e-d09704926a94",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "1c406825-7a85-4cc4-ac57-af7464280179", :duration 18, :timeout nil}
+    {:id #uuid "2af3028c-ad66-4b6e-81db-7d0059b84271", :duration 5, :timeout nil}]}
+  {:id #uuid "780f5da8-fdd6-4cea-a5a4-4810a6095cf9",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "ea3a37de-c88e-4e9a-9c48-0b39a3b9becf", :duration 18, :timeout nil}
+    {:id #uuid "7cc4fe79-d1ca-412a-b720-803350d6db33", :duration 5, :timeout nil}]}),
+ :debug true}
+cljs꞉app.ui꞉> 
+{:page :edit,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "0ae83f54-adc8-4073-8a91-3eefe7efdc67",
+   :name "Timer 15",
+   :steps
+   [{:id #uuid "4879b3de-83d3-4caf-9b8a-d51a69a00726", :duration 18, :timeout nil}
+    {:id #uuid "8a6e694c-a8eb-4bee-8659-2038dd4a82f4", :duration 5, :timeout nil}]}
+  {:id #uuid "25501713-6e88-44ae-9b06-5a0b5d1d3f8d",
+   :name "Timer 14",
+   :steps
+   [{:id #uuid "00cf2cd3-b18b-402c-822c-752a02f45f7b", :duration 18, :timeout nil}
+    {:id #uuid "1eef6819-c281-4413-ab8c-6a0d4b46aef6", :duration 5, :timeout nil}]}
+  {:id #uuid "772db71d-90ec-4fc7-8598-a58eda6c8ec8",
+   :name "Timer 13",
+   :steps
+   [{:id #uuid "4f65bf36-28b0-40eb-9e48-07cedc35fb2e", :duration 18, :timeout nil}
+    {:id #uuid "f2414491-6fee-42be-8d88-c8777e5ee243", :duration 5, :timeout nil}]}
+  {:id #uuid "cb475da2-27b0-4d50-b611-fe63f363f6af",
+   :name "Timer 12",
+   :steps
+   [{:id #uuid "4f411eba-7d45-4987-bc70-789a739ed8a8", :duration 18, :timeout nil}
+    {:id #uuid "6e2c11ed-1ff0-4ec8-b0b2-49c16c528008", :duration 5, :timeout nil}]}
+  {:id #uuid "ce5dba77-1e72-4b08-b58b-d9af5e0eed25",
+   :name "Timer 11",
+   :steps
+   [{:id #uuid "60d11c0c-fddb-4503-8816-574fbe52aa96", :duration 18, :timeout nil}
+    {:id #uuid "28446b48-f404-4466-95bb-8a5c20d23662", :duration 5, :timeout nil}]}
+  {:id #uuid "3616fde7-4926-45af-9948-7fecdf953c08",
+   :name "Timer 10",
+   :steps
+   [{:id #uuid "7ee02ecc-11f5-4e3a-87a5-0e3b9f299b76", :duration 18, :timeout nil}
+    {:id #uuid "4d70c4b2-170c-4bfe-b917-292c51ffb5fd", :duration 5, :timeout nil}]}
+  {:id #uuid "44e8f4d0-0d76-4221-81c1-076adc94628c",
+   :name "Timer 9",
+   :steps
+   [{:id #uuid "b2c9a0ab-4346-4dfd-8d92-0be7921fbe12", :duration 18, :timeout nil}
+    {:id #uuid "c6b25824-2ca7-4340-b8e1-3b1430822044", :duration 5, :timeout nil}]}
+  {:id #uuid "8cc679e2-c633-4ba1-9f48-892907706b25",
+   :name "Timer 8",
+   :steps
+   [{:id #uuid "599319a9-22ed-4979-af96-c7d3339bbb61", :duration 18, :timeout nil}
+    {:id #uuid "9406dda3-06f6-4e4e-be89-17d70e99ca0e", :duration 5, :timeout nil}]}
+  {:id #uuid "d80ceb78-96d5-4979-b269-4c2348197d21",
+   :name "Timer 7",
+   :steps
+   [{:id #uuid "4f0b57b7-1793-4859-84f6-b27d1e363547", :duration 18, :timeout nil}
+    {:id #uuid "72dc9ca2-e8ab-403d-a2c5-8584c69fa71d", :duration 5, :timeout nil}]}
+  {:id #uuid "f47198fa-5b79-47fc-83b5-a1f1654a5933",
+   :name "Timer 6",
+   :steps
+   [{:id #uuid "024e0209-5ae5-443e-9541-679a05314b8d", :duration 18, :timeout nil}
+    {:id #uuid "2617727a-9ac2-4f15-ba45-423687a5d12d", :duration 5, :timeout nil}]}
+  {:id #uuid "d0f09a66-be8a-4b7a-b157-d30bc594c3bb",
+   :name "Timer 5",
+   :steps
+   [{:id #uuid "ac2705c7-abca-447b-b51e-65f28df53be8", :duration 18, :timeout nil}
+    {:id #uuid "3ac355de-d213-4c40-bc53-e3f3a4a3e24b", :duration 5, :timeout nil}]}
+  {:id #uuid "b3219453-2fff-4336-91aa-bb075af8405f",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "73b51cdb-1c01-441f-9338-b51f2f656b12", :duration 18, :timeout nil}
+    {:id #uuid "d0433da9-0eee-48a0-8072-ba58b39db449", :duration 5, :timeout nil}]}
+  {:id #uuid "ad680b1e-d6ea-4ab1-95d3-927713c7a5dc",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "a66ae798-e115-4109-92d1-86f1df8bcdd1", :duration 18, :timeout nil}
+    {:id #uuid "2282a389-d59a-41c8-9dce-a5c8b121f9d0", :duration 5, :timeout nil}]}
+  {:id #uuid "2215d65b-6e90-4600-a28e-d09704926a94",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "1c406825-7a85-4cc4-ac57-af7464280179", :duration 18, :timeout nil}
+    {:id #uuid "2af3028c-ad66-4b6e-81db-7d0059b84271", :duration 5, :timeout nil}]}
+  {:id #uuid "780f5da8-fdd6-4cea-a5a4-4810a6095cf9",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "ea3a37de-c88e-4e9a-9c48-0b39a3b9becf", :duration 18, :timeout nil}
+    {:id #uuid "7cc4fe79-d1ca-412a-b720-803350d6db33", :duration 5, :timeout nil}]}),
+ :debug true}
+cljs꞉app.ui꞉> 
+{:page :edit,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "b80fae81-6999-4e41-b18e-fcf56e5c26e5",
+   :name "Timer 16",
+   :steps
+   [{:id #uuid "2cc0b95f-5344-47e7-89ec-17d9ed962a66", :duration 18, :timeout nil}
+    {:id #uuid "4f6febbe-8a51-47e3-b947-0141c1dec5ec", :duration 5, :timeout nil}]}
+  {:id #uuid "0ae83f54-adc8-4073-8a91-3eefe7efdc67",
+   :name "Timer 15",
+   :steps
+   [{:id #uuid "4879b3de-83d3-4caf-9b8a-d51a69a00726", :duration 18, :timeout nil}
+    {:id #uuid "8a6e694c-a8eb-4bee-8659-2038dd4a82f4", :duration 5, :timeout nil}]}
+  {:id #uuid "25501713-6e88-44ae-9b06-5a0b5d1d3f8d",
+   :name "Timer 14",
+   :steps
+   [{:id #uuid "00cf2cd3-b18b-402c-822c-752a02f45f7b", :duration 18, :timeout nil}
+    {:id #uuid "1eef6819-c281-4413-ab8c-6a0d4b46aef6", :duration 5, :timeout nil}]}
+  {:id #uuid "772db71d-90ec-4fc7-8598-a58eda6c8ec8",
+   :name "Timer 13",
+   :steps
+   [{:id #uuid "4f65bf36-28b0-40eb-9e48-07cedc35fb2e", :duration 18, :timeout nil}
+    {:id #uuid "f2414491-6fee-42be-8d88-c8777e5ee243", :duration 5, :timeout nil}]}
+  {:id #uuid "cb475da2-27b0-4d50-b611-fe63f363f6af",
+   :name "Timer 12",
+   :steps
+   [{:id #uuid "4f411eba-7d45-4987-bc70-789a739ed8a8", :duration 18, :timeout nil}
+    {:id #uuid "6e2c11ed-1ff0-4ec8-b0b2-49c16c528008", :duration 5, :timeout nil}]}
+  {:id #uuid "ce5dba77-1e72-4b08-b58b-d9af5e0eed25",
+   :name "Timer 11",
+   :steps
+   [{:id #uuid "60d11c0c-fddb-4503-8816-574fbe52aa96", :duration 18, :timeout nil}
+    {:id #uuid "28446b48-f404-4466-95bb-8a5c20d23662", :duration 5, :timeout nil}]}
+  {:id #uuid "3616fde7-4926-45af-9948-7fecdf953c08",
+   :name "Timer 10",
+   :steps
+   [{:id #uuid "7ee02ecc-11f5-4e3a-87a5-0e3b9f299b76", :duration 18, :timeout nil}
+    {:id #uuid "4d70c4b2-170c-4bfe-b917-292c51ffb5fd", :duration 5, :timeout nil}]}
+  {:id #uuid "44e8f4d0-0d76-4221-81c1-076adc94628c",
+   :name "Timer 9",
+   :steps
+   [{:id #uuid "b2c9a0ab-4346-4dfd-8d92-0be7921fbe12", :duration 18, :timeout nil}
+    {:id #uuid "c6b25824-2ca7-4340-b8e1-3b1430822044", :duration 5, :timeout nil}]}
+  {:id #uuid "8cc679e2-c633-4ba1-9f48-892907706b25",
+   :name "Timer 8",
+   :steps
+   [{:id #uuid "599319a9-22ed-4979-af96-c7d3339bbb61", :duration 18, :timeout nil}
+    {:id #uuid "9406dda3-06f6-4e4e-be89-17d70e99ca0e", :duration 5, :timeout nil}]}
+  {:id #uuid "d80ceb78-96d5-4979-b269-4c2348197d21",
+   :name "Timer 7",
+   :steps
+   [{:id #uuid "4f0b57b7-1793-4859-84f6-b27d1e363547", :duration 18, :timeout nil}
+    {:id #uuid "72dc9ca2-e8ab-403d-a2c5-8584c69fa71d", :duration 5, :timeout nil}]}
+  {:id #uuid "f47198fa-5b79-47fc-83b5-a1f1654a5933",
+   :name "Timer 6",
+   :steps
+   [{:id #uuid "024e0209-5ae5-443e-9541-679a05314b8d", :duration 18, :timeout nil}
+    {:id #uuid "2617727a-9ac2-4f15-ba45-423687a5d12d", :duration 5, :timeout nil}]}
+  {:id #uuid "d0f09a66-be8a-4b7a-b157-d30bc594c3bb",
+   :name "Timer 5",
+   :steps
+   [{:id #uuid "ac2705c7-abca-447b-b51e-65f28df53be8", :duration 18, :timeout nil}
+    {:id #uuid "3ac355de-d213-4c40-bc53-e3f3a4a3e24b", :duration 5, :timeout nil}]}
+  {:id #uuid "b3219453-2fff-4336-91aa-bb075af8405f",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "73b51cdb-1c01-441f-9338-b51f2f656b12", :duration 18, :timeout nil}
+    {:id #uuid "d0433da9-0eee-48a0-8072-ba58b39db449", :duration 5, :timeout nil}]}
+  {:id #uuid "ad680b1e-d6ea-4ab1-95d3-927713c7a5dc",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "a66ae798-e115-4109-92d1-86f1df8bcdd1", :duration 18, :timeout nil}
+    {:id #uuid "2282a389-d59a-41c8-9dce-a5c8b121f9d0", :duration 5, :timeout nil}]}
+  {:id #uuid "2215d65b-6e90-4600-a28e-d09704926a94",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "1c406825-7a85-4cc4-ac57-af7464280179", :duration 18, :timeout nil}
+    {:id #uuid "2af3028c-ad66-4b6e-81db-7d0059b84271", :duration 5, :timeout nil}]}
+  {:id #uuid "780f5da8-fdd6-4cea-a5a4-4810a6095cf9",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "ea3a37de-c88e-4e9a-9c48-0b39a3b9becf", :duration 18, :timeout nil}
+    {:id #uuid "7cc4fe79-d1ca-412a-b720-803350d6db33", :duration 5, :timeout nil}]}),
+ :debug true}
+cljs꞉app.ui꞉> 
+{:page :edit,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "6bc71334-0a60-47e1-9e4c-99d0e8ea6a42",
+   :name "Timer 17",
+   :steps
+   [{:id #uuid "63cd632b-c5a8-4ef6-8b42-8425b916b3d7", :duration 18, :timeout nil}
+    {:id #uuid "9760a530-a40f-4972-b32b-70d2a8c38a01", :duration 5, :timeout nil}]}
+  {:id #uuid "b80fae81-6999-4e41-b18e-fcf56e5c26e5",
+   :name "Timer 16",
+   :steps
+   [{:id #uuid "2cc0b95f-5344-47e7-89ec-17d9ed962a66", :duration 18, :timeout nil}
+    {:id #uuid "4f6febbe-8a51-47e3-b947-0141c1dec5ec", :duration 5, :timeout nil}]}
+  {:id #uuid "0ae83f54-adc8-4073-8a91-3eefe7efdc67",
+   :name "Timer 15",
+   :steps
+   [{:id #uuid "4879b3de-83d3-4caf-9b8a-d51a69a00726", :duration 18, :timeout nil}
+    {:id #uuid "8a6e694c-a8eb-4bee-8659-2038dd4a82f4", :duration 5, :timeout nil}]}
+  {:id #uuid "25501713-6e88-44ae-9b06-5a0b5d1d3f8d",
+   :name "Timer 14",
+   :steps
+   [{:id #uuid "00cf2cd3-b18b-402c-822c-752a02f45f7b", :duration 18, :timeout nil}
+    {:id #uuid "1eef6819-c281-4413-ab8c-6a0d4b46aef6", :duration 5, :timeout nil}]}
+  {:id #uuid "772db71d-90ec-4fc7-8598-a58eda6c8ec8",
+   :name "Timer 13",
+   :steps
+   [{:id #uuid "4f65bf36-28b0-40eb-9e48-07cedc35fb2e", :duration 18, :timeout nil}
+    {:id #uuid "f2414491-6fee-42be-8d88-c8777e5ee243", :duration 5, :timeout nil}]}
+  {:id #uuid "cb475da2-27b0-4d50-b611-fe63f363f6af",
+   :name "Timer 12",
+   :steps
+   [{:id #uuid "4f411eba-7d45-4987-bc70-789a739ed8a8", :duration 18, :timeout nil}
+    {:id #uuid "6e2c11ed-1ff0-4ec8-b0b2-49c16c528008", :duration 5, :timeout nil}]}
+  {:id #uuid "ce5dba77-1e72-4b08-b58b-d9af5e0eed25",
+   :name "Timer 11",
+   :steps
+   [{:id #uuid "60d11c0c-fddb-4503-8816-574fbe52aa96", :duration 18, :timeout nil}
+    {:id #uuid "28446b48-f404-4466-95bb-8a5c20d23662", :duration 5, :timeout nil}]}
+  {:id #uuid "3616fde7-4926-45af-9948-7fecdf953c08",
+   :name "Timer 10",
+   :steps
+   [{:id #uuid "7ee02ecc-11f5-4e3a-87a5-0e3b9f299b76", :duration 18, :timeout nil}
+    {:id #uuid "4d70c4b2-170c-4bfe-b917-292c51ffb5fd", :duration 5, :timeout nil}]}
+  {:id #uuid "44e8f4d0-0d76-4221-81c1-076adc94628c",
+   :name "Timer 9",
+   :steps
+   [{:id #uuid "b2c9a0ab-4346-4dfd-8d92-0be7921fbe12", :duration 18, :timeout nil}
+    {:id #uuid "c6b25824-2ca7-4340-b8e1-3b1430822044", :duration 5, :timeout nil}]}
+  {:id #uuid "8cc679e2-c633-4ba1-9f48-892907706b25",
+   :name "Timer 8",
+   :steps
+   [{:id #uuid "599319a9-22ed-4979-af96-c7d3339bbb61", :duration 18, :timeout nil}
+    {:id #uuid "9406dda3-06f6-4e4e-be89-17d70e99ca0e", :duration 5, :timeout nil}]}
+  {:id #uuid "d80ceb78-96d5-4979-b269-4c2348197d21",
+   :name "Timer 7",
+   :steps
+   [{:id #uuid "4f0b57b7-1793-4859-84f6-b27d1e363547", :duration 18, :timeout nil}
+    {:id #uuid "72dc9ca2-e8ab-403d-a2c5-8584c69fa71d", :duration 5, :timeout nil}]}
+  {:id #uuid "f47198fa-5b79-47fc-83b5-a1f1654a5933",
+   :name "Timer 6",
+   :steps
+   [{:id #uuid "024e0209-5ae5-443e-9541-679a05314b8d", :duration 18, :timeout nil}
+    {:id #uuid "2617727a-9ac2-4f15-ba45-423687a5d12d", :duration 5, :timeout nil}]}
+  {:id #uuid "d0f09a66-be8a-4b7a-b157-d30bc594c3bb",
+   :name "Timer 5",
+   :steps
+   [{:id #uuid "ac2705c7-abca-447b-b51e-65f28df53be8", :duration 18, :timeout nil}
+    {:id #uuid "3ac355de-d213-4c40-bc53-e3f3a4a3e24b", :duration 5, :timeout nil}]}
+  {:id #uuid "b3219453-2fff-4336-91aa-bb075af8405f",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "73b51cdb-1c01-441f-9338-b51f2f656b12", :duration 18, :timeout nil}
+    {:id #uuid "d0433da9-0eee-48a0-8072-ba58b39db449", :duration 5, :timeout nil}]}
+  {:id #uuid "ad680b1e-d6ea-4ab1-95d3-927713c7a5dc",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "a66ae798-e115-4109-92d1-86f1df8bcdd1", :duration 18, :timeout nil}
+    {:id #uuid "2282a389-d59a-41c8-9dce-a5c8b121f9d0", :duration 5, :timeout nil}]}
+  {:id #uuid "2215d65b-6e90-4600-a28e-d09704926a94",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "1c406825-7a85-4cc4-ac57-af7464280179", :duration 18, :timeout nil}
+    {:id #uuid "2af3028c-ad66-4b6e-81db-7d0059b84271", :duration 5, :timeout nil}]}
+  {:id #uuid "780f5da8-fdd6-4cea-a5a4-4810a6095cf9",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "ea3a37de-c88e-4e9a-9c48-0b39a3b9becf", :duration 18, :timeout nil}
+    {:id #uuid "7cc4fe79-d1ca-412a-b720-803350d6db33", :duration 5, :timeout nil}]}),
+ :debug true}
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+{:page :index,
+ :current-timer nil,
+ :modal nil,
+ :debug? false,
+ :timers
+ ({:id #uuid "6bc71334-0a60-47e1-9e4c-99d0e8ea6a42",
+   :name "Timer 17",
+   :steps
+   [{:id #uuid "63cd632b-c5a8-4ef6-8b42-8425b916b3d7", :duration 18, :timeout nil}
+    {:id #uuid "9760a530-a40f-4972-b32b-70d2a8c38a01", :duration 5, :timeout nil}]}
+  {:id #uuid "b80fae81-6999-4e41-b18e-fcf56e5c26e5",
+   :name "Timer 16",
+   :steps
+   [{:id #uuid "2cc0b95f-5344-47e7-89ec-17d9ed962a66", :duration 18, :timeout nil}
+    {:id #uuid "4f6febbe-8a51-47e3-b947-0141c1dec5ec", :duration 5, :timeout nil}]}
+  {:id #uuid "0ae83f54-adc8-4073-8a91-3eefe7efdc67",
+   :name "Timer 15",
+   :steps
+   [{:id #uuid "4879b3de-83d3-4caf-9b8a-d51a69a00726", :duration 18, :timeout nil}
+    {:id #uuid "8a6e694c-a8eb-4bee-8659-2038dd4a82f4", :duration 5, :timeout nil}]}
+  {:id #uuid "25501713-6e88-44ae-9b06-5a0b5d1d3f8d",
+   :name "Timer 14",
+   :steps
+   [{:id #uuid "00cf2cd3-b18b-402c-822c-752a02f45f7b", :duration 18, :timeout nil}
+    {:id #uuid "1eef6819-c281-4413-ab8c-6a0d4b46aef6", :duration 5, :timeout nil}]}
+  {:id #uuid "772db71d-90ec-4fc7-8598-a58eda6c8ec8",
+   :name "Timer 13",
+   :steps
+   [{:id #uuid "4f65bf36-28b0-40eb-9e48-07cedc35fb2e", :duration 18, :timeout nil}
+    {:id #uuid "f2414491-6fee-42be-8d88-c8777e5ee243", :duration 5, :timeout nil}]}
+  {:id #uuid "cb475da2-27b0-4d50-b611-fe63f363f6af",
+   :name "Timer 12",
+   :steps
+   [{:id #uuid "4f411eba-7d45-4987-bc70-789a739ed8a8", :duration 18, :timeout nil}
+    {:id #uuid "6e2c11ed-1ff0-4ec8-b0b2-49c16c528008", :duration 5, :timeout nil}]}
+  {:id #uuid "ce5dba77-1e72-4b08-b58b-d9af5e0eed25",
+   :name "Timer 11",
+   :steps
+   [{:id #uuid "60d11c0c-fddb-4503-8816-574fbe52aa96", :duration 18, :timeout nil}
+    {:id #uuid "28446b48-f404-4466-95bb-8a5c20d23662", :duration 5, :timeout nil}]}
+  {:id #uuid "3616fde7-4926-45af-9948-7fecdf953c08",
+   :name "Timer 10",
+   :steps
+   [{:id #uuid "7ee02ecc-11f5-4e3a-87a5-0e3b9f299b76", :duration 18, :timeout nil}
+    {:id #uuid "4d70c4b2-170c-4bfe-b917-292c51ffb5fd", :duration 5, :timeout nil}]}
+  {:id #uuid "44e8f4d0-0d76-4221-81c1-076adc94628c",
+   :name "Timer 9",
+   :steps
+   [{:id #uuid "b2c9a0ab-4346-4dfd-8d92-0be7921fbe12", :duration 18, :timeout nil}
+    {:id #uuid "c6b25824-2ca7-4340-b8e1-3b1430822044", :duration 5, :timeout nil}]}
+  {:id #uuid "8cc679e2-c633-4ba1-9f48-892907706b25",
+   :name "Timer 8",
+   :steps
+   [{:id #uuid "599319a9-22ed-4979-af96-c7d3339bbb61", :duration 18, :timeout nil}
+    {:id #uuid "9406dda3-06f6-4e4e-be89-17d70e99ca0e", :duration 5, :timeout nil}]}
+  {:id #uuid "d80ceb78-96d5-4979-b269-4c2348197d21",
+   :name "Timer 7",
+   :steps
+   [{:id #uuid "4f0b57b7-1793-4859-84f6-b27d1e363547", :duration 18, :timeout nil}
+    {:id #uuid "72dc9ca2-e8ab-403d-a2c5-8584c69fa71d", :duration 5, :timeout nil}]}
+  {:id #uuid "f47198fa-5b79-47fc-83b5-a1f1654a5933",
+   :name "Timer 6",
+   :steps
+   [{:id #uuid "024e0209-5ae5-443e-9541-679a05314b8d", :duration 18, :timeout nil}
+    {:id #uuid "2617727a-9ac2-4f15-ba45-423687a5d12d", :duration 5, :timeout nil}]}
+  {:id #uuid "d0f09a66-be8a-4b7a-b157-d30bc594c3bb",
+   :name "Timer 5",
+   :steps
+   [{:id #uuid "ac2705c7-abca-447b-b51e-65f28df53be8", :duration 18, :timeout nil}
+    {:id #uuid "3ac355de-d213-4c40-bc53-e3f3a4a3e24b", :duration 5, :timeout nil}]}
+  {:id #uuid "b3219453-2fff-4336-91aa-bb075af8405f",
+   :name "Timer 4",
+   :steps
+   [{:id #uuid "73b51cdb-1c01-441f-9338-b51f2f656b12", :duration 18, :timeout nil}
+    {:id #uuid "d0433da9-0eee-48a0-8072-ba58b39db449", :duration 5, :timeout nil}]}
+  {:id #uuid "ad680b1e-d6ea-4ab1-95d3-927713c7a5dc",
+   :name "Timer 1",
+   :steps
+   [{:id #uuid "a66ae798-e115-4109-92d1-86f1df8bcdd1", :duration 18, :timeout nil}
+    {:id #uuid "2282a389-d59a-41c8-9dce-a5c8b121f9d0", :duration 5, :timeout nil}]}
+  {:id #uuid "2215d65b-6e90-4600-a28e-d09704926a94",
+   :name "Timer 2",
+   :steps
+   [{:id #uuid "1c406825-7a85-4cc4-ac57-af7464280179", :duration 18, :timeout nil}
+    {:id #uuid "2af3028c-ad66-4b6e-81db-7d0059b84271", :duration 5, :timeout nil}]}
+  {:id #uuid "780f5da8-fdd6-4cea-a5a4-4810a6095cf9",
+   :name "Timer 3",
+   :steps
+   [{:id #uuid "ea3a37de-c88e-4e9a-9c48-0b39a3b9becf", :duration 18, :timeout nil}
+    {:id #uuid "7cc4fe79-d1ca-412a-b720-803350d6db33", :duration 5, :timeout nil}]}),
+ :debug false}
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 
+; Evaluating file: ui.cljs
+[]
+cljs꞉app.ui꞉> 

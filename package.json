@@ -1,0 +1,29 @@
+{
+  "name": "meditation-timer",
+  "version": "1.0.0",
+  "description": "An Amazing Capacitor App",
+  "scripts": {
+    "shadow:watch": "shadow-cljs watch app",
+    "shadow:release": "shadow-cljs release app",
+    "tailwind:watch": "tailwindcss -i ./resources/main.css -o ./public/dist/main.css --watch",
+    "tailwind:release": "tailwindcss -o ./public/app.css",
+    "build": "npm run shadow:release && npm run tailwind:release"
+  },
+  "dependencies": {
+    "@capacitor/core": "latest",
+    "@capacitor/ios": "^5.1.1",
+    "@capacitor/preferences": "^5.0.5",
+    "@capacitor/splash-screen": "latest",
+    "@heroicons/react": "^2.0.18",
+    "react": "17",
+    "react-dom": "17"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "latest",
+    "shadow-cljs": "^2.24.1",
+    "tailwindcss": "^3.3.2",
+    "typescript": "^5.1.6"
+  },
+  "author": "",
+  "license": "ISC"
+}

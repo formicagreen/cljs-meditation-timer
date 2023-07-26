@@ -1,0 +1,11 @@
+{
+  "appId": "com.shantiram.timer",
+  "appName": "meditation-timer",
+  "bundledWebRuntime": false,
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  }
+}
