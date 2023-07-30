@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "description": "An Amazing Capacitor App",
   "scripts": {
-    "shadow:watch": "shadow-cljs watch app",
-    "shadow:release": "shadow-cljs release app",
-    "tailwind:watch": "tailwindcss -i ./resources/main.css -o ./public/dist/main.css --watch",
-    "tailwind:release": "tailwindcss -o ./public/app.css",
-    "build": "npm run shadow:release && npm run tailwind:release"
+    "shadow:dev": "shadow-cljs watch app",
+    "shadow:build": "shadow-cljs release app",
+    "tailwind:dev": "tailwindcss -i ./resources/main.css -o ./public/dist/main.css --watch",
+    "tailwind:build": "tailwindcss -i ./resources/main.css -o ./public/app.css --minify",
+    "web:build": "npm run shadow:release && npm run tailwind:build",
+    "ios:build": "npm run shadow:release && npm run tailwind:release && npx cap build ios",
+    "ios:dev": "npm run shadow:dev && npm run tailwind:dev && npx cap run ios --livereload --external"
   },
   "dependencies": {
     "@capacitor/core": "latest",
@@ -20,6 +22,7 @@
   },
   "devDependencies": {
     "@capacitor/cli": "latest",
+    "npm-run-all": "^4.1.5",
     "shadow-cljs": "^2.24.1",
     "tailwindcss": "^3.3.2",
     "typescript": "^5.1.6"
