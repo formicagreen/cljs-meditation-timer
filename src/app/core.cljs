@@ -1,4 +1,4 @@
-(ns app.domain
+(ns app.core
   (:require 
    [goog.string :as gstring]))
 
@@ -23,7 +23,7 @@
    :elapsed 0
    :previous-time nil
    :debug? false
-   :speedup 1000
+   :speedup nil
    :timeouts {}
    :animation-frame nil
    :timers (vec (for [i (range 3)] ; we need a vector here otherwise we will get a LazySeq which can't be accessed by index
@@ -113,7 +113,7 @@
 (defn delete-step [data timer step]
   (let [timer-idx (.indexOf (:timers data) timer)
         path [:timers timer-idx :steps]]
-    (update-in data (path data timer step) remove-where step)))
+    (update-in data path remove-where step)))
 
 
 (comment 
@@ -153,13 +153,17 @@
          (reduce +))))
 
 
-(defn min->angle [timer ms]
-  (* 360 (/ (ms->min ms) (duration timer))))
+(defn time->angle [timer min]
+  (* 360 (/ min (duration timer))))
 
 
 (defn step->angle [timer step]
   (let [duration (duration-inclusive timer step)]
-    (min->angle timer duration)))
+    (time->angle timer duration)))
+
+(comment 
+  (step->angle test-timer test-step)
+  )
 
 
 (defn format-time [ms]
