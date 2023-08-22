@@ -2,12 +2,14 @@
   (:require
    [app.core :as core]
    [app.state :as state]
+   [reagent.core :as r]
+   ["@capacitor/core" :refer [Capacitor]]
    ["@heroicons/react/20/solid" :as icon-sm-solid]))
 
 
-(comment 
-  @state/state
-  )
+(comment
+  @state/session
+  (.getPlatform Capacitor))
 
 
 (def page-order [:index :edit :run])
@@ -17,24 +19,19 @@
   (> (.indexOf page-order page1) (.indexOf page-order page2)))
 
 
-(defn is-above-current-page [page]
-  (is-above-page page (:page @state/state)))
-
-
 (comment
+  state/session
   (is-above-page :edit :index)
-  (is-above-page :index :run)
-  (is-above-current-page :edit))
-
-#_(defn get-height [selector]
-    (str (.-clientHeight (js/document.querySelector selector)) "px"))
+  (is-above-page :index :run))
 
 
 (defn page [k body]
   [:div
-   {:style {:background "url(noise-random-lighter.png), linear-gradient(rgb(16 12 40), rgb(59, 55, 113))"}
+   {:style {:padding-top "env(safe-area-inset-top)"
+            :background "rgb(0, 50, 130)"}
     :class ["w-screen h-screen transition-transform duration-300 flex flex-col overflow-hidden fixed bg-blend-overlay"
-            (when (is-above-current-page k) "transform translate-x-full")]}
+            ; move offscreen to the right if above current page
+            (when (is-above-page k (:page @state/session)) "transform translate-x-full")]}
    body])
 
 
@@ -44,74 +41,204 @@
 (def timer-center 100)
 
 
-(defn timer-svg-step [angle step-radius class]
+(defn timer-svg-step [angle step-radius fill]
   (let [rad (* (- angle 90) (/ Math/PI 180))
         x (+ timer-center (* timer-radius (Math/cos rad)))
         y (+ timer-center (* timer-radius (Math/sin rad)))]
-    [:circle {:cx x :cy y :r step-radius :class class}]))
+    [:circle {:cx x :cy y :r step-radius :fill fill}]))
 
 
 (defn timer-svg
   [& {:keys [timer stroke-width step-radius elapsed]
       :or {elapsed nil}}]
-  [:svg {:viewBox "0 0 200 200" :class "w-full h-auto"}
-             ;; Main circle
-   [:circle {:cx timer-center :cy timer-center :r timer-radius :class "stroke-current fill-none" :stroke-width stroke-width}]
-             ;; Smaller circles along the circumference
+  [:svg {:viewBox "0 0 200 200"
+         :class "w-full"
+         :style {:max-height "75vh"}}
+   [:defs
+    [:radialGradient {:id "gradient" :x1 0 :y1 0 :x2 0 :y2 "100%"}
+     [:stop {:offset "0%" :stop-color "yellow"}]
+     [:stop {:offset "100%" :stop-color "darkorange"}]]]
+   ;; Main circle
+   [:circle {:cx           timer-center
+             :cy           timer-center
+             :r            timer-radius
+             :class        "stroke-current fill-none"
+             :stroke-width stroke-width}]
+   ;; Smaller circles along the circumference
    (for [step (:steps timer)]
      ^{:key (:id step)}
-     [timer-svg-step (core/step->angle timer step) step-radius "fill-current"])
+     [timer-svg-step
+      (core/step->angle timer step)
+      step-radius
+      "white"])
    (when elapsed
-     [timer-svg-step (core/time->angle timer (core/ms->min elapsed)) step-radius "fill-orange-500"])])
+     [timer-svg-step
+      (core/time->angle timer (core/ms->min elapsed))
+      step-radius
+      "url(#gradient)"])])
 
 
-#_(defn detect-overflow [element]
-    (let [scroll-height (.-scrollHeight element)
-          client-height (.-clientHeight element)          scroll-top (.-scrollTop element)]
-      {:top (> scroll-top 0)
-       :bottom (> scroll-height (+ scroll-top client-height))}))
+
+(defn overflow-above? [k]
+  (> (get-in @state/scroll-areas [k :scroll-top]) 0))
+
+
+(defn overflow-below? [k]
+  (let [element (get-in @state/scroll-areas [k :element])]
+    (> (- (:scroll-height element) (:client-height element))
+       (:scroll-top element))))
+
+
+(defn shadow-element
+  [visible? position]
+  [:div
+   {:class ["h-6 w-full from-blue-900/50 to-transparent pointer-events-none transition-opacity absolute"
+            (if visible? "opacity-100" "opacity-0")
+            (when (= position :top) "top-0  bg-gradient-to-b")
+            (when (= position :bottom) "bottom-0 bg-gradient-to-t")]}])
+
+
+(comment
+  @state/scroll-areas)
+
+(defn scrollable
+  "This is an insanely complicated component that:
+   1. Shows a shadow at the top/bottom of the scrollable area to indicate that there is more content above/below.
+   2. Maintains scroll position between renders.
+   It's a lot of work, but will people notice the difference? Probably not.
+   What makes this so difficult is that React lacks fine-grained reactivity. It would be trivial to implement in vanilla JS.
+   So all of the state that this component needs to keep track of is stored in a global atom.
+   You might be able to achieve something similar by carefully managing the lifecycle of the scrollable area.
+   But that also seems like a lot of work and kind of brittle."
+  [key body]
+  (let [div-ref (r/atom nil)
+        prev-body (r/atom nil)
+        get-scroll-pos (fn [] (get-in @state/scroll-areas [key :scroll]))
+        get-client-height (fn [] (get-in @state/scroll-areas [key :client-height]))
+        get-scroll-height (fn [] (get-in @state/scroll-areas [key :scroll-height]))
+        set-scroll-pos! (fn [pos] (swap! state/scroll-areas assoc-in [key :scroll] pos))
+        set-height! (fn []
+                      (swap! state/scroll-areas
+                             #(-> %
+                                  (assoc-in [key :client-height] (.-clientHeight @div-ref))
+                                  (assoc-in [key :scroll-height] (.-scrollHeight @div-ref)))))
+        overflow-above? (fn [] (and (> (get-scroll-pos) 0) (> (get-scroll-height) (get-client-height))))
+        overflow-below? (fn [] (> (- (get-scroll-height) (get-client-height))
+                                  (get-scroll-pos)))]
+    [(r/create-class
+      {:component-did-mount (fn []
+                              (set-height!)
+                              (set! (.-scrollTop @div-ref) (get-scroll-pos)))
+       :component-did-update (fn [] (when (not= @prev-body body)
+                                      (set-height!)
+                                      (reset! prev-body body)
+                                      (set! (.-scrollTop @div-ref) (get-scroll-pos))))
+       :reagent-render (fn []
+                         [:div
+                          {:class "flex flex-grow overflow-auto w-full flex-col relative"}
+                          [shadow-element (overflow-above?) :top]
+                          [:div
+                           {:ref #(reset! div-ref %)
+                            :on-scroll (fn [] (set-scroll-pos! (.-scrollTop @div-ref)))
+                            :class "flex-grow overflow-auto h-full w-full"}
+                           body]
+                          [shadow-element (overflow-below?) :bottom]])})]))
+
+
+
+(comment
+  @state/session)
 
 
 (defn index-page []
   [page :index
       ; header
    [:<>
-    [:div {:class "w-full flex p-6 justify-end z-20 shadow"}
-     [:button
+    [:div {:class "w-full flex p-6 justify-end z-20"}
+     [:button.font-medium
       {:on-click #(state/show-modal! :about)}
       "About"]]
       ; main area
-    [:div {:class "flex-grow overflow-y-scroll overflow-x-hidden"}
-     (for [timer (:timers @state/state)]
+    [scrollable :timers
+     (for [timer (:timers @state/persistent)]
        ^{:key (:id timer)}
        [:button
-        {:class "p-6 grid w-full text-2xl items-center gap-4 
-                    border-b first:border-t border-stone-700 border-opacity-25"
+        {:class "timer p-6 grid w-full text-2xl items-center gap-4"
          :style {:grid-template-columns "3rem 2fr auto"}
          :on-click #(state/edit-timer! timer)}
-        [:div [timer-svg {:timer timer :stroke-width 2 :step-radius 2}]]
+        [:div [timer-svg {:timer timer :stroke-width 10 :step-radius 16}]]
         [:div
          {:class "font-medium overflow-ellipsis overflow-hidden whitespace-nowrap"}
          (:name timer)]
         [:div
          {:class "whitespace-nowrap w-min"}
-         (core/duration timer) " min"]])]
+         (core/full-duration timer) " min"]])]
      ; footer
     [:div {:class "flex justify-center w-full bottom-0 p-6"}
      [:button
-      {:on-click #(state/add-and-edit-timer!)
-       :class "font-semibold rounded-full border-2 border-stone-50 
+      {:on-click (fn [] (state/add-and-edit-timer!)
+                   ; scroll down so that next time we come back to the index page we see the new timer
+                   (js/setTimeout #(.focus (.querySelector js/document  ".timer:last-child")) 300))
+       :class "font-semibold rounded-full border-2  
                  flex gap-1 px-4 py-2 z-20 items-center"}
       [:> icon-sm-solid/PlusIcon {:class "h-6 w-6"}]
       "Add timer"]]]])
 
+(comment
+  (def timer (-> @state/persistent :timers first)))
+
 
 (defn back-button [f]
-  [:button
+  [:button.font-medium
    {:on-click f
-    :class "flex gap-1 items-center"}
+    :class "flex gap-1 items-center font-medium"}
    [:> icon-sm-solid/ChevronLeftIcon {:class "h-6 w-6"}]
    "Back"])
+
+
+(defn duration-input
+  "This needs to be a form-2 component because it has its own intermediate state before validation."
+  [timer step]
+  (let [input-val (r/atom (:duration step))]
+    (println "rendering duration input")
+    (fn []
+      [:div.flex.items-center.gap-4
+       [:div.p-2
+        [:> icon-sm-solid/MinusIcon
+         {:class "h-6 w-6"
+          :on-click #(state/persist!
+                      (fn [s] (core/dec-duration s timer step)))}]]
+       [:div.relative.w-12.inline-block.text-center
+        [:input
+         {:class "text-stone-700 w-full py-2 mr-6 rounded shadow-inner text-center shadow-stone-500/75"
+          :type "number"
+          :id (:id step)
+          :pattern "[0-9]*"
+          :tabIndex 1
+          :value @input-val
+          :on-change #(reset! input-val (-> % .-target .-value))
+          :on-blur
+          (fn [e]
+            (let [new-state (state/persist!
+                             #(core/update-duration % timer step (-> e .-target .-value int)))]
+              (reset! input-val (:duration (core/get-step new-state timer step)))))}]
+        [:div
+      ; this div is here to catch click events and focus the input that is below it
+      ; this is to make sure the cursor is always placed after the last digit
+      ; (which is not the case if you click on the input directly)
+      ; the setTimeout is a hack to deal with react re-rendering too much
+      ; i.e. on blur you try click another input but it immediately re-renders and the click is lost
+      ; scrollIntoView is there to deal with the janky ios keyboard moving the input out of view sometimes. it's not the best solution
+         {:class "absolute inset-0"
+          :on-click (fn [e]
+                      (let [get-el #(-> js/document (.getElementById (:id step)))]
+                        (js/setTimeout #(.focus (get-el)) 10)
+                        (js/setTimeout #((.scrollIntoView (get-el) #js {:behavior "smooth"})) 200)))}]] 
+       [:div.p-2
+        [:> icon-sm-solid/PlusIcon
+         {:class "h-6 w-6"
+          :on-click #(state/persist!
+                      (fn [s] (core/inc-duration s timer step)))}]]])))
 
 
 (defn edit-page []
@@ -120,62 +247,64 @@
       ; header
    (when-some [timer (state/current-timer)]
      [:<>
+      (println "Rendering edit page")
       [:div {:class "p-6 flex gap-6 flex-col"}
        [:div
         {:class "flex justify-start"}
-        [back-button (fn [] (swap! state/state assoc :page :index))]]
+        [back-button (fn [] (state/swap-page! :index))]]
        [:input
         {:value (:name timer)
          :on-change
-         #(swap! state/state (fn [s] (core/rename-timer s timer (-> % .-target .-value))))
+         #(state/persist! (fn [s] (core/rename-timer s timer (-> % .-target .-value))))
          :class "text-stone-700 py-2 px-4 rounded shadow-inner shadow-stone-500/75"}]
        [:button.btn.w-full
-        {:on-click #(swap! state/state assoc :page :run)}
+        {:on-click (fn []
+                     (state/swap-page! :run)
+                     (state/start! timer))}
         [:> icon-sm-solid/PlayIcon {:class "h-6 w-6"}]
-        "Run"]]
+        "Start timer"]]
       ; steps
-      [:div
-       {:class "flex-grow overflow-y-scroll"}
+      [scrollable :steps
        (for [step (:steps timer)]
          ^{:key (:id step)}
          [:div
-          {:class "p-6 flex w-full gap-6 items-center
-                        border-b first:border-t border-stone-700 border-opacity-25"}
-          [:div.flex-grow
-           [:input
-            {:class "text-stone-700 w-12 py-2 mr-6 rounded shadow-inner text-center shadow-stone-500/75"
-             :type "number"
-             :pattern "[0-9]*"
-             :on-change
-             #(swap! state/state (fn [s] (core/update-duration s timer step (-> % .-target .-value int))))
-             :value (:duration step)}] "min"]
-
-          [:button.p-2.transition-opacity
-           {:class (when (-> timer :steps count (< 2))
-                     "opacity-0 pointer-events-none") ; don't show delete button if there is only one step
-            :on-click #(swap! state/state (fn [s] (core/delete-step s timer step)))}
+          {:class "step px-6 py-3 flex w-full items-center"}
+          [:div.flex-grow [duration-input timer step]]
+          [:div.p-2
+           {:class (when (-> timer :steps count (< 2)) ; don't show delete button if there is only one step
+                     "opacity-25 pointer-events-none")
+            :on-click
+            #(state/persist!
+              (fn [s] (core/delete-step s timer step)))}
            [:> icon-sm-solid/XMarkIcon {:class "h-6 w-6"}]]])]
       ; footer
       [:div {:class "grid grid-cols-2 gap-6 p-6"}
        [:button.btn
-        {:on-click #(state/show-modal! :delete-timer)}
+        {:on-click (fn []
+                     (when (js/confirm "Delete timer?")
+                       (state/swap-page! :index)
+                       (js/setTimeout #(state/persist! core/delete-timer timer) 300)))}
         [:> icon-sm-solid/XMarkIcon {:class "h-6 w-6"}]
-        "Delete"]
+        "Delete" [:span {:class "hidden md:inline"} "timer"] ; both words won't fit on small screens
+        ]
        [:button.btn
-        {:on-click #(swap! state/state (fn [s] (core/add-step s timer)))}
+        {:on-click (fn [e]
+                     (state/persist! (fn [s] (core/add-step s timer)))
+                     ; when dom has updated, focus last timer in list
+                     (js/setTimeout #(.focus (.querySelector js/document  ".step:last-child input")) 10))}
         [:> icon-sm-solid/PlusIcon {:class "h-6 w-6"}]
         "Add step"]]])])
 
 
 (comment
-  (:current-timer @state/state))
+  (:current-timer @state/session))
 
 
 (defn modal [k body]
   [:div
    {:class ["fixed inset-0 z-10 bg-black bg-opacity-50
              grid place-items-center transition-opacity"
-            (when-not (= k (:modal @state/state)) "opacity-0 pointer-events-none")]}
+            (when-not (= k (:modal @state/session)) "opacity-0 pointer-events-none")]}
    [:div
     {:class "fixed inset-0"
      :on-click #(state/close-modal!)}]
@@ -188,8 +317,8 @@
 (defn about-modal []
   [modal :about
    [:<>
-    [:h2.text-4xl.mb-6 "BĪJA"]
-    [:p "Meditation sequence timer"]
+    [:h2.text-4xl.mb-6 core/app-name]
+    [:p "Simple meditation timer"]
     [:p.mb-6 "© 2023 Dag Norberg"]
     [:button
      {:class "rounded-full bg-stone-100 px-4 py-2 
@@ -209,7 +338,12 @@
       [:> icon-sm-solid/XMarkIcon {:class "h-6 w-6"}]
       "Cancel"]
      [:button.btn
-      {:on-click #(swap! state/state (fn [s] (core/delete-timer s (state/current-timer))))
+      {:on-click
+       #(state/persist!
+         (fn [s] (-> s
+                     (core/delete-timer (state/current-timer))
+                     (assoc :page :index)
+                     (assoc :modal nil))))
        :class "bg-red-600 text-white"}
       [:> icon-sm-solid/TrashIcon {:class "h-6 w-6"}]
       "Delete"]]]])
@@ -257,20 +391,22 @@
   [:div
    {:class "fixed bottom-0 right-0 h-[50vh] text-sm bg-black bg-opacity-50 z-50 p-4 overflow-scroll max-h-screen"}
    (cond
-     (map? @state/state) [render-map @state/state]
-     (sequential? @state/state) [render-seq @state/state]
-     :else (pr-str @state/state))])
+     (map? @state/session) [render-map @state/session]
+     (sequential? @state/session) [render-seq @state/session]
+     :else (pr-str @state/session))])
 
 
 (defn monospaced-time
   "Separates the time into digits and wraps each digit in a div with a fixed width"
-  [ms]
-  [:div
-   {:class "absolute text-7xl flex"}
+  [ms font-size]
+  [:div.flex.leading-none.justify-center
+   {:style {:font-size (str font-size "px")}}
    (for [[i c] (map-indexed vector (str (core/format-time ms)))]
-     (let [width (if (= c ":") "w-6" "w-12")]
+     (let [width (if (= c ":") (* font-size 0.3) (* font-size 0.7))]
        ^{:key i}
-       [:div {:class ["text-center" width]} c]))])
+       [:div.text-center
+        {:style {:width (str width "px")}}
+        c]))])
 
 
 (defn run-page []
@@ -281,21 +417,29 @@
        {:class "p-6 flex justify-start"}
        [back-button (fn []
                       (state/stop!)
-                      (swap! state/state assoc :page :edit))]]
+                      (state/swap-page! :edit))]]
       [:div
        {:class "grid place-items-center flex-grow relative"}
-       [timer-svg {:timer timer 
-                   :stroke-width 2 
-                   :step-radius 5 
-                   :elapsed (:elapsed @state/state)}]
-       [monospaced-time (:elapsed @state/state)]]
+       [timer-svg {:timer timer
+                   :stroke-width 2
+                   :step-radius 5
+                   :elapsed @state/elapsed}]
+       [:div.absolute.text-center
+        (if (-> timer :steps count (> 1))
+          (let [current-step (state/current-step)]
+            [:<>
+             [:div.pb-4.opacity-75 "Step " (inc (core/step-index timer current-step)) " of " (count (:steps timer))]
+             [monospaced-time (state/remaining-current-step) "70"]
+             [:div.pt-6.opacity-75
+              [monospaced-time (state/remaining-total) "20"]]])
+          [monospaced-time (state/remaining-total) "70"])]]
       [:div
        {:class "p-6 grid gap-6 grid-cols-2"}
        [:button.btn
         {:on-click #(state/stop!)}
         [:> icon-sm-solid/StopIcon {:class "h-6 w-6"}]
         "Stop"]
-       (case (core/play-state @state/state)
+       (case (core/play-state @state/session)
          :running
          [:button.btn
           {:on-click #(state/pause!)}
@@ -313,12 +457,23 @@
           "Start"])]])])
 
 
+(comment
+  (def timer (state/current-timer))
+  (def current-step (state/current-step))
+  #rtrace (state/current-timer))
+
 (defn app []
   [:div
-   {:class "text-lg text-stone-50 overflow-hidden"}
-   (when (:debug @state/state) [debugger])
+   {:class "text-lg text-white overflow-hidden"}
+   (println "rendering app")
+   (when (:debug @state/session) [debugger])
    [index-page]
    [edit-page]
    [run-page]
-   [about-modal]
-   [delete-timer-modal]])
+   [about-modal]])
+
+(comment
+  (state/reset-state!)
+  (swap! state/session assoc :debug true)
+  (swap! state/session assoc :debug false)
+  @state/elapsed)

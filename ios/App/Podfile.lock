@@ -1,34 +1,52 @@
 PODS:
-  - Capacitor (5.1.1):
+  - Capacitor (5.2.3):
     - CapacitorCordova
-  - CapacitorCordova (5.1.1)
-  - CapacitorPreferences (5.0.5):
+  - CapacitorApp (5.0.6):
     - Capacitor
-  - CapacitorSplashScreen (5.0.5):
+  - CapacitorCommunityKeepAwake (4.0.0):
+    - Capacitor
+  - CapacitorCordova (5.2.3)
+  - CapacitorLocalNotifications (5.0.6):
+    - Capacitor
+  - CapacitorPreferences (5.0.6):
+    - Capacitor
+  - CapacitorSplashScreen (5.0.6):
     - Capacitor
 
 DEPENDENCIES:
   - "Capacitor (from `../../node_modules/@capacitor/ios`)"
+  - "CapacitorApp (from `../../node_modules/@capacitor/app`)"
+  - "CapacitorCommunityKeepAwake (from `../../node_modules/@capacitor-community/keep-awake`)"
   - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
+  - "CapacitorLocalNotifications (from `../../node_modules/@capacitor/local-notifications`)"
   - "CapacitorPreferences (from `../../node_modules/@capacitor/preferences`)"
   - "CapacitorSplashScreen (from `../../node_modules/@capacitor/splash-screen`)"
 
 EXTERNAL SOURCES:
   Capacitor:
     :path: "../../node_modules/@capacitor/ios"
+  CapacitorApp:
+    :path: "../../node_modules/@capacitor/app"
+  CapacitorCommunityKeepAwake:
+    :path: "../../node_modules/@capacitor-community/keep-awake"
   CapacitorCordova:
     :path: "../../node_modules/@capacitor/ios"
+  CapacitorLocalNotifications:
+    :path: "../../node_modules/@capacitor/local-notifications"
   CapacitorPreferences:
     :path: "../../node_modules/@capacitor/preferences"
   CapacitorSplashScreen:
     :path: "../../node_modules/@capacitor/splash-screen"
 
 SPEC CHECKSUMS:
-  Capacitor: 55956e1199b63efcd7f2dedffa5c6b9129c45aae
-  CapacitorCordova: b31a46ad379c93a5c04e0598a6164e8cb90c2bb2
-  CapacitorPreferences: c4764b0b3beae28c625c87b1a80504d9b24947ec
-  CapacitorSplashScreen: e563abf6d590bfe0269515ccc9d8bc03c41f32e9
+  Capacitor: 6f44cbc33839b8a4202b8eac97041fe584083417
+  CapacitorApp: 024e1b1bea5f883d79f6330d309bc441c88ad04a
+  CapacitorCommunityKeepAwake: f3442e3e9b666dd0162522fbd053da1fe81ede20
+  CapacitorCordova: 35def3ebfdef491f0a7b652816eb873ff4b20bbf
+  CapacitorLocalNotifications: c2d8b14794064fd4814b1d6c4ddbac8029afa295
+  CapacitorPreferences: f03954bcb0ff09c792909e46bff88e3183c16b10
+  CapacitorSplashScreen: 5fa2ab5e46cf5cc530cf16a51c80c7a986579ccd
 
-PODFILE CHECKSUM: d8c231129f3bb3fbea57b1e13bea65b6196ebbfd
+PODFILE CHECKSUM: 417a423c0c92e97e7f3e1239d54fe2ac4211b66b
 
 COCOAPODS: 1.12.1

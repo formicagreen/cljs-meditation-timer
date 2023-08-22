@@ -3,17 +3,23 @@
   "version": "1.0.0",
   "description": "An Amazing Capacitor App",
   "scripts": {
-    "shadow:dev": "shadow-cljs watch app",
-    "shadow:build": "shadow-cljs release app",
-    "tailwind:dev": "tailwindcss -i ./resources/main.css -o ./public/dist/main.css --watch",
-    "tailwind:build": "tailwindcss -i ./resources/main.css -o ./public/app.css --minify",
-    "web:build": "npm run shadow:release && npm run tailwind:build",
-    "ios:build": "npm run shadow:release && npm run tailwind:release && npx cap build ios",
-    "ios:dev": "npm run shadow:dev && npm run tailwind:dev && npx cap run ios --livereload --external"
+    "dev:shadow": "shadow-cljs watch app",
+    "build:shadow": "shadow-cljs release app",
+    "dev:tailwind": "tailwindcss -i ./resources/main.css -o ./public/dist/main.css --watch",
+    "build:tailwind": "tailwindcss -i ./resources/main.css -o ./public/dist/main.css --minify",
+    "dev:web": "run-p dev:shadow dev:tailwind",
+    "build:web": "npm run build:shadow && npm run build:tailwind",
+    "run:ios": "npx cap run ios",
+    "dev:ios": "SERVER_URL=http://$(ifconfig en0 | awk '/inet /{print substr($2,1)}'):8080 npx cap run ios",
+    "build:icons": "npx @capacitor/assets generate --iconBackgroundColor 'rgb(0, 50, 130)' --iconBackgroundColorDark 'rgb(0, 50, 130)' --splashBackgroundColor 'rgb(0, 50, 130)' --splashBackgroundColorDark 'rgb(0, 50, 130)'",
+    "build:ios": "npm run build:web && npx cap build ios"
   },
   "dependencies": {
+    "@capacitor-community/keep-awake": "^4.0.0",
+    "@capacitor/app": "^5.0.6",
     "@capacitor/core": "latest",
     "@capacitor/ios": "^5.1.1",
+    "@capacitor/local-notifications": "^5.0.6",
     "@capacitor/preferences": "^5.0.5",
     "@capacitor/splash-screen": "latest",
     "@heroicons/react": "^2.0.18",
@@ -21,6 +27,7 @@
     "react-dom": "17"
   },
   "devDependencies": {
+    "@capacitor/assets": "^2.0.4",
     "@capacitor/cli": "latest",
     "npm-run-all": "^4.1.5",
     "shadow-cljs": "^2.24.1",

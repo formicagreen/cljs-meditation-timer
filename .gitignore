@@ -1,7 +1,10 @@
 node_modules/
 public/dist/
 .shadow-cljs/
+.calva
 .lsp/
 .DS_Store
 .nrepl-port
 .clj-kondo
+repl-client-debug
+cljs-runtime

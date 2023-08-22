@@ -1,7 +1,11 @@
 (ns app.core
   (:require 
-   [goog.string :as gstring]))
+   [goog.string :as gstring]
+   [goog.string.format]
+   [cljs.reader :as edn]))
 
+
+(def app-name "Dhyāna")
 
 (defn step [duration]
   {:id (random-uuid)
@@ -11,29 +15,24 @@
 (defn timer [name]
   {:id (random-uuid)
    :name name
-   :steps (vec (for [i (range 3)] ; we need a vector here otherwise we will get a LazySeq which can't be accessed by index
-                 (step 5)))})
+   :steps [(step 15)]})
 
 
-(defn initial-state []
+(def initial-state
   {:page :index
    :current-timer nil
    :modal nil
    :started-at nil
-   :elapsed 0
-   :previous-time nil
+   :previous-time 0
    :debug? false
-   :speedup nil
-   :timeouts {}
-   :animation-frame nil
-   :timers (vec (for [i (range 3)] ; we need a vector here otherwise we will get a LazySeq which can't be accessed by index
-                  (timer (str "Timer " (inc i)))))})
+   :notifications-debug []})
 
 
-(def test-data (initial-state))
+(def initial-storage
+  {:timers [(timer "Timer 1")]})
 
 
-(def test-timer (first (:timers test-data)))
+(def test-timer (first (:timers initial-storage)))
 
 
 (def test-step (first (:steps test-timer)))
@@ -47,10 +46,23 @@
   (/ ms (* 1000 60)))
 
 
-(defn duration [timer]
+(defn get-duration [step]
+  (:duration step)
+  ; uncomment the line below to speed things up in testing
+  #_(* (/ (:duration step) 60) 10) 
+  )
+
+
+(defn full-duration 
+  "The full duration of the timer in minutes"
+  [timer]
   (->> (:steps timer)
-       (map :duration)
+       (map get-duration)
        (reduce +)))
+
+(comment
+  (full-duration test-timer)
+  )
 
 
 (defn where [coll key val]
@@ -59,82 +71,89 @@
        first))
 
 
-(defn index-where
-  [coll key val]
+(defn index-where [coll key val]
   (->> coll
-       (map key)
-       (keep-indexed #(when (= %2 val) %1))
+       (keep-indexed #(when (= (get %2 key) val) %1))
        first))
 
 
-(defn path 
-  ([data timer]
-            (let [timer-idx (.indexOf (:timers data) timer)]
-              [:timers timer-idx]))
-  ([data timer step]
-   (let [timer-idx (.indexOf (:timers data) timer)
-         step-idx  (.indexOf (get-in data [:timers timer-idx :steps]) step)]
-     [:timers timer-idx :steps step-idx])))
-
-
-(comment 
-  (path test-data test-timer)
-  (path test-data test-timer test-step)
-)
-
-
-(defn clamp [n vmin vmax]
+(defn clamp [n vmin vmax] 
   (max vmin (min vmax n)))
 
 
+(defn timer-path [data timer]
+  (index-where (:timers data) :id timer))
+
+
+(defn step-path [data timer step]
+  (let [timer-idx (index-where (:timers data) :id (:id timer))
+        step-idx (index-where (:steps timer) :id (:id step))] 
+    [:timers timer-idx :steps step-idx]))
+
+
+(defn get-step [data timer step]
+  (let [path (step-path data timer step)]
+    (get-in data path)))
+
+
+(comment
+  (step-path initial-storage test-timer test-step)
+  )
+
+
 (defn update-duration 
-  [data timer step duration]
-  (assoc-in data (path data timer step) (clamp duration 1 999)))
+  [data timer step duration] 
+  (let [path (conj (step-path data timer step) :duration)] 
+    (assoc-in data path (clamp duration 1 999))))
+
+
+(defn inc-duration [data timer step]
+  (update-duration data timer step (inc (:duration step))))
+
+
+(defn dec-duration [data timer step]
+  (update-duration data timer step (dec (:duration step))))
+
 
 
 (defn rename-timer [data timer name]
-  (let [timer-idx (.indexOf (:timers data) timer)
+  (let [timer-idx (index-where (:timers data) :id (:id timer))
         path [:timers timer-idx :name]]
     (assoc-in data path name)))
 
 
-(defn index-of [coll item]
-  (->>
-   coll
-   (keep-indexed #(when (= item %2) %1))
-   first))
-
-
 (defn remove-where [coll val]
   (->> coll
-       (remove #(= val %))))
+       (remove #(= val %))
+       vec))
 
 
 (defn delete-step [data timer step]
-  (let [timer-idx (.indexOf (:timers data) timer)
+  (let [timer-idx (index-where (:timers data) :id (:id timer))
         path [:timers timer-idx :steps]]
     (update-in data path remove-where step)))
 
 
 (comment 
-  (delete-step test-data test-timer test-step)
+  (delete-step initial-storage test-timer test-step)
   )
 
 
 (defn delete-timer [data timer]
   (update data :timers
-          (fn [timers] (remove #(= timer %) timers))))
+          (fn [timers] (vec ; prevent lazy weirdness
+                        (remove #(= timer %) timers)))))
 
 
 (comment
-  (delete-timer test-data test-timer)
+  (delete-timer initial-storage test-timer)
   )
 
 
 (defn add-step [data timer]
-  (let [timer-idx (.indexOf (:timers data) timer)
+  (let [timer-idx (index-where (:timers data) :id (:id timer))
         path [:timers timer-idx :steps]]
-    (update-in data path conj (step 5))))
+    (update-in data path conj (step nil))))
 
 
 (comment
@@ -143,23 +162,49 @@
   )
 
 
-(defn duration-inclusive
-  "Returns the duration of the timer up to and including the given step."
+(defn step-index [timer step]
+  (index-where (:steps timer) :id (:id step)))
+
+
+(defn step-start-time 
+  "Returns the duration of the timer up to the given step."
   [timer step]
-  (let [index (.indexOf (:steps timer) step)
-        steps-until-and-including (take (inc index) (:steps timer))]
-    (->> steps-until-and-including
-         (map :duration)
+  (let [index (step-index timer step)
+        steps-until (when index (take index (:steps timer)))]
+    (->> steps-until
+         (map get-duration)
          (reduce +))))
 
 
+(defn step-end-time
+  "Returns the duration of the timer up to and including the given step."
+  [timer step]
+  (+ (get-duration step)
+     (step-start-time timer step)))
+
+
+(defn current-step [timer elapsed]
+  (if (> elapsed 0)
+   (->> timer
+       :steps
+       (filter #(> elapsed (min->ms (step-start-time timer %))))
+       last)
+    (first (:steps timer))))
+
+
+(comment
+  (step-index test-timer (current-step test-timer (min->ms 10)))
+  )
+
+
 (defn time->angle [timer min]
-  (* 360 (/ min (duration timer))))
+  (* 360 (/ min (full-duration timer))))
 
 
 (defn step->angle [timer step]
-  (let [duration (duration-inclusive timer step)]
+  (let [duration (step-end-time timer step)]
     (time->angle timer duration)))
+
 
 (comment 
   (step->angle test-timer test-step)
@@ -168,21 +213,22 @@
 
 (defn format-time [ms]
   (let [minutes (js/Math.floor (/ ms 1000 60))
-        seconds (js/Math.floor (mod (/ ms 1000) 60))]
-    (str (gstring/format "%02d" minutes) ":" (gstring/format "%02d" seconds))))
+        seconds (js/Math.floor (mod (/ ms 1000) 60))] 
+    (gstring/format "%02d:%02d" minutes seconds)))
 
 
 (comment
   (format-time 1000)
+  (gstring/format "%02d" 1)
   )
 
 
 (defn play-state [data]
   (cond
     (:started-at data) :running
-    (:previous-time data) :paused
+    (pos? (:previous-time data)) :paused
     :else :stopped))
 
 (comment
-  (play-state test-data)
+  (play-state initial-state)
   )

@@ -1,81 +1,150 @@
 (ns app.state
   (:require
    [reagent.core :as r]
-   [app.core :as core]))
+   [app.core :as core]
+   ["@capacitor/core" :refer [Capacitor]]
+   ["@capacitor/preferences" :refer [Preferences]]
+   ["@capacitor-community/keep-awake" :refer [KeepAwake]]
+   ["@capacitor/local-notifications" :refer [LocalNotifications]]))
 
 
 (comment
-
-  (.-isNative Capacitor)
-
-  (.isPluginAvailable Capacitor "Preferences")
-
-  (.getPlatform Capacitor)
+  
 
   (->
-   (.set Preferences "foo" "bar")
-   (.then (fn [prefs] (println prefs))))
+   (.isSupported KeepAwake)
+   (.then (fn [supported] (println "KeepAwake supported? " supported)))
+   (.catch (fn [err] (println err))))
+  (->
+   (.isKeptAwake KeepAwake)
+   (.then (fn [is-kept-awake] (println "Kept awake? " is-kept-awake)))
+   (.catch (fn [err] (println err))))
+  
+
+  #rtrace (reduce + (map inc (range 10))) 
+
+
+  (.schedule LocalNotifications
+             (clj->js {:notifications
+                       [{:title "hey"
+                         :body "what"
+                         :sound "/public/singing-bowl.wav"
+                         :id 5}]}))
+  
+  (.requestPermissions LocalNotifications)
 
   (->
-   (.get Preferences "foo")
-   (.then (fn [prefs] (println prefs)))))
+   (.checkPermissions LocalNotifications)
+   (.then (fn [res] (println res)))
+   (.catch (fn [err] (println err))))
+  
+  (js/alert "foo")
+  )
 
 
-(defonce state (r/atom (core/initial-state)))
+; This stores all the non-persistent app state except for things that update very frequently.
+(defonce session
+  (r/atom core/initial-state))
+
+
+; Persistent state, stored using the Capacitor Preferences plugin
+(def persistent 
+  (r/atom core/initial-storage))
+
+
+; Elapsed time in milliseconds.
+(defonce elapsed 
+  (r/atom 0))
+
+
+; Scroll positions for scrollable elements.
+(defonce scroll-areas 
+  (r/atom {:timers {:scroll-top 0
+                    :client-height 0
+                    :scroll-height 0}
+           :steps {:scroll-top 0
+                   :client-height 0
+                   :scroll-height 0}}))
 
 
 (comment
-  @state
-)
+  @session
+  @persistent
+  @elapsed
+  )
 
-
-(defonce storage
-  (r/atom (js/JSON.parse nil)))
 
 (defn current-timer []
-  (core/where (:timers @state) :id (:current-timer @state)))
+  (core/where (:timers @persistent) :id (:current-timer @session)))
+
+(comment
+  (current-timer)
+  )
+
+
+(defn persist! 
+  "Update the persistent state and save it to storage."
+  [f & args]
+  (let [new-data (apply swap! persistent f args)] 
+    (->
+     (.set Preferences #js {:key "storage" :value (pr-str new-data)})
+     (.then (fn [prefs] (println prefs)))
+     (.catch (fn [err] (println err))))
+    new-data))
+
+(comment
+  (persist! update :timers conj (core/timer "foo"))
+  )
 
 
 (defn swap-page! [k]
-  (swap! state assoc :page k))
+  (swap! session assoc :page k))
 
 
 (defn reset-state! []
-  (reset! state (core/initial-state)))
+  (reset! session core/initial-state)
+  (reset! elapsed 0))
 
-
-(defn add-and-edit-timer! []
-  (let [name  (str "Timer " (inc (count (:timers @state))))
-        timer (core/timer name)]
-    (swap! state
-           (fn [s] (-> s
-                       (update :timers conj timer)
-                       (assoc :current-timer (:id timer)
-                              :page :edit))))))
+(defn reset-storage! []
+  (persist! assoc :timers (:timers core/initial-storage)))
 
 
 (defn play-sound! []
-  (.play (js/Audio. "singing-bowl-high.mp3")))
+  (println "play-sound!")
+  (.play (js/Audio. "singing-bowl.wav")))
 
 
 (comment
   (play-sound!))
 
 
-(defn clear-timeouts! []
-  (doseq [timeout (vals (:timeouts @state))]
+(defn clear-step-timeouts! [] 
+  (doseq [timeout (vals (get-in @session [:timeouts :steps]))]
     (js/clearTimeout timeout))
-  (swap! state assoc
-         :timeouts {}
-         :animation-frame nil))
+  (swap! session assoc-in [:timeouts :steps] {}))
+
+
+(defn clear-end-timeout! []
+  (js/clearTimeout (get-in @session [:timeouts :total]))
+  (swap! session assoc-in [:timeouts :total] nil))
+
+
+(defn clear-timeouts! []
+  (clear-step-timeouts!)
+  (clear-end-timeout!))
+
+
+(defn end! []
+  (.allowSleep KeepAwake)
+  (swap! session assoc
+         :started-at nil
+         :previous-time 0)
+  (reset! elapsed 0))
 
 
 (defn stop! []
   (clear-timeouts!)
-  (swap! state assoc
-         :started-at nil
-         :previous-time nil
-         :elapsed nil))
+  (end!))
 
 (comment
   (stop!)
@@ -85,17 +154,37 @@
 (defn end-step! [step]
   (println "end-step!")
   (play-sound!)
-  (swap! state update :timeouts dissoc (:id step))
+  (swap! session update-in [:timeouts :steps] dissoc (:id step))
+  (js/console.log "end-step! " (clj->js @session))
   ; when no more timeouts, stop the timer
-  (when (empty? (:timeouts @state))
-    (stop!)))
+  (when (empty? (get-in @session [:timeouts :steps]))
+    ; play sound again for the last step
+    #_(js/setTimeout #(play-sound!) 4000)))
+
+(comment
+  (end-step! (-> @persistent :timers first :steps last))
+  )
 
 
 (defn remaining-time [timer step]
-  (-> (core/duration-inclusive timer step)
+  (-> (core/step-end-time timer step)
       core/min->ms
-      (/ (or (:speedup @state) 1))
-      (- (:previous-time @state))))
+      (- @elapsed)))
+
+
+(defn current-step [] (core/current-step (current-timer) @elapsed))
+
+(comment
+  (current-step)
+)
+
+
+(defn remaining-current-step []
+  (remaining-time (current-timer) (current-step))
+  )
+
+(defn remaining-total []
+  (remaining-time (current-timer) (last (:steps (current-timer)))))
 
 
 (defn set-timeout! [timer step]
@@ -104,36 +193,38 @@
       (println "set-timeout!" time-ms)
       [(:id step) (js/setTimeout #(end-step! step) time-ms)])))
 
-(comment
-  (when-let [x 0]
-    (println "x is not nil")))
-
 
 (defn set-timeouts! [timer]
-  (into {} (for [step (:steps timer)] (set-timeout! timer step))))
+  (let [step-timeouts (into {} (for [step (:steps timer)] (set-timeout! timer step)))
+        end-timeout (js/setTimeout #(end!) (remaining-total))]
+    {:total end-timeout
+     :steps step-timeouts}))
+
+
+(comment 
+  (set-timeouts! (-> @persistent :timers first))
+  (set-timeout! (-> @persistent :timers first) (-> @persistent :timers first :steps first))
+)
+
 
 
 (defn update-elapsed-time! []
-  (swap! state assoc
-         :elapsed (->
+  (reset! elapsed (->
                    (.now js/Date)
-                   (- (:started-at @state))
-                   (+ (:previous-time @state)))))
-
-
-(defn running? []
-  (:started-at @state))
+                   (- (:started-at @session))
+                   (+ (:previous-time @session)))))
 
 
 (defn animate! []
-  (when (running?)
+  (when (= :running (core/play-state @session))
     (update-elapsed-time!)
     (js/requestAnimationFrame animate!)))
 
 
 (defn start! [timer]
   (play-sound!)
-  (swap! state assoc
+  (.keepAwake KeepAwake)
+  (swap! session assoc
          :current-timer (:id timer)
          :started-at (.now js/Date)
          :timeouts (set-timeouts! timer))
@@ -141,26 +232,146 @@
 
 
 (defn pause! []
+  (println "pause!")
   (clear-timeouts!)
-  (swap! state assoc
-         :previous-time (:elapsed @state)
+  (.allowSleep KeepAwake)
+  (swap! session assoc
+         :previous-time @elapsed
          :started-at nil))
 
 (defn resume! []
-  (swap! state assoc
+  (.keepAwake KeepAwake)
+  (swap! session assoc
          :started-at (.now js/Date)
          :timeouts (set-timeouts! (current-timer)))
   (animate!))
 
 
 (defn edit-timer! [timer]
-  (swap! state assoc
+  ; reset scroll position for timer edit page
+  (swap! scroll-areas assoc :steps {:scroll-top 0
+                                    :client-height 0
+                                    :scroll-height 0})
+  (swap! session assoc
          :page :edit
          :current-timer (:id timer)))
 
+
+(defn add-and-edit-timer! []
+  (let [name  (str "Timer " (-> @persistent :timers count inc))
+        timer (core/timer name)]
+    (persist! update :timers conj timer)
+    (edit-timer! timer)))
+
+
 (defn show-modal! [modal]
-  (swap! state assoc :modal modal))
+  (swap! session assoc :modal modal))
 
 
 (defn close-modal! []
-  (swap! state assoc :modal nil))
+  (swap! session assoc :modal nil))
+
+
+(defn set-notification! [timer step]
+  (let [time-ms (remaining-time timer step)]
+    (when (pos? time-ms)
+      (println "set-notification!" step time-ms)
+      (.schedule LocalNotifications
+                 (clj->js {:notifications
+                           [{:title core/app-name
+                             :body (str "Step " (inc (core/step-index timer step)) " of " (-> timer :steps count) " finished")
+                             :id (hash (:id step)) ; id must be number
+                             :sound "/public/singing-bowl.wav"
+                             :schedule {:at (js/Date. (+ (.now js/Date) time-ms))}}]})))))
+
+
+(comment
+  (set-notification! (-> @persistent :timers first) (-> @persistent :timers first :steps first))
+  
+  (.schedule LocalNotifications
+             (clj->js {:notifications
+                       [{:title "fest"
+                         :body "hest"
+                         :id 1000 ; id must be number
+                         :schedule {:at (js/Date. (+ (.now js/Date) 5000))}}]}))
+  
+  (do
+    (set! (.-LocalNotifications js/window) LocalNotifications)
+    (js/eval "LocalNotifications.schedule({
+    notifications: [
+      { id: 42, title: 'Hey', body: 'What', schedule: { at: new Date(Date.now() + 1000) } }
+    ]})"))
+  )
+
+
+(defn set-notifications! [timer]
+  (println "set-notifications!" timer)
+  (doseq [step (:steps timer)] 
+    (set-notification! timer step)))
+
+(comment
+  (set-notifications! (-> @persistent :timers first))
+  )
+
+
+(defn clear-notifications! []
+  (.cancel LocalNotifications 
+           (clj->js 
+            {:notifications 
+             (for [step (:steps (current-timer))] 
+               {:id (hash (:id step))})})))
+
+
+(defn handle-app-state-change! [state] 
+  (println "handle-app-state-change!" state)
+  (when (= :running (core/play-state @session)) 
+    (if (.-isActive state) 
+      (do (println "app went to foreground")
+          (update-elapsed-time!)
+          (clear-notifications!)
+          (swap! session assoc :timeouts (set-timeouts! (current-timer))))
+      (do (println "app went to background")
+        (clear-step-timeouts!)
+        (set-notifications! (current-timer))))))
+
+
+(comment
+  (handle-app-state-change! (clj->js {:isActive false}))
+  (handle-app-state-change! (clj->js {:isActive true}))
+  (start! (first (:timers @persistent))) 
+  (pause!)
+  (resume!)
+  (stop!)
+  (swap! session assoc :debug true)
+  (swap! session assoc :debug false)
+  (swap-page! :run)
+  (add-and-edit-timer!)
+  (reset-state!)
+  (show-modal! :about)
+  (close-modal!)
+  (add-and-edit-timer!)
+  (hash (-> @persistent :timers first :steps first :id))
+  @session
+  @elapsed
+  )
+
+(comment
+  
+  (.keepAwake KeepAwake) ; use this when developing on device
+
+  (.-isNative Capacitor)
+
+  (.isPluginAvailable Capacitor "Preferences")
+
+  (.getPlatform Capacitor)
+
+  (->
+   (.set Preferences #js {:key "foo" :value "bar"})
+   (.then (fn [prefs] (println prefs)))
+   (.catch (fn [err] (println err))))
+
+  (->
+   (.get Preferences #js {:key "foo"})
+   (.then (fn [prefs] (println prefs)))
+   (.catch (fn [err] (println err))))
+  )
