@@ -42,7 +42,7 @@
   )
 
 
-; This stores all the non-persistent app state except for things that update very frequently.
+; App state that is 1. not persistent 2. doesn't update super frequently
 (defonce session
   (r/atom core/initial-state))
 
