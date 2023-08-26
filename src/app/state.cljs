@@ -108,6 +108,10 @@
 (defn reset-storage! []
   (persist! assoc :timers (:timers core/initial-storage)))
 
+(comment
+  (reset-storage!)
+  )
+
 
 (defn play-sound! []
   (println "play-sound!")
