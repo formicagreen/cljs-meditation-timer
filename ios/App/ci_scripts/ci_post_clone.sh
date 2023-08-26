@@ -27,4 +27,4 @@ npm ci
 # or `pnpm install --frozen-lockfile` or `yarn install --frozen-lockfile`
 npm run build:web
 # or npm run build
-npm cap sync ios
+npm run sync:ios
