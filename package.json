@@ -12,7 +12,8 @@
     "dev:ios": "SERVER_URL=http://$(ifconfig en0 | awk '/inet /{print substr($2,1)}'):8080 cap run ios",
     "dev:site": "lite-server --baseDir=site",
     "build:icons": "svgexport ./resources/logo.svg ./resources/logo.png 10x && @capacitor/assets generate --iconBackgroundColor 'rgb(0, 50, 130)' --iconBackgroundColorDark 'rgb(0, 50, 130)' --splashBackgroundColor 'rgb(0, 50, 130)' --splashBackgroundColorDark 'rgb(0, 50, 130)'",
-    "build:ios": "build:web && cap build ios"
+    "build:ios": "build:web && cap build ios",
+    "sync:ios": "cap sync ios"
   },
   "dependencies": {
     "@capacitor-community/keep-awake": "^4.0.0",
