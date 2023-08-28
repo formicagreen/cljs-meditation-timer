@@ -93,7 +93,7 @@
     new-data))
 
 (comment
-  (persist! update :timers conj (core/timer "foo"))
+  (persist! update :timers conj (core/timer "foo" (core/step 5)))
   )
 
 
@@ -263,7 +263,7 @@
 
 (defn add-and-edit-timer! []
   (let [name  (str "Timer " (-> @persistent :timers count inc))
-        timer (core/timer name)]
+        timer (core/timer name (core/step 5))]
     (persist! update :timers conj timer)
     (edit-timer! timer)))
 

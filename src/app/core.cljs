@@ -12,10 +12,10 @@
    :duration duration})
 
 
-(defn timer [name]
+(defn timer [name steps]
   {:id (random-uuid)
    :name name
-   :steps [(step 15)]})
+   :steps steps})
 
 
 (def initial-state
@@ -29,7 +29,9 @@
 
 
 (def initial-storage
-  {:timers [(timer "Timer 1")]})
+  {:timers [(timer "Timer 1" [(step 5)]) 
+            (timer "Timer 2" [(step 5) (step 5)])
+            (timer "Timer 3" [(step 5) (step 5) (step 5)])]})
 
 
 (def test-timer (first (:timers initial-storage)))

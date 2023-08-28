@@ -36,7 +36,7 @@ So we need both shadows to be present at all time and just change their opacity.
 }
 
 .btn {
-  @apply border-2 border-stone-50 px-4 py-2 rounded-full flex 
+  @apply border-2 border-white px-4 py-2 rounded-full flex 
   gap-1 items-center text-center justify-center font-medium;
 }
 

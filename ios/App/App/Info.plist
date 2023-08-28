@@ -24,10 +24,6 @@
 	<true/>
 	<key>NSUserNotificationsUsageDescription</key>
 	<string>Notifications allow the timer to work in the background</string>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>audio</string>
-	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
