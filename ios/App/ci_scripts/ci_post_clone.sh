@@ -4,7 +4,10 @@ set -e
 set -x
 
 export HOMEBREW_NO_INSTALL_CLEANUP=TRUE
-brew install cocoapods
+export JAVA_HOME=/usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home 
+
+# We need cocoapods for Capacitor and Java for cljs
+brew install cocoapods openjdk
 
 # Installing node through brew doesn't work for some reason
 # https://stackoverflow.com/questions/73462672/xcode-cloud-suddenly-failing-to-link-node-and-install-dependencies
@@ -24,9 +27,6 @@ PATH+=":$NODE_PATH"
 export PATH
 node -v
 npm -v
-
-# We also need Java to compile cljs
-brew install openjdk
 
 # Install dependencies
 npm ci
