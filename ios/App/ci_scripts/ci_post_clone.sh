@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+set -e
 set -x
 
 export HOMEBREW_NO_INSTALL_CLEANUP=TRUE
@@ -23,6 +24,9 @@ PATH+=":$NODE_PATH"
 export PATH
 node -v
 npm -v
+
+# We also need Java to compile cljs
+brew install openjdk
 
 # Install dependencies
 npm ci
