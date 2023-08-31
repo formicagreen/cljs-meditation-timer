@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
-set -x
+set -e -x
 
 export HOMEBREW_NO_INSTALL_CLEANUP=TRUE
 export JAVA_HOME=/usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home 

@@ -1,5 +1,5 @@
 (ns app.core
-  (:require 
+  (:require
    [goog.string :as gstring]
    [goog.string.format]
    [cljs.reader :as edn]))
@@ -29,7 +29,7 @@
 
 
 (def initial-storage
-  {:timers [(timer "Timer 1" [(step 5)]) 
+  {:timers [(timer "Timer 1" [(step 5)])
             (timer "Timer 2" [(step 5) (step 5)])
             (timer "Timer 3" [(step 5) (step 5) (step 5)])]})
 
@@ -51,11 +51,10 @@
 (defn get-duration [step]
   (:duration step)
   ; uncomment the line below to speed things up in testing
-  #_(* (/ (:duration step) 60) 10) 
-  )
+  #_(* (/ (:duration step) 60) 10))
 
 
-(defn full-duration 
+(defn full-duration
   "The full duration of the timer in minutes"
   [timer]
   (->> (:steps timer)
@@ -63,8 +62,7 @@
        (reduce +)))
 
 (comment
-  (full-duration test-timer)
-  )
+  (full-duration test-timer))
 
 
 (defn where [coll key val]
@@ -79,7 +77,7 @@
        first))
 
 
-(defn clamp [n vmin vmax] 
+(defn clamp [n vmin vmax]
   (max vmin (min vmax n)))
 
 
@@ -89,7 +87,7 @@
 
 (defn step-path [data timer step]
   (let [timer-idx (index-where (:timers data) :id (:id timer))
-        step-idx (index-where (:steps timer) :id (:id step))] 
+        step-idx (index-where (:steps timer) :id (:id step))]
     [:timers timer-idx :steps step-idx]))
 
 
@@ -99,13 +97,12 @@
 
 
 (comment
-  (step-path initial-storage test-timer test-step)
-  )
+  (step-path initial-storage test-timer test-step))
 
 
-(defn update-duration 
-  [data timer step duration] 
-  (let [path (conj (step-path data timer step) :duration)] 
+(defn update-duration
+  [data timer step duration]
+  (let [path (conj (step-path data timer step) :duration)]
     (assoc-in data path (clamp duration 1 999))))
 
 
@@ -136,9 +133,8 @@
     (update-in data path remove-where step)))
 
 
-(comment 
-  (delete-step initial-storage test-timer test-step)
-  )
+(comment
+  (delete-step initial-storage test-timer test-step))
 
 
 (defn delete-timer [data timer]
@@ -148,8 +144,7 @@
 
 
 (comment
-  (delete-timer initial-storage test-timer)
-  )
+  (delete-timer initial-storage test-timer))
 
 
 (defn add-step [data timer]
@@ -160,15 +155,14 @@
 
 (comment
   (index-where [{:id 1} {:id 2}] :id 2)
-  (assoc-in [[1 2 3] 2 3] [0 0] "a") 
-  )
+  (assoc-in [[1 2 3] 2 3] [0 0] "a"))
 
 
 (defn step-index [timer step]
   (index-where (:steps timer) :id (:id step)))
 
 
-(defn step-start-time 
+(defn step-start-time
   "Returns the duration of the timer up to the given step."
   [timer step]
   (let [index (step-index timer step)
@@ -185,18 +179,21 @@
      (step-start-time timer step)))
 
 
+(defn is-last-step? [timer step]
+  (= (:id step) (:id (last (:steps timer)))))
+
+
 (defn current-step [timer elapsed]
   (if (> elapsed 0)
-   (->> timer
-       :steps
-       (filter #(> elapsed (min->ms (step-start-time timer %))))
-       last)
+    (->> timer
+         :steps
+         (filter #(> elapsed (min->ms (step-start-time timer %))))
+         last)
     (first (:steps timer))))
 
 
 (comment
-  (step-index test-timer (current-step test-timer (min->ms 10)))
-  )
+  (step-index test-timer (current-step test-timer (min->ms 10))))
 
 
 (defn time->angle [timer min]
@@ -208,21 +205,19 @@
     (time->angle timer duration)))
 
 
-(comment 
-  (step->angle test-timer test-step)
-  )
+(comment
+  (step->angle test-timer test-step))
 
 
 (defn format-time [ms]
   (let [minutes (js/Math.floor (/ ms 1000 60))
-        seconds (js/Math.floor (mod (/ ms 1000) 60))] 
+        seconds (js/Math.floor (mod (/ ms 1000) 60))]
     (gstring/format "%02d:%02d" minutes seconds)))
 
 
 (comment
   (format-time 1000)
-  (gstring/format "%02d" 1)
-  )
+  (gstring/format "%02d" 1))
 
 
 (defn play-state [data]
@@ -232,5 +227,4 @@
     :else :stopped))
 
 (comment
-  (play-state initial-state)
-  )
+  (play-state initial-state))
