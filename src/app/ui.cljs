@@ -254,6 +254,7 @@
         [back-button (fn [] (state/swap-page! :index))]]
        [:input
         {:value (:name timer)
+         :spellcheck "false"
          :on-change
          #(state/persist! (fn [s] (core/rename-timer s timer (-> % .-target .-value))))
          :class "text-stone-700 py-2 px-4 rounded shadow-inner shadow-stone-500/75"}]
