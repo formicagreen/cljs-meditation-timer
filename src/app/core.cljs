@@ -7,12 +7,16 @@
 
 (def app-name "Dhyāna")
 
-(defn step [duration]
+(defn step
+  "Returns a new step"
+  [duration]
   {:id (random-uuid)
    :duration duration})
 
 
-(defn timer [name steps]
+(defn timer
+  "Returns a new timer"
+  [name steps]
   {:id (random-uuid)
    :name name
    :steps steps})
@@ -25,6 +29,7 @@
    :started-at nil
    :previous-time 0
    :debug? false
+   :playing-end-step-animation? false
    :notifications-debug []})
 
 
@@ -48,30 +53,34 @@
   (/ ms (* 1000 60)))
 
 
-(defn get-duration [step]
+(defn step-duration [step]
   (:duration step)
-  ; uncomment the line below to speed things up in testing
-  #_(* (/ (:duration step) 60) 10))
+  ;(* (/ (:duration step) 60) 10) ; uncomment this line below to speed things up in testing
+  )
 
 
 (defn full-duration
   "The full duration of the timer in minutes"
   [timer]
   (->> (:steps timer)
-       (map get-duration)
+       (map step-duration)
        (reduce +)))
 
 (comment
   (full-duration test-timer))
 
 
-(defn where [coll key val]
+(defn where
+  "Returns the first item in coll where key = val"
+  [coll key val]
   (->> coll
        (filter #(= (get % key) val))
        first))
 
 
-(defn index-where [coll key val]
+(defn index-where
+  "Returns the index of the first item in coll where key = val"
+  [coll key val]
   (->> coll
        (keep-indexed #(when (= (get %2 key) val) %1))
        first))
@@ -85,7 +94,8 @@
   (index-where (:timers data) :id timer))
 
 
-(defn step-path [data timer step]
+(defn step-path
+  [data timer step]
   (let [timer-idx (index-where (:timers data) :id (:id timer))
         step-idx (index-where (:steps timer) :id (:id step))]
     [:timers timer-idx :steps step-idx]))
@@ -168,14 +178,14 @@
   (let [index (step-index timer step)
         steps-until (when index (take index (:steps timer)))]
     (->> steps-until
-         (map get-duration)
+         (map step-duration)
          (reduce +))))
 
 
 (defn step-end-time
   "Returns the duration of the timer up to and including the given step."
   [timer step]
-  (+ (get-duration step)
+  (+ (step-duration step)
      (step-start-time timer step)))
 
 

@@ -41,11 +41,11 @@
 (def timer-center 100)
 
 
-(defn timer-svg-step [angle step-radius fill]
+(defn timer-svg-step [angle step-radius other-props]
   (let [rad (* (- angle 90) (/ Math/PI 180))
         x (+ timer-center (* timer-radius (Math/cos rad)))
         y (+ timer-center (* timer-radius (Math/sin rad)))]
-    [:circle {:cx x :cy y :r step-radius :fill fill}]))
+    [:circle (merge {:cx x :cy y :r step-radius} other-props)]))
 
 
 (defn timer-svg
@@ -58,25 +58,27 @@
     [:radialGradient {:id "gradient" :x1 0 :y1 0 :x2 0 :y2 "100%"}
      [:stop {:offset "0%" :stop-color "yellow"}]
      [:stop {:offset "100%" :stop-color "darkorange"}]]]
+   
    ;; Main circle
    [:circle {:cx           timer-center
              :cy           timer-center
              :r            timer-radius
              :class        "stroke-current fill-none"
              :stroke-width stroke-width}]
+   
    ;; Smaller circles along the circumference
    (for [step (:steps timer)]
      ^{:key (:id step)}
      [timer-svg-step
       (core/step->angle timer step)
       step-radius
-      "white"])
+      {:fill "white"}])
+   
    (when elapsed
      [timer-svg-step
       (core/time->angle timer (core/ms->min elapsed))
       step-radius
-      "url(#gradient)"])])
-
+      {:fill "url(#gradient)"}])])
 
 
 (defn overflow-above? [k]
@@ -197,17 +199,17 @@
 
 
 (defn duration-input
-  "This needs to be a form-2 component because it has its own intermediate state before validation."
+  "This needs to be a reagent form-2 component because it has its own intermediate state before validation."
   [timer step]
   (let [input-val (r/atom (:duration step))]
     (println "rendering duration input")
     (fn []
       [:div.flex.items-center.gap-4
        [:div.p-2
+        {:on-click #(state/persist!
+                     (fn [s] (core/dec-duration s timer step)))}
         [:> icon-sm-solid/MinusIcon
-         {:class "h-6 w-6"
-          :on-click #(state/persist!
-                      (fn [s] (core/dec-duration s timer step)))}]]
+         {:class "h-6 w-6"}]]
        [:div.relative.w-12.inline-block.text-center
         [:input
          {:class "text-stone-700 w-full py-2 mr-6 rounded shadow-inner text-center shadow-stone-500/75"
@@ -233,12 +235,12 @@
           :on-click (fn [e]
                       (let [get-el #(-> js/document (.getElementById (:id step)))]
                         (js/setTimeout #(.focus (get-el)) 10)
-                        (js/setTimeout #((.scrollIntoView (get-el) #js {:behavior "smooth"})) 200)))}]] 
+                        (js/setTimeout #((.scrollIntoView (get-el) #js {:behavior "smooth"})) 200)))}]]
        [:div.p-2
+        {:on-click #(state/persist!
+                     (fn [s] (core/inc-duration s timer step)))}
         [:> icon-sm-solid/PlusIcon
-         {:class "h-6 w-6"
-          :on-click #(state/persist!
-                      (fn [s] (core/inc-duration s timer step)))}]]])))
+         {:class "h-6 w-6"}]]])))
 
 
 (defn edit-page []
@@ -321,6 +323,7 @@
     [:h2.text-4xl.mb-6 core/app-name]
     [:p "Simple meditation timer"]
     [:p.mb-6 "© 2023 Dag Norberg"]
+    [:p.mb-6 "v1.2"]
     [:button
      {:class "rounded-full bg-stone-100 px-4 py-2 
                 flex gap-1 items-center"
@@ -460,8 +463,7 @@
 
 (comment
   (def timer (state/current-timer))
-  (def current-step (state/current-step))
-  #rtrace (state/current-timer))
+  (def current-step (state/current-step)))
 
 (defn app []
   [:div

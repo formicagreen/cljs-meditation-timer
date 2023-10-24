@@ -1,9 +1,7 @@
 {:source-paths ["src"]
- :dependencies [[reagent "1.2.0"]
-                [com.github.jpmonettas/flow-storm-inst "RELEASE"]]
+ :dependencies [[reagent "1.2.0"]]
  :dev-http {8080 "public"}
  :builds {:app {:output-dir "public/dist/"
                 :asset-path "/dist"
                 :target :browser
-                :modules {:main {:init-fn app.main/main!}}
-                :devtools {:preload [flow-storm.api]}}}}
+                :modules {:main {:init-fn app.main/main!}}}}}

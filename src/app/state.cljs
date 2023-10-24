@@ -21,9 +21,6 @@
    (.catch (fn [err] (println err))))
 
 
-  #rtrace (reduce + (map inc (range 10)))
-
-
   (.schedule LocalNotifications
              (clj->js {:notifications
                        [{:title "hey"
@@ -109,7 +106,7 @@
 
 
 (defn play-sound! [file-path]
-  (println "play-sound!")
+  (println "play-sound!" file-path)
   (.play (js/Audio. file-path)))
 
 
@@ -141,19 +138,29 @@
   (reset! elapsed 0))
 
 
+(defn clear-notifications! [steps]
+  (.cancel LocalNotifications
+           (clj->js
+            {:notifications
+             (for [step steps]
+               {:id (hash (:id step))})})))
+
+
 (defn stop! []
   (clear-timeouts!)
+  (clear-notifications! (:steps (current-timer)))
   (end!))
 
 (comment
   (stop!))
 
-
 (defn end-step! [step]
   (println "end-step!")
   (swap! session update-in [:timeouts :steps] dissoc (:id step))
-  (js/console.log "end-step! " (clj->js @session))
-
+  (swap! session assoc :playing-end-step-animation? true)
+  (js/setTimeout #(swap! session assoc :playing-end-step-animation? false) 1000)
+  (clear-notifications! [step])
+  (js/console.log "end-step! " (clj->js @session)) 
   (if (empty? (get-in @session [:timeouts :steps]))
     (play-sound! "singing-bowl-double.wav") ; play double sound if last step
     (play-sound! "singing-bowl.wav") ; else play regular sound
@@ -201,7 +208,6 @@
   (set-timeout! (-> @persistent :timers first) (-> @persistent :timers first :steps first)))
 
 
-
 (defn update-elapsed-time! []
   (reset! elapsed (->
                    (.now js/Date)
@@ -215,19 +221,42 @@
     (js/requestAnimationFrame animate!)))
 
 
+(defn set-notification! [timer step]
+  (let [time-ms (remaining-time timer step)]
+    (when (pos? time-ms)
+      (println "set-notification!" step time-ms)
+      (.schedule LocalNotifications
+                 (clj->js {:notifications
+                           [{:title core/app-name
+                             :body (str "Step " (inc (core/step-index timer step)) " of " (-> timer :steps count) " finished")
+                             :id (hash (:id step)) ; id must be number
+                             :sound (if (core/is-last-step? timer step) "/public/singing-bowl-double.wav" "/public/singing-bowl.wav")
+                             :schedule {:at (js/Date. (+ (.now js/Date) time-ms 1000))} ; Add 1 second to the notification time so we can cancel it if needed 
+                             }]})))))
+
+
+(defn set-notifications! [timer]
+  (println "set-notifications!" timer)
+  (doseq [step (:steps timer)]
+    (set-notification! timer step)))
+
+
 (defn start! [timer]
   (play-sound! "singing-bowl.wav")
   (.keepAwake KeepAwake)
-  (swap! session assoc
-         :current-timer (:id timer)
-         :started-at (.now js/Date)
-         :timeouts (set-timeouts! timer))
+  (let [timeouts (set-timeouts! timer)]
+    (swap! session assoc
+           :current-timer (:id timer)
+           :started-at (.now js/Date)
+           :timeouts timeouts))
+  (set-notifications! timer)
   (animate!))
 
 
 (defn pause! []
   (println "pause!")
   (clear-timeouts!)
+  (clear-notifications! (:steps (current-timer)))
   (.allowSleep KeepAwake)
   (swap! session assoc
          :previous-time @elapsed
@@ -235,9 +264,11 @@
 
 (defn resume! []
   (.keepAwake KeepAwake)
-  (swap! session assoc
+  (let [timeouts (set-timeouts! (current-timer))]
+    (swap! session assoc
          :started-at (.now js/Date)
-         :timeouts (set-timeouts! (current-timer)))
+         :timeouts timeouts))
+  (set-notifications! (current-timer)) 
   (animate!))
 
 
@@ -266,19 +297,6 @@
   (swap! session assoc :modal nil))
 
 
-(defn set-notification! [timer step]
-  (let [time-ms (remaining-time timer step)]
-    (when (pos? time-ms)
-      (println "set-notification!" step time-ms)
-      (.schedule LocalNotifications
-                 (clj->js {:notifications
-                           [{:title core/app-name
-                             :body (str "Step " (inc (core/step-index timer step)) " of " (-> timer :steps count) " finished")
-                             :id (hash (:id step)) ; id must be number
-                             :sound (if (core/is-last-step? timer step) "/public/singing-bowl-double.wav" "/public/singing-bowl.wav")
-                             :schedule {:at (js/Date. (+ (.now js/Date) time-ms))}}]})))))
-
-
 (comment
   (set-notification! (-> @persistent :timers first) (-> @persistent :timers first :steps first))
 
@@ -296,22 +314,8 @@
       { id: 42, title: 'Hey', body: 'What', schedule: { at: new Date(Date.now() + 1000) } }
     ]})")))
 
-
-(defn set-notifications! [timer]
-  (println "set-notifications!" timer)
-  (doseq [step (:steps timer)]
-    (set-notification! timer step)))
-
 (comment
   (set-notifications! (-> @persistent :timers first)))
-
-
-(defn clear-notifications! []
-  (.cancel LocalNotifications
-           (clj->js
-            {:notifications
-             (for [step (:steps (current-timer))]
-               {:id (hash (:id step))})})))
 
 
 (defn handle-app-state-change! [state]
@@ -319,12 +323,10 @@
   (when (= :running (core/play-state @session))
     (if (.-isActive state)
       (do (println "app went to foreground")
-          (update-elapsed-time!)
-          (clear-notifications!)
+          (update-elapsed-time!) 
           (swap! session assoc :timeouts (set-timeouts! (current-timer))))
       (do (println "app went to background")
-          (clear-step-timeouts!)
-          (set-notifications! (current-timer))))))
+          (clear-step-timeouts!)))))
 
 
 (comment
