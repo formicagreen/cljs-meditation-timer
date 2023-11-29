@@ -8,7 +8,7 @@
     "dev:tailwind": "tailwindcss -i ./resources/main.css -o ./public/dist/main.css --watch",
     "build:tailwind": "tailwindcss -i ./resources/main.css -o ./public/dist/main.css --minify",
     "dev:web": "run-p dev:shadow dev:tailwind",
-    "build:web": "npm run build:shadow && npm run build:tailwind",
+    "build:web": "npm run build:shadow & npm run build:tailwind",
     "dev:ios": "SERVER_URL=http://$(ifconfig en0 | awk '/inet /{print substr($2,1)}'):8080 cap run ios",
     "dev:site": "lite-server --baseDir=site",
     "build:icons": "rm ./resources/logo.png && npx svg2png ./resources/logo.svg --output ./resources/logo.png --height 1000 --width 1000 && npx @capacitor/assets generate --iconBackgroundColor 'rgb(0, 50, 130)' --iconBackgroundColorDark 'rgb(0, 50, 130)' --splashBackgroundColor 'rgb(0, 50, 130)' --splashBackgroundColorDark 'rgb(0, 50, 130)'",
@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@capacitor-community/keep-awake": "^4.0.0",
+    "@capacitor-community/native-audio": "^5.0.1",
     "@capacitor/app": "^5.0.6",
     "@capacitor/core": "latest",
     "@capacitor/ios": "^5.1.1",
@@ -24,6 +25,7 @@
     "@capacitor/preferences": "^5.0.5",
     "@capacitor/splash-screen": "latest",
     "@heroicons/react": "^2.0.18",
+    "fix-esm": "^1.0.1",
     "react": "17",
     "react-dom": "17"
   },
@@ -37,5 +39,8 @@
     "typescript": "^5.1.6"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "cordova": {
+    "plugins": {}
+  }
 }

@@ -256,7 +256,7 @@
         [back-button (fn [] (state/swap-page! :index))]]
        [:input
         {:value (:name timer)
-         :spellcheck "false"
+         :spellCheck "false"
          :on-change
          #(state/persist! (fn [s] (core/rename-timer s timer (-> % .-target .-value))))
          :class "text-stone-700 py-2 px-4 rounded shadow-inner shadow-stone-500/75"}]
@@ -329,7 +329,11 @@
                 flex gap-1 items-center"
       :on-click #(state/close-modal!)}
      [:> icon-sm-solid/XMarkIcon {:class "h-6 w-6"}]
-     "Close"]]])
+     "Close"]
+    [:button
+     {:on-click #(swap! state/session update :debug not)
+      :class "text-white opacity-10 absolute bottom-0 left-0 p-4"}
+     "Debug"]]])
 
 
 (defn delete-timer-modal []
@@ -357,9 +361,9 @@
 
 
 (defn render-map [m]
-  (into [:div
+  (into [:details
          {:class "mb-2"}
-         [:div
+         [:summary
           {:class "text-xs font-bold cursor-pointer"}
           (str (pr-str (keys m)))]]
         (map (fn [[k v]]
@@ -391,13 +395,13 @@
              s)))
 
 
-(defn debugger []
+(defn debugger [debug-info]
   [:div
-   {:class "fixed bottom-0 right-0 h-[50vh] text-sm bg-black bg-opacity-50 z-50 p-4 overflow-scroll max-h-screen"}
+   {:class "fixed bottom-0 right-0 h-[50vh] text-sm bg-black bg-opacity-50 z-50 p-4 overflow-scroll max-h-screen w-screen"}
    (cond
-     (map? @state/session) [render-map @state/session]
-     (sequential? @state/session) [render-seq @state/session]
-     :else (pr-str @state/session))])
+     (map? debug-info) [render-map debug-info]
+     (sequential? debug-info) [render-seq debug-info]
+     :else (pr-str debug-info))])
 
 
 (defn monospaced-time
@@ -469,7 +473,7 @@
   [:div
    {:class "text-lg text-white overflow-hidden"}
    (println "rendering app")
-   (when (:debug @state/session) [debugger])
+   (when (:debug @state/session) [debugger (reverse (:log @state/persistent))])
    [index-page]
    [edit-page]
    [run-page]
