@@ -17,7 +17,6 @@
   },
   "dependencies": {
     "@capacitor-community/keep-awake": "^4.0.0",
-    "@capacitor-community/native-audio": "^5.0.1",
     "@capacitor/app": "^5.0.6",
     "@capacitor/core": "latest",
     "@capacitor/ios": "^5.1.1",
@@ -25,7 +24,6 @@
     "@capacitor/preferences": "^5.0.5",
     "@capacitor/splash-screen": "latest",
     "@heroicons/react": "^2.0.18",
-    "fix-esm": "^1.0.1",
     "react": "17",
     "react-dom": "17"
   },

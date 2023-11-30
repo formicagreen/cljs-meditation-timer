@@ -1,7 +1,0 @@
-{
-  "name": "meditation-timer",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "custom"
-}
