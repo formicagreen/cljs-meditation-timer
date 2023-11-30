@@ -7,6 +7,7 @@
 
 (def app-name "Dhyāna")
 
+
 (defn step
   "Returns a new step"
   [duration]
@@ -28,8 +29,7 @@
    :modal nil
    :started-at nil
    :previous-time 0
-   :debug? false
-   :notifications-debug []})
+   :debug? false})
 
 
 (def initial-storage

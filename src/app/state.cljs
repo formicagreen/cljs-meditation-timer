@@ -2,13 +2,13 @@
   (:require
    [reagent.core :as r]
    [app.core :as core]
-   ["@capacitor/core" :refer [Capacitor registerPlugin]]
+   ["@capacitor/core" :refer [Capacitor]]
    ["@capacitor/preferences" :refer [Preferences]]
    ["@capacitor-community/keep-awake" :refer [KeepAwake]]
    ["@capacitor/local-notifications" :refer [LocalNotifications]]))
 
 
-(def CustomAudio (registerPlugin "CustomAudio")) ; Custom Swift code for playing audio
+(def CustomAudio (.registerPlugin Capacitor "CustomAudio")) ; Custom Swift code for playing audio
 
 
 (comment
@@ -121,6 +121,7 @@
   (reset! session core/initial-state)
   (reset! elapsed 0))
 
+
 (defn reset-storage! []
   (persist! assoc :timers (:timers core/initial-storage)))
 
@@ -131,6 +132,7 @@
 (defn play-sound-web! [file-path]
   (.play (js/Audio. file-path)))
 
+
 (defn play-sound-ios!
   [file-path]
   (.play CustomAudio #js {:fileName file-path}))
@@ -139,13 +141,13 @@
   (play-sound-web! "singing-bowl.wav")
   (play-sound-ios! "singing-bowl.wav"))
 
+
 (defn play-sound! [file-path]
   (log "play-sound!" file-path)
   ; get platform 
   (if (= (.-platform Capacitor) "ios")
     (play-sound-ios! file-path)
     (play-sound-web! file-path)))
-
 
 (comment
   (play-sound! "singing-bowl.wav")
@@ -192,6 +194,7 @@
 (comment
   (stop!))
 
+
 (defn end-step! [step]
   (log "end-step!")
   (swap! session update-in [:timeouts :steps] dissoc (:id step)) 
@@ -220,6 +223,7 @@
 
 (defn remaining-current-step []
   (remaining-time (current-timer) (current-step)))
+
 
 (defn remaining-total []
   (remaining-time (current-timer) (last (:steps (current-timer)))))
@@ -304,6 +308,7 @@
   (swap! session assoc
          :previous-time @elapsed
          :started-at nil))
+
 
 (defn resume! []
   (.keepAwake KeepAwake)

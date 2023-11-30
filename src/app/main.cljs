@@ -23,8 +23,7 @@
   ; listen to app foreground/background events
   (.addListener App "appStateChange" #(state/handle-app-state-change! %))
   ; render app
-  (rdom/render [ui/app]
-               (.getElementById js/document "app")))
+  (rdom/render [ui/app] (.getElementById js/document "app")))
 
 
 (defn ^:dev/after-load reload! []

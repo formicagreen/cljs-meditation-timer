@@ -12,7 +12,7 @@
     "dev:ios": "SERVER_URL=http://$(ifconfig en0 | awk '/inet /{print substr($2,1)}'):8080 cap run ios",
     "dev:site": "lite-server --baseDir=site",
     "build:icons": "rm ./resources/logo.png && npx svg2png ./resources/logo.svg --output ./resources/logo.png --height 1000 --width 1000 && npx @capacitor/assets generate --iconBackgroundColor 'rgb(0, 50, 130)' --iconBackgroundColorDark 'rgb(0, 50, 130)' --splashBackgroundColor 'rgb(0, 50, 130)' --splashBackgroundColorDark 'rgb(0, 50, 130)'",
-    "build:ios": "npm run build:web && cap build ios",
+    "build:ios": "npm run build:web && cap sync ios && cap run ios",
     "sync:ios": "cap sync ios"
   },
   "dependencies": {

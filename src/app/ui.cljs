@@ -43,21 +43,29 @@
 
 (defn timer-svg-step [angle step-radius other-props]
   (let [rad (* (- angle 90) (/ Math/PI 180))
-        x (+ timer-center (* timer-radius (Math/cos rad)))
-        y (+ timer-center (* timer-radius (Math/sin rad)))]
-    [:circle (merge {:cx x :cy y :r step-radius} other-props)]))
+        x   (+ timer-center (* timer-radius (Math/cos rad)))
+        y   (+ timer-center (* timer-radius (Math/sin rad)))]
+    [:circle (merge {:cx x
+                     :cy y
+                     :r  step-radius} other-props)]))
 
 
 (defn timer-svg
   [& {:keys [timer stroke-width step-radius elapsed]
-      :or {elapsed nil}}]
+      :or   {elapsed nil}}]
   [:svg {:viewBox "0 0 200 200"
-         :class "w-full"
-         :style {:max-height "75vh"}}
+         :class   "w-full"
+         :style   {:max-height "75vh"}}
    [:defs
-    [:radialGradient {:id "gradient" :x1 0 :y1 0 :x2 0 :y2 "100%"}
-     [:stop {:offset "0%" :stop-color "yellow"}]
-     [:stop {:offset "100%" :stop-color "darkorange"}]]]
+    [:radialGradient {:id "gradient"
+                      :x1 0
+                      :y1 0
+                      :x2 0
+                      :y2 "100%"}
+     [:stop {:offset     "0%"
+             :stop-color "yellow"}]
+     [:stop {:offset     "100%"
+             :stop-color "darkorange"}]]]
    
    ;; Main circle
    [:circle {:cx           timer-center
@@ -81,20 +89,10 @@
       {:fill "url(#gradient)"}])])
 
 
-(defn overflow-above? [k]
-  (> (get-in @state/scroll-areas [k :scroll-top]) 0))
-
-
-(defn overflow-below? [k]
-  (let [element (get-in @state/scroll-areas [k :element])]
-    (> (- (:scroll-height element) (:client-height element))
-       (:scroll-top element))))
-
-
 (defn shadow-element
   [visible? position]
   [:div
-   {:class ["h-6 w-full from-blue-900/50 to-transparent pointer-events-none transition-opacity absolute"
+   {:class ["h-6 w-full from-blue-800 to-transparent pointer-events-none transition-opacity absolute"
             (if visible? "opacity-100" "opacity-0")
             (when (= position :top) "top-0  bg-gradient-to-b")
             (when (= position :bottom) "bottom-0 bg-gradient-to-t")]}])
@@ -113,38 +111,38 @@
    You might be able to achieve something similar by carefully managing the lifecycle of the scrollable area.
    But that also seems like a lot of work and kind of brittle."
   [key body]
-  (let [div-ref (r/atom nil)
-        prev-body (r/atom nil)
-        get-scroll-pos (fn [] (get-in @state/scroll-areas [key :scroll]))
+  (let [div-ref           (r/atom nil)
+        prev-body         (r/atom nil)
+        get-scroll-pos    (fn [] (get-in @state/scroll-areas [key :scroll]))
         get-client-height (fn [] (get-in @state/scroll-areas [key :client-height]))
         get-scroll-height (fn [] (get-in @state/scroll-areas [key :scroll-height]))
-        set-scroll-pos! (fn [pos] (swap! state/scroll-areas assoc-in [key :scroll] pos))
-        set-height! (fn []
-                      (swap! state/scroll-areas
-                             #(-> %
-                                  (assoc-in [key :client-height] (.-clientHeight @div-ref))
-                                  (assoc-in [key :scroll-height] (.-scrollHeight @div-ref)))))
-        overflow-above? (fn [] (and (> (get-scroll-pos) 0) (> (get-scroll-height) (get-client-height))))
-        overflow-below? (fn [] (> (- (get-scroll-height) (get-client-height))
-                                  (get-scroll-pos)))]
+        set-scroll-pos!   (fn [pos] (swap! state/scroll-areas assoc-in [key :scroll] pos))
+        set-height!       (fn []
+                            (swap! state/scroll-areas
+                                   #(-> %
+                                        (assoc-in [key :client-height] (.-clientHeight @div-ref))
+                                        (assoc-in [key :scroll-height] (.-scrollHeight @div-ref)))))
+        overflow-above?   (fn [] (and (> (get-scroll-pos) 0) (> (get-scroll-height) (get-client-height))))
+        overflow-below?   (fn [] (> (- (get-scroll-height) (get-client-height))
+                                    (get-scroll-pos)))]
     [(r/create-class
-      {:component-did-mount (fn []
-                              (set-height!)
-                              (set! (.-scrollTop @div-ref) (get-scroll-pos)))
+      {:component-did-mount  (fn []
+                               (set-height!)
+                               (set! (.-scrollTop @div-ref) (get-scroll-pos)))
        :component-did-update (fn [] (when (not= @prev-body body)
                                       (set-height!)
                                       (reset! prev-body body)
                                       (set! (.-scrollTop @div-ref) (get-scroll-pos))))
-       :reagent-render (fn []
-                         [:div
-                          {:class "flex flex-grow overflow-auto w-full flex-col relative"}
-                          [shadow-element (overflow-above?) :top]
-                          [:div
-                           {:ref #(reset! div-ref %)
-                            :on-scroll (fn [] (set-scroll-pos! (.-scrollTop @div-ref)))
-                            :class "flex-grow overflow-auto h-full w-full"}
-                           body]
-                          [shadow-element (overflow-below?) :bottom]])})]))
+       :reagent-render       (fn []
+                               [:div
+                                {:class "flex flex-grow overflow-auto w-full flex-col relative"}
+                                [shadow-element (overflow-above?) :top]
+                                [:div
+                                 {:ref       #(reset! div-ref %)
+                                  :on-scroll (fn [] (set-scroll-pos! (.-scrollTop @div-ref)))
+                                  :class     "flex-grow overflow-auto h-full w-full"}
+                                 body]
+                                [shadow-element (overflow-below?) :bottom]])})]))
 
 
 
@@ -165,10 +163,12 @@
      (for [timer (:timers @state/persistent)]
        ^{:key (:id timer)}
        [:button
-        {:class "timer p-6 grid w-full text-2xl items-center gap-4"
-         :style {:grid-template-columns "3rem 2fr auto"}
+        {:class    "timer p-6 grid w-full text-2xl items-center gap-4"
+         :style    {:grid-template-columns "3rem 2fr auto"}
          :on-click #(state/edit-timer! timer)}
-        [:div [timer-svg {:timer timer :stroke-width 10 :step-radius 16}]]
+        [:div [timer-svg {:timer        timer
+                          :stroke-width 10
+                          :step-radius  16}]]
         [:div
          {:class "font-medium overflow-ellipsis overflow-hidden whitespace-nowrap"}
          (:name timer)]
@@ -181,8 +181,7 @@
       {:on-click (fn [] (state/add-and-edit-timer!)
                    ; scroll down so that next time we come back to the index page we see the new timer
                    (js/setTimeout #(.focus (.querySelector js/document  ".timer:last-child")) 300))
-       :class "font-semibold rounded-full border-2  
-                 flex gap-1 px-4 py-2 z-20 items-center"}
+       :class    "font-semibold rounded-full border-2 flex gap-1 px-4 py-2 z-20 items-center"}
       [:> icon-sm-solid/PlusIcon {:class "h-6 w-6"}]
       "Add timer"]]]])
 
@@ -323,7 +322,6 @@
     [:h2.text-4xl.mb-6 core/app-name]
     [:p "Simple meditation timer"]
     [:p.mb-6 "© 2023 Dag Norberg"]
-    [:p.mb-6 "v1.2"]
     [:button
      {:class "rounded-full bg-stone-100 px-4 py-2 
                 flex gap-1 items-center"
@@ -448,21 +446,18 @@
         [:> icon-sm-solid/StopIcon {:class "h-6 w-6"}]
         "Stop"]
        (case (core/play-state @state/session)
-         :running
-         [:button.btn
-          {:on-click #(state/pause!)}
-          [:> icon-sm-solid/PauseIcon {:class "h-6 w-6"}]
-          "Pause"]
-         :paused
-         [:button.btn
-          {:on-click #(state/resume!)}
-          [:> icon-sm-solid/PlayIcon {:class "h-6 w-6"}]
-          "Resume"]
-         :stopped
-         [:button.btn
-          {:on-click #(state/start! timer)}
-          [:> icon-sm-solid/PlayIcon {:class "h-6 w-6"}]
-          "Start"])]])])
+         :running [:button.btn
+                   {:on-click #(state/pause!)}
+                   [:> icon-sm-solid/PauseIcon {:class "h-6 w-6"}]
+                   "Pause"]
+         :paused [:button.btn
+                  {:on-click #(state/resume!)}
+                  [:> icon-sm-solid/PlayIcon {:class "h-6 w-6"}]
+                  "Resume"]
+         :stopped [:button.btn
+                   {:on-click #(state/start! timer)}
+                   [:> icon-sm-solid/PlayIcon {:class "h-6 w-6"}]
+                   "Start"])]])])
 
 
 (comment
