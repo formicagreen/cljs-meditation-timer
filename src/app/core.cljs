@@ -7,7 +7,6 @@
 
 (def app-name "Dhyāna")
 
-
 (defn step
   "Returns a new step"
   [duration]
@@ -29,14 +28,15 @@
    :modal nil
    :started-at nil
    :previous-time 0
-   :debug? false})
+   :debug? false
+   :playing-end-step-animation? false
+   :notifications-debug []})
 
 
 (def initial-storage
   {:timers [(timer "Timer 1" [(step 5)])
             (timer "Timer 2" [(step 5) (step 5)])
-            (timer "Timer 3" [(step 5) (step 5) (step 5)])]
-   :log []})
+            (timer "Timer 3" [(step 5) (step 5) (step 5)])]})
 
 
 (def test-timer (first (:timers initial-storage)))
@@ -55,7 +55,7 @@
 
 (defn step-duration [step]
   (:duration step)
-  ; (* (/ (:duration step) 60) 10) ; uncomment this line to speed things up
+  ;(* (/ (:duration step) 60) 10) ; uncomment this line below to speed things up in testing
   )
 
 
@@ -219,10 +219,7 @@
   (step->angle test-timer test-step))
 
 
-(defn format-time 
-  "See this article:
-   https://tech.toryanderson.com/2020/10/22/zero-padding-and-truncating-with-string-formats-in-clojurescript/"
-  [ms]
+(defn format-time [ms]
   (let [minutes (js/Math.floor (/ ms 1000 60))
         seconds (js/Math.floor (mod (/ ms 1000) 60))]
     (gstring/format "%02d:%02d" minutes seconds)))

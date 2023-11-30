@@ -8,11 +8,11 @@
     "dev:tailwind": "tailwindcss -i ./resources/main.css -o ./public/dist/main.css --watch",
     "build:tailwind": "tailwindcss -i ./resources/main.css -o ./public/dist/main.css --minify",
     "dev:web": "run-p dev:shadow dev:tailwind",
-    "build:web": "npm run build:shadow & npm run build:tailwind",
+    "build:web": "npm run build:shadow && npm run build:tailwind",
     "dev:ios": "SERVER_URL=http://$(ifconfig en0 | awk '/inet /{print substr($2,1)}'):8080 cap run ios",
     "dev:site": "lite-server --baseDir=site",
     "build:icons": "rm ./resources/logo.png && npx svg2png ./resources/logo.svg --output ./resources/logo.png --height 1000 --width 1000 && npx @capacitor/assets generate --iconBackgroundColor 'rgb(0, 50, 130)' --iconBackgroundColorDark 'rgb(0, 50, 130)' --splashBackgroundColor 'rgb(0, 50, 130)' --splashBackgroundColorDark 'rgb(0, 50, 130)'",
-    "build:ios": "npm run build:web && cap sync ios && cap run ios",
+    "build:ios": "npm run build:web && cap build ios",
     "sync:ios": "cap sync ios"
   },
   "dependencies": {
@@ -37,8 +37,5 @@
     "typescript": "^5.1.6"
   },
   "author": "",
-  "license": "ISC",
-  "cordova": {
-    "plugins": {}
-  }
+  "license": "ISC"
 }
