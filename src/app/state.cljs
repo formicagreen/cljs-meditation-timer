@@ -91,8 +91,8 @@
     new-data))
 
 
-(defn log [& msgs]
-  (let [log-entry [msgs (.toString (js/Date.))]]
+(defn log! [& msgs]
+  #_(let [log-entry [msgs (.toString (js/Date.))]]
     (persist!
      update :log
      #(vec (take-last 1000 (conj % log-entry)))))
@@ -104,10 +104,11 @@
    assoc :log []))
 
 (comment
-  (log "hey" "there")
+  (log! "hey" "there")
   (clear-log!)
   (persist!
    assoc :log []))
+
 
 (comment
   (persist! update :timers conj (core/timer "foo" (core/step 5))))
@@ -121,9 +122,9 @@
   (reset! session core/initial-state)
   (reset! elapsed 0))
 
-
 (defn reset-storage! []
   (persist! assoc :timers (:timers core/initial-storage)))
+
 
 (comment
   (reset-storage!))
@@ -132,22 +133,22 @@
 (defn play-sound-web! [file-path]
   (.play (js/Audio. file-path)))
 
-
 (defn play-sound-ios!
   [file-path]
   (.play CustomAudio #js {:fileName file-path}))
+
 
 (comment
   (play-sound-web! "singing-bowl.wav")
   (play-sound-ios! "singing-bowl.wav"))
 
-
 (defn play-sound! [file-path]
-  (log "play-sound!" file-path)
+  (log! "play-sound!" file-path)
   ; get platform 
   (if (= (.-platform Capacitor) "ios")
     (play-sound-ios! file-path)
     (play-sound-web! file-path)))
+
 
 (comment
   (play-sound! "singing-bowl.wav")
@@ -185,24 +186,24 @@
              (for [step steps]
                {:id (hash (:id step))})})))
 
-
 (defn stop! []
   (clear-timeouts!)
   (clear-notifications! (:steps (current-timer)))
   (end!))
 
+
 (comment
   (stop!))
 
-
 (defn end-step! [step]
-  (log "end-step!")
+  (log! "end-step!")
   (swap! session update-in [:timeouts :steps] dissoc (:id step)) 
   (let [last-step? (empty? (get-in @session [:timeouts :steps]))
         sound (if last-step? "singing-bowl-double.wav" "singing-bowl.wav")]
     (-> (play-sound! sound)
         (.then #((clear-notifications! [step])))
-        (.catch #(log %)))))
+        (.catch #(log! %)))))
+
 
 (comment
   (end-step! (-> @persistent :timers last :steps first))
@@ -214,8 +215,8 @@
       core/min->ms
       (- @elapsed)))
 
-
 (defn current-step [] (core/current-step (current-timer) @elapsed))
+
 
 (comment
   (current-step))
@@ -232,7 +233,7 @@
 (defn set-timeout! [timer step]
   (let [time-ms (remaining-time timer step)]
     (when (pos? time-ms)
-      (log "set-timeout!" time-ms)
+      (log! "set-timeout!" time-ms)
       [(:id step) (js/setTimeout #(end-step! step) time-ms)])))
 
 
@@ -260,11 +261,10 @@
     (update-elapsed-time!)
     (js/requestAnimationFrame animate!)))
 
-
 (defn set-notification! [timer step]
   (let [time-ms (remaining-time timer step)]
     (when (pos? time-ms)
-      (log "set-notification!" step time-ms)
+      (log! "set-notification!" step time-ms)
       (.schedule LocalNotifications
                  (clj->js {:notifications
                            [{:title core/app-name
@@ -273,6 +273,7 @@
                              :sound (if (core/is-last-step? timer step) "/public/singing-bowl-double.wav" "/public/singing-bowl.wav")
                              :schedule {:at (js/Date. (+ (.now js/Date) time-ms 1000))} ; Add 1 second to the notification time so we can cancel it if needed 
                              }]})))))
+
 
 (comment
   (let [timer (core/timer "foo " [(core/step 1)])
@@ -283,7 +284,7 @@
 
 
 (defn set-notifications! [timer]
-  (log "set-notifications!" timer)
+  (log! "set-notifications!" timer)
   (doseq [step (:steps timer)]
     (set-notification! timer step)))
 
@@ -301,7 +302,7 @@
 
 
 (defn pause! []
-  (log "pause!")
+  (log! "pause!")
   (clear-timeouts!)
   (clear-notifications! (:steps (current-timer)))
   (.allowSleep KeepAwake)
@@ -344,7 +345,6 @@
 (defn close-modal! []
   (swap! session assoc :modal nil :debug false))
 
-
 (comment
   (set-notification! (-> @persistent :timers first) (-> @persistent :timers first :steps first))
 
@@ -362,18 +362,19 @@
       { id: 42, title: 'Hey', body: 'What', schedule: { at: new Date(Date.now() + 1000) } }
     ]})")))
 
+
 (comment
   (set-notifications! (-> @persistent :timers first)))
 
 
 (defn handle-app-state-change! [state]
-  (log "handle-app-state-change!" state)
+  (log! "handle-app-state-change!" state)
   (when (= :running (core/play-state @session))
     (if (.-isActive state)
-      (do (log "app went to foreground")
+      (do (log! "app went to foreground")
           (update-elapsed-time!)
           (swap! session assoc :timeouts (set-timeouts! (current-timer))))
-      (do (log "app went to background")
+      (do (log! "app went to background")
           (clear-step-timeouts!)))))
 
 

@@ -11,7 +11,7 @@
 
 (defn main! []
   (println "main!")
-  ; load timers from storage
+  ; load stored data
   (->
    (.get Preferences #js {:key "storage"})
    (.then (fn [prefs]

@@ -1,8 +1,7 @@
 (ns app.core
   (:require
    [goog.string :as gstring]
-   [goog.string.format]
-   [cljs.reader :as edn]))
+   [goog.string.format]))
 
 
 (def app-name "Dhyāna")

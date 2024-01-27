@@ -3,36 +3,12 @@
 @tailwind utilities;
 
 body {
-    background-color: black;
+    background-color: rgb(0, 50, 130);
     overflow: hidden;
 }
 
 button, input {
   text-align: inherit;
-}
-
-
-/* 
-Inner shadow for scroll container
-This might seems convoluted but but if you just add/remove shadows on scroll you will get a flickering effect when the transition happens.
-So we need both shadows to be present at all time and just change their opacity.
-*/
-
-.shadow-inner-top, .shadow-inner-bottom {
-  position: relative;
-}
-
-.shadow-inner-top::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 20px;
-  background: linear-gradient(180deg, rgba(255, 0, 0, 0.5) 0%, rgba(255, 0, 0, 0) 100%);
-  pointer-events: none;
-  z-index: 10;
 }
 
 .btn {
