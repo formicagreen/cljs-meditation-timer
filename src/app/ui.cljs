@@ -321,7 +321,7 @@
    [:<>
     [:h2.text-4xl.mb-6 core/app-name]
     [:p "Simple meditation timer"]
-    [:p.mb-6 "© 2023 Dag Norberg"]
+    [:p.mb-6 "© 2024 Dag Norberg"]
     [:button
      {:class "rounded-full bg-stone-100 px-4 py-2 
                 flex gap-1 items-center"
@@ -332,27 +332,6 @@
      {:on-click #(swap! state/session update :debug not)
       :class "text-white opacity-10 absolute bottom-0 left-0 p-4"}
      "Debug"]]])
-
-
-(defn delete-timer-modal []
-  [modal :delete-timer
-   [:<>
-    [:h2.text-2xl.mb-6 "Delete timer?"]
-    [:div {:class "flex gap-6"}
-     [:button.btn
-      {:on-click #(state/close-modal!)}
-      [:> icon-sm-solid/XMarkIcon {:class "h-6 w-6"}]
-      "Cancel"]
-     [:button.btn
-      {:on-click
-       #(state/persist!
-         (fn [s] (-> s
-                     (core/delete-timer (state/current-timer))
-                     (assoc :page :index)
-                     (assoc :modal nil))))
-       :class "bg-red-600 text-white"}
-      [:> icon-sm-solid/TrashIcon {:class "h-6 w-6"}]
-      "Delete"]]]])
 
 
 (declare render-seq)
