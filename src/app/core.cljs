@@ -220,7 +220,8 @@
 
 (defn format-time 
   "See this article:
-   https://tech.toryanderson.com/2020/10/22/zero-padding-and-truncating-with-string-formats-in-clojurescript/"
+   https://tech.toryanderson.com/2020/10/22/zero-padding-and-truncating-with-string-formats-in-clojurescript/
+   Note that both goog.string and goog.string.format must be required in the namespace, even though goog.string.format is not used directly."
   [ms]
   (let [minutes (js/Math.floor (/ ms 1000 60))
         seconds (js/Math.floor (mod (/ ms 1000) 60))]

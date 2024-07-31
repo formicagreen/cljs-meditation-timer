@@ -41,13 +41,14 @@
 (def timer-center 100)
 
 
-(defn timer-svg-step [angle step-radius other-props]
-  (let [rad (* (- angle 90) (/ Math/PI 180))
-        x   (+ timer-center (* timer-radius (Math/cos rad)))
-        y   (+ timer-center (* timer-radius (Math/sin rad)))]
-    [:circle (merge {:cx x
-                     :cy y
-                     :r  step-radius} other-props)]))
+(defn timer-mark [angle step-radius extra-props]
+  (let [rad   (* (- angle 90) (/ Math/PI 180))
+        x     (+ timer-center (* timer-radius (Math/cos rad)))
+        y     (+ timer-center (* timer-radius (Math/sin rad)))
+        props {:cx x
+               :cy y
+               :r  step-radius}]
+    [:circle (merge props extra-props)]))
 
 
 (defn timer-svg
@@ -77,13 +78,14 @@
    ;; Smaller circles along the circumference
    (for [step (:steps timer)]
      ^{:key (:id step)}
-     [timer-svg-step
-      (core/step->angle timer step)
-      step-radius
-      {:fill "white"}])
+     (let [time (core/step-end-time timer step)]
+       [timer-mark
+        (core/time->angle timer time)
+        step-radius
+        {:fill "white"}]))
    
    (when elapsed
-     [timer-svg-step
+     [timer-mark
       (core/time->angle timer (core/ms->min elapsed))
       step-radius
       {:fill "url(#gradient)"}])])
@@ -94,12 +96,16 @@
   [:div
    {:class ["h-6 w-full from-blue-800 to-transparent pointer-events-none transition-opacity absolute"
             (if visible? "opacity-100" "opacity-0")
-            (when (= position :top) "top-0  bg-gradient-to-b")
-            (when (= position :bottom) "bottom-0 bg-gradient-to-t")]}])
+            (case position
+              :top "top-0 bg-gradient-to-b"
+              :bottom "bottom-0 bg-gradient-to-t")]}])
 
 
 (comment
-  @state/scroll-areas)
+  @state/scroll-areas
+  (if "hey" true false)
+  (case true false true false)
+  )
 
 (defn scrollable
   "This is an insanely complicated component that:
@@ -229,7 +235,7 @@
       ; (which is not the case if you click on the input directly)
       ; the setTimeout is a hack to deal with react re-rendering too much
       ; i.e. on blur you try click another input but it immediately re-renders and the click is lost
-      ; scrollIntoView is there to deal with the janky ios keyboard moving the input out of view sometimes. it's not the best solution
+      ; scrollIntoView is there to deal with the ios keyboard moving the input out of view sometimes. it's not the best solution
          {:class "absolute inset-0"
           :on-click (fn [e]
                       (let [get-el #(-> js/document (.getElementById (:id step)))]
@@ -387,7 +393,7 @@
   [:div.flex.leading-none.justify-center
    {:style {:font-size (str font-size "px")}}
    (for [[i c] (map-indexed vector (str (core/format-time ms)))]
-     (let [width (if (= c ":") (* font-size 0.3) (* font-size 0.7))]
+     (let [width (case c ":" (* font-size 0.3) (* font-size 0.7))]
        ^{:key i}
        [:div.text-center
         {:style {:width (str width "px")}}
