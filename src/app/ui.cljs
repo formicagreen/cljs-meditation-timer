@@ -112,7 +112,7 @@
    1. Shows a shadow at the top/bottom of the scrollable area to indicate that there is more content above/below.
    2. Maintains scroll position between renders.
    It's a lot of work, but will people notice the difference? Probably not.
-   What makes this so difficult is that React lacks fine-grained reactivity. It would be trivial to implement in vanilla JS.
+   What makes this so difficult is that React lacks fine-grained reactivity. Something like Solidjs could probably handle this better.
    So all of the state that this component needs to keep track of is stored in a global atom.
    You might be able to achieve something similar by carefully managing the lifecycle of the scrollable area.
    But that also seems like a lot of work and kind of brittle."

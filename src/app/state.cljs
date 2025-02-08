@@ -255,9 +255,10 @@
                    (- (:started-at @session))
                    (+ (:previous-time @session)))))
 
+(defn running? [] (= :running (core/play-state @session)))
 
 (defn animate! []
-  (when (= :running (core/play-state @session))
+  (when (running?)
     (update-elapsed-time!)
     (js/requestAnimationFrame animate!)))
 
@@ -376,6 +377,14 @@
           (swap! session assoc :timeouts (set-timeouts! (current-timer))))
       (do (log! "app went to background")
           (clear-step-timeouts!)))))
+
+(defn poll-keepawake!
+  "Check if screen lock should be disabled.
+   Previously we would set this on start/stop but this would fail in rare cases. Have not been able to reproduce why. So now we just run this function on an interval, hopefully this will solve the issue."
+  [] 
+  (js/setInterval (if (running?)
+                    (.keepAwake KeepAwake)
+                    (.allowSleep KeepAwake)) 10000))
 
 
 (comment

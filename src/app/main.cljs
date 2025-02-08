@@ -22,6 +22,8 @@
   (.requestPermissions LocalNotifications)
   ; listen to app foreground/background events
   (.addListener App "appStateChange" #(state/handle-app-state-change! %))
+  ; fix to prevent sleep mode when timer is running
+  (state/poll-keepawake!)
   ; render app
   (rdom/render [ui/app] (.getElementById js/document "app")))
 
