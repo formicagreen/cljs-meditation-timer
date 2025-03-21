@@ -268,7 +268,11 @@
        [:button.btn.w-full
         {:on-click (fn []
                      (state/swap-page! :run)
-                     (state/start! timer))}
+                     (js/setTimeout #(state/start! timer) 100) 
+                     ; setTimeout fixes an issue where timers will be scheduled incorrectly,
+                     ; if the user modifies the duration of a step and then presses the start button 
+                     ; before blurring the step duration input
+                     )}
         [:> icon-sm-solid/PlayIcon {:class "h-6 w-6"}]
         "Start timer"]]
       ; steps
